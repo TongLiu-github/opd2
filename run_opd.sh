@@ -1,0 +1,227 @@
+#!/bin/bash -l
+# 
+#SBATCH --nodes=1                  # Resource requirements, job runtime, other options
+#SBATCH --ntasks-per-node=1                 #All #SBATCH lines have to follow uninterrupted
+#SBATCH --time=24:00:00
+#SBATCH --job-name=opd2
+#SBATCH --export=NONE              # do not export environment from submitting shell
+#SBATCH --output=opd2.txt
+#SBATCH --cpus-per-gpu=16
+#SBATCH --gres=gpu:a100:4 -C a100_80
+
+
+source ~/.bashrc
+conda activate opd
+cd /home/atuin/v100dd/v100dd18/opd/OPD
+
+
+module load gcc/12.1.0
+gcc --version 
+
+
+set -x
+export http_proxy=http://proxy:80
+export https_proxy=http://proxy:80
+
+# Configure logging.
+LOG_DIR=${LOG_DIR:-logs}
+mkdir -p "$LOG_DIR"
+LOG_FILE="${LOG_DIR}/run_$(date +%Y%m%d_%H%M%S).log"
+exec > >(tee -a "$LOG_FILE") 2>&1
+echo "=========================================="
+echo "Log file: $LOG_FILE"
+echo "Start time: $(date)"
+echo "=========================================="
+
+ray stop --force
+export RAY_memory_usage_threshold=0.99
+export CUDA_LAUNCH_BLOCKING=1
+# export CUDA_VISIBLE_DEVICES=1,2,3,4
+export PYTHONUNBUFFERED=1
+export PROJECT_NAME='OnPolicyDistillation' # TODO
+export TORCH_NCCL_BLOCKING_WAIT=1
+export NCCL_TIMEOUT=7200
+export TORCH_DISTRIBUTED_DEBUG=INFO
+export ADV_ESTIMATOR=token_reward_direct
+# export ADV_ESTIMATOR=token_reward_direct_plus_grpo
+# export ADV_ESTIMATOR=token_grpo
+# export ADV_ESTIMATOR=grpo
+export GRPO_OUTCOME_WEIGHT=1.0
+# export ADV_ESTIMATOR=token_grpo
+
+
+# DeepMath-103K
+export MAX_PROMPT_LENGTH=1024
+export MAX_RESP_LENGTH=7168  # TODO: 31744 /15360 / 7168 / 3072 / 5120
+export MAX_VAL_RESP_LENGTH=8192 # TODO: 15360 / 7168 / 3072
+export MAX_MODEL_LEN=$(( MAX_RESP_LENGTH + MAX_PROMPT_LENGTH > MAX_VAL_RESP_LENGTH + MAX_PROMPT_LENGTH ? MAX_RESP_LENGTH + MAX_PROMPT_LENGTH : MAX_VAL_RESP_LENGTH + MAX_PROMPT_LENGTH ))
+export MINI_BATCH_SIZE=${MINI_BATCH_SIZE:-32} # TODO: 1 / 8 / 16 / 32 / 64 (default 64)
+export TEMPERATURE=${TEMPERATURE:-1.0} # TODO: 0.6 / 0.8 / 1.0 / 1.2 (default 1.0)
+export TEACHER_TEMPERATURE=${TEACHER_TEMPERATURE:-1.0} # Teacher logits temperature (default 1.0, no scaling)
+export REPETITION_PENALTY=${REPETITION_PENALTY:-1.0} # TODO: 1.0 / 1.1 / 1.2 (default 1.0, no penalty)
+export N_RESPONSES=4 # TODO: 4 / 8 / 16 / 32 (default: 8)
+export LOG_PROB_TOP_K=${LOG_PROB_TOP_K:-16} # 0 represents no top-k sampling
+export TOP_K_STRATEGY=${TOP_K_STRATEGY:-"only_stu"} # "only_stu" or "only_tch" or "intersection" or "union" or "union-intersection"
+export REWARD_WEIGHT_MODE=${REWARD_WEIGHT_MODE:-"student_p"} # "student_p" or "teacher_p" or "none"
+# export LR=${LR:-1e-6}
+# export LR_SCHEDULER=${LR_SCHEDULER:-constant}
+export USE_KL=${USE_KL:-False} # TODO: True / False (default False)
+export ENABLE_FORMAT_REWARD=${ENABLE_FORMAT_REWARD:-False} # TODO: True / False (default False)
+export MODEL_DTYPE=${MODEL_DTYPE:-fp32} # actor/ref/critic fsdp_config.model_dtype: fp32 or bfloat16
+export IS_PLOT=${IS_PLOT:-True} # TODO: True / False (default False)
+export LOSS_AGG_MODE=${LOSS_AGG_MODE:-"token-mean"} # TODO: "token-mean" / "seq-mean-token-sum" / "seq-mean-token-mean" / "seq-mean-token-sum-norm" (default "token-mean")
+
+
+# export TRAIN_DATASET=datasets/DAPO-Math-17k/data/dapo-math-17k-10percent.parquet
+# export TRAIN_DATASET=datasets/OpenThoughts3-1.2M/OpenThoughts3_opd.parquet
+# export TRAIN_DATASET=datasets/OpenThoughts3-1.2M/sampled_complement_30k.parquet
+# export TRAIN_DATASET=datasets/DeepMath-103K/verl_format/train_filtered_sampled.parquet
+export TRAIN_DATASET=/home/atuin/v100dd/v100dd18/opd/OPD/datasets/DAPO-MATH-17k.parquet
+
+
+# export TRAIN_DATASET=datasets/Skywork-OR1-RL-Data/data/math-00000-of-00001.parquet
+# export TRAIN_DATASET=datasets/Skywork-OR1-RL-Data/filtered/math-1p5b-filtered-diff-max8.parquet
+# export TRAIN_DATASET=datasets/DAPO-Math-17k-Processed/DAPO-Math.parquet
+# export TRAIN_DATASET=datasets/skywork/train_7b_math.parquet
+# export TRAIN_DATASET=datasets/DAPO-Math-17k-Processed/DAPO-Math_part2.parquet
+# export TRAIN_DATASET=datasets/OpenThoughts3-1.2M/verl_format/train.parquet
+export TRAIN_DATASET_NAME=DAPO-Math-17k
+# export TRAIN_DATASET_NAME=POLARIS-4B-S1
+# export TRAIN_DATASET_NAME=Skywork-OR1-RL-Data
+# export TRAIN_DATASET_NAME=DAPO-Math-17k-1percent
+# export TRAIN_DATASET_NAME=DeepMath-103K-filtered-sampled
+# export TRAIN_DATASET_NAME=DAPO-Math-17k-10percent
+# export TRAIN_DATASET_NAME=OpenThoughts3-1.2M-opd
+# export TRAIN_DATASET_NAME=OpenThoughts3-1.2M-30k
+
+export TEST_DATA_DIR=datasets/test_data
+TEST_DATASET=${TEST_FILE:-["$TEST_DATA_DIR/AIME25/test.parquet", "$TEST_DATA_DIR/AMC23/test.parquet", "$TEST_DATA_DIR/AIME24/test.parquet"]}
+# TEST_DATASET=${TEST_FILE:-["$DATA_DIR/AIME24/test.parquet","$DATA_DIR/AIME25/test.parquet","$DATA_DIR/AMC23/test.parquet","$DATA_DIR/MATH-500/test.parquet","$DATA_DIR/Minerva/test.parquet","$DATA_DIR/Olympiad-Bench/test.parquet"]}
+
+
+export ACTOR_MODEL_PATH=Qwen/Qwen3-1.7B
+
+
+export ACTOR_MODEL_NAME=$(basename "$ACTOR_MODEL_PATH")
+
+export REWARD_MODEL_PATH=Qwen/Qwen3-32B
+
+export REWARD_MODEL_NAME=$(basename "$REWARD_MODEL_PATH")
+
+export PROJECT_PATH=checkpoint
+export PARALLEL_SIZE=1
+export CKPT_PATH=${PROJECT_PATH}/${ADV_ESTIMATOR}_${TRAIN_DATASET_NAME}_${ACTOR_MODEL_NAME}_${REWARD_MODEL_NAME}_${MAX_RESP_LENGTH}-T_${TEMPERATURE}-Tch_${TEACHER_TEMPERATURE}-n_${N_RESPONSES}-mbs_${MINI_BATCH_SIZE}-topk_${LOG_PROB_TOP_K}-topk_strategy_${TOP_K_STRATEGY}-rw_${REWARD_WEIGHT_MODE}-$(date +%Y-%m-%d_%H-%M-%S)
+export OUTLINES_CACHE_DIR=~/.cache/outlines/$(uuidgen)
+export NCCL_DEBUG=WARN
+
+# export VLLM_ATTENTION_BACKEND=XFORMERS
+# export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+export TOKENIZERS_PARALLELISM=true
+export SWANLAB_LOG_DIR=${PROJECT_PATH}/swanlab_log
+export HYDRA_FULL_ERROR=1
+
+
+export EXPERIMENT_NAME=${ADV_ESTIMATOR}_${TRAIN_DATASET_NAME}_${ACTOR_MODEL_NAME}_${REWARD_MODEL_NAME}_${MAX_RESP_LENGTH}-T_${TEMPERATURE}-Tch_${TEACHER_TEMPERATURE}-n_${N_RESPONSES}-mbs_${MINI_BATCH_SIZE}-topk_${LOG_PROB_TOP_K}-topk_strategy_${TOP_K_STRATEGY}-rw_${REWARD_WEIGHT_MODE}-$(date +%Y-%m-%d_%H-%M-%S)
+
+KL_ARGS=""
+if [ "$USE_KL" = "True" ]; then
+    KL_ARGS="actor_rollout_ref.actor.use_kl_loss=True \
+    actor_rollout_ref.actor.kl_loss_coef=0.005 \
+    actor_rollout_ref.actor.kl_loss_type=low_var_kl"
+else
+    KL_ARGS="actor_rollout_ref.actor.use_kl_loss=False"
+fi
+
+LR_ARGS=""
+if [ "$LR_SCHEDULER" = "cosine" ]; then
+    LR_ARGS="actor_rollout_ref.actor.optim.warmup_style=cosine \
+    actor_rollout_ref.actor.optim.lr_warmup_steps_ratio=0.03"
+fi
+
+PPO_MAX_TOKEN_LEN_PER_GPU=$(( ((1024 + MAX_RESP_LENGTH) > 32768) ? (1024 + MAX_RESP_LENGTH) : 32768))
+echo "PPO_MAX_TOKEN_LEN_PER_GPU: $PPO_MAX_TOKEN_LEN_PER_GPU"
+
+
+ray start --head
+sleep 5
+
+
+python3 -m verl.trainer.main_ppo \
+    algorithm.adv_estimator=$ADV_ESTIMATOR \
+    algorithm.grpo_outcome_weight=$GRPO_OUTCOME_WEIGHT \
+    data.shuffle=False \
+    data.train_files="$TRAIN_DATASET" \
+    data.val_files="$TEST_DATASET" \
+    data.train_batch_size=$((${MINI_BATCH_SIZE}*${PARALLEL_SIZE})) \
+    data.max_prompt_length=$MAX_PROMPT_LENGTH \
+    data.max_response_length=$MAX_RESP_LENGTH \
+    data.filter_overlong_prompts=True \
+    data.truncation='error' \
+    data.return_raw_chat=True \
+    actor_rollout_ref.model.path=$ACTOR_MODEL_PATH \
+    actor_rollout_ref.model.use_remove_padding=True \
+    actor_rollout_ref.model.enable_activation_offload=True \
+    actor_rollout_ref.model.enable_gradient_checkpointing=True \
+    actor_rollout_ref.actor.optim.lr=1e-6 \
+    $LR_ARGS \
+    actor_rollout_ref.actor.ppo_mini_batch_size=$MINI_BATCH_SIZE \
+    actor_rollout_ref.actor.use_dynamic_bsz=True \
+    actor_rollout_ref.actor.ppo_micro_batch_size_per_gpu=1 \
+    actor_rollout_ref.actor.ppo_max_token_len_per_gpu=$PPO_MAX_TOKEN_LEN_PER_GPU \
+    actor_rollout_ref.actor.ulysses_sequence_parallel_size=$PARALLEL_SIZE \
+    $KL_ARGS \
+    actor_rollout_ref.actor.loss_agg_mode=$LOSS_AGG_MODE \
+    actor_rollout_ref.actor.fsdp_config.param_offload=False \
+    actor_rollout_ref.actor.fsdp_config.optimizer_offload=False \
+    actor_rollout_ref.actor.fsdp_config.forward_prefetch=True \
+    actor_rollout_ref.actor.fsdp_config.model_dtype=$MODEL_DTYPE \
+    actor_rollout_ref.rollout.max_num_batched_tokens=$PPO_MAX_TOKEN_LEN_PER_GPU \
+    actor_rollout_ref.ref.fsdp_config.param_offload=True \
+    actor_rollout_ref.ref.fsdp_config.model_dtype=$MODEL_DTYPE \
+    actor_rollout_ref.ref.log_prob_use_dynamic_bsz=True \
+    actor_rollout_ref.rollout.name=vllm \
+    actor_rollout_ref.rollout.temperature=$TEMPERATURE \
+    actor_rollout_ref.rollout.log_prob_use_dynamic_bsz=True \
+    +actor_rollout_ref.rollout.log_prob_top_k=$LOG_PROB_TOP_K \
+    +actor_rollout_ref.rollout.top_k_strategy=$TOP_K_STRATEGY \
+    +actor_rollout_ref.rollout.reward_weight_mode=$REWARD_WEIGHT_MODE \
+    +actor_rollout_ref.rollout.teacher_temperature=$TEACHER_TEMPERATURE \
+    actor_rollout_ref.rollout.tensor_model_parallel_size=$PARALLEL_SIZE \
+    actor_rollout_ref.rollout.gpu_memory_utilization=0.8 \
+    actor_rollout_ref.rollout.max_model_len=$MAX_MODEL_LEN \
+    actor_rollout_ref.rollout.n=$N_RESPONSES \
+    actor_rollout_ref.rollout.val_kwargs.do_sample=True \
+    +actor_rollout_ref.rollout.val_kwargs.max_tokens=$MAX_VAL_RESP_LENGTH \
+    actor_rollout_ref.rollout.val_kwargs.n=16 \
+    actor_rollout_ref.rollout.val_kwargs.temperature=0.7 \
+    actor_rollout_ref.rollout.val_kwargs.top_p=0.95 \
+    actor_rollout_ref.rollout.repetition_penalty=$REPETITION_PENALTY \
+    actor_rollout_ref.rollout.calculate_log_probs=True \
+    actor_rollout_ref.ref.log_prob_micro_batch_size_per_gpu=1 \
+    reward_model.enable=True \
+    +reward_model.reward_kwargs.enable_format_reward=$ENABLE_FORMAT_REWARD \
+    reward_model.model.path=$REWARD_MODEL_PATH \
+    reward_model.model.input_tokenizer=null \
+    reward_model.model.use_remove_padding=True \
+    reward_model.model.fsdp_config.param_offload=False \
+    +reward_model.model.dtype=$MODEL_DTYPE \
+    reward_model.micro_batch_size_per_gpu=24 \
+    custom_reward_function.path="verl/verl/utils/reward_score/ttrl_math/__init__.py" \
+    custom_reward_function.name=reward_func \
+    trainer.val_before_train=True \
+    trainer.log_val_generations=2 \
+    trainer.logger=['console','wandb'] \
+    trainer.project_name=$PROJECT_NAME \
+    trainer.experiment_name=$EXPERIMENT_NAME \
+    trainer.validation_data_dir=validation_log/$EXPERIMENT_NAME \
+    trainer.n_gpus_per_node=4 \
+    trainer.nnodes=1 \
+    trainer.save_freq=40 \
+    trainer.test_freq=20 \
+    trainer.total_epochs=1 \
+    trainer.default_local_dir="$CKPT_PATH" \
+    trainer.is_plot=$IS_PLOT \
+
+echo "=========================================="
+echo "End time: $(date)"
+echo "=========================================="

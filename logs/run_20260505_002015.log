@@ -1,0 +1,999 @@
++ echo ==========================================
+==========================================
++ echo 'Log file: logs/run_20260505_002015.log'
+Log file: logs/run_20260505_002015.log
+++ date
++ echo 'Start time: Tue May  5 00:20:15 CEST 2026'
+Start time: Tue May  5 00:20:15 CEST 2026
++ echo ==========================================
+==========================================
++ ray stop --force
+Did not find any active Ray processes.
++ export RAY_memory_usage_threshold=0.99
++ RAY_memory_usage_threshold=0.99
++ export CUDA_LAUNCH_BLOCKING=1
++ CUDA_LAUNCH_BLOCKING=1
++ export PYTHONUNBUFFERED=1
++ PYTHONUNBUFFERED=1
++ export PROJECT_NAME=OnPolicyDistillation
++ PROJECT_NAME=OnPolicyDistillation
++ export TORCH_NCCL_BLOCKING_WAIT=1
++ TORCH_NCCL_BLOCKING_WAIT=1
++ export NCCL_TIMEOUT=7200
++ NCCL_TIMEOUT=7200
++ export TORCH_DISTRIBUTED_DEBUG=INFO
++ TORCH_DISTRIBUTED_DEBUG=INFO
++ export ADV_ESTIMATOR=token_reward_direct
++ ADV_ESTIMATOR=token_reward_direct
++ export GRPO_OUTCOME_WEIGHT=1.0
++ GRPO_OUTCOME_WEIGHT=1.0
++ export MAX_PROMPT_LENGTH=1024
++ MAX_PROMPT_LENGTH=1024
++ export MAX_RESP_LENGTH=7168
++ MAX_RESP_LENGTH=7168
++ export MAX_VAL_RESP_LENGTH=31744
++ MAX_VAL_RESP_LENGTH=31744
++ export MAX_MODEL_LEN=32768
++ MAX_MODEL_LEN=32768
++ export MINI_BATCH_SIZE=32
++ MINI_BATCH_SIZE=32
++ export TEMPERATURE=1.0
++ TEMPERATURE=1.0
++ export TEACHER_TEMPERATURE=1.0
++ TEACHER_TEMPERATURE=1.0
++ export REPETITION_PENALTY=1.0
++ REPETITION_PENALTY=1.0
++ export N_RESPONSES=4
++ N_RESPONSES=4
++ export LOG_PROB_TOP_K=16
++ LOG_PROB_TOP_K=16
++ export TOP_K_STRATEGY=only_stu
++ TOP_K_STRATEGY=only_stu
++ export REWARD_WEIGHT_MODE=student_p
++ REWARD_WEIGHT_MODE=student_p
++ export USE_KL=False
++ USE_KL=False
++ export ENABLE_FORMAT_REWARD=False
++ ENABLE_FORMAT_REWARD=False
++ export MODEL_DTYPE=fp32
++ MODEL_DTYPE=fp32
++ export IS_PLOT=True
++ IS_PLOT=True
++ export LOSS_AGG_MODE=token-mean
++ LOSS_AGG_MODE=token-mean
++ export TRAIN_DATASET=/home/atuin/v100dd/v100dd18/opd/OPD/datasets/DAPO-MATH-17k.parquet
++ TRAIN_DATASET=/home/atuin/v100dd/v100dd18/opd/OPD/datasets/DAPO-MATH-17k.parquet
++ export TRAIN_DATASET_NAME=DAPO-Math-17k
++ TRAIN_DATASET_NAME=DAPO-Math-17k
++ export TEST_DATA_DIR=datasets/test_data
++ TEST_DATA_DIR=datasets/test_data
++ TEST_DATASET='[datasets/test_data/AIME25/test.parquet, datasets/test_data/AMC23/test.parquet, datasets/test_data/AIME24/test.parquet]'
++ export ACTOR_MODEL_PATH=Qwen/Qwen3-1.7B
++ ACTOR_MODEL_PATH=Qwen/Qwen3-1.7B
+++ basename Qwen/Qwen3-1.7B
++ export ACTOR_MODEL_NAME=Qwen3-1.7B
++ ACTOR_MODEL_NAME=Qwen3-1.7B
++ export REWARD_MODEL_PATH=Qwen/Qwen3-4B
++ REWARD_MODEL_PATH=Qwen/Qwen3-4B
+++ basename Qwen/Qwen3-4B
++ export REWARD_MODEL_NAME=Qwen3-4B
++ REWARD_MODEL_NAME=Qwen3-4B
++ export PROJECT_PATH=checkpoint
++ PROJECT_PATH=checkpoint
++ export PARALLEL_SIZE=1
++ PARALLEL_SIZE=1
+++ date +%Y-%m-%d_%H-%M-%S
++ export CKPT_PATH=checkpoint/token_reward_direct_DAPO-Math-17k_Qwen3-1.7B_Qwen3-4B_7168-T_1.0-Tch_1.0-n_4-mbs_32-topk_16-topk_strategy_only_stu-rw_student_p-2026-05-05_00-20-20
++ CKPT_PATH=checkpoint/token_reward_direct_DAPO-Math-17k_Qwen3-1.7B_Qwen3-4B_7168-T_1.0-Tch_1.0-n_4-mbs_32-topk_16-topk_strategy_only_stu-rw_student_p-2026-05-05_00-20-20
+++ uuidgen
++ export OUTLINES_CACHE_DIR=/home/hpc/v100dd/v100dd18/.cache/outlines/464b84f3-1a05-4484-a873-e2d682ea760c
++ OUTLINES_CACHE_DIR=/home/hpc/v100dd/v100dd18/.cache/outlines/464b84f3-1a05-4484-a873-e2d682ea760c
++ export NCCL_DEBUG=WARN
++ NCCL_DEBUG=WARN
++ export TOKENIZERS_PARALLELISM=true
++ TOKENIZERS_PARALLELISM=true
++ export SWANLAB_LOG_DIR=checkpoint/swanlab_log
++ SWANLAB_LOG_DIR=checkpoint/swanlab_log
++ export HYDRA_FULL_ERROR=1
++ HYDRA_FULL_ERROR=1
+++ date +%Y-%m-%d_%H-%M-%S
++ export EXPERIMENT_NAME=token_reward_direct_DAPO-Math-17k_Qwen3-1.7B_Qwen3-4B_7168-T_1.0-Tch_1.0-n_4-mbs_32-topk_16-topk_strategy_only_stu-rw_student_p-2026-05-05_00-20-20
++ EXPERIMENT_NAME=token_reward_direct_DAPO-Math-17k_Qwen3-1.7B_Qwen3-4B_7168-T_1.0-Tch_1.0-n_4-mbs_32-topk_16-topk_strategy_only_stu-rw_student_p-2026-05-05_00-20-20
++ KL_ARGS=
++ '[' False = True ']'
++ KL_ARGS=actor_rollout_ref.actor.use_kl_loss=False
++ LR_ARGS=
++ '[' '' = cosine ']'
++ PPO_MAX_TOKEN_LEN_PER_GPU=32768
++ echo 'PPO_MAX_TOKEN_LEN_PER_GPU: 32768'
+PPO_MAX_TOKEN_LEN_PER_GPU: 32768
++ ray start --head
+Usage stats collection is enabled. To disable this, add `--disable-usage-stats` to the command that starts the cluster, or run the following command: `ray disable-usage-stats` before starting the cluster. See https://docs.ray.io/en/master/cluster/usage-stats.html for more details.
+
+[37mLocal node IP[39m: [1m10.28.53.163[22m
+
+[32m--------------------[39m
+[32mRay runtime started.[39m
+[32m--------------------[39m
+
+[36mNext steps[39m
+  To add another node to this Ray cluster, run
+  [1m  ray start --address='10.28.53.163:6379'[22m
+  
+  To connect to this Ray cluster:
+    [35mimport[39m[26m ray
+    ray[35m.[39m[26minit()
+  
+  To terminate the Ray runtime, run
+  [1m  ray stop[22m
+  
+  To view the status of the cluster, use
+    [1mray status[22m[26m
++ sleep 5
++ python3 -m verl.trainer.main_ppo algorithm.adv_estimator=token_reward_direct algorithm.grpo_outcome_weight=1.0 data.shuffle=False data.train_files=/home/atuin/v100dd/v100dd18/opd/OPD/datasets/DAPO-MATH-17k.parquet 'data.val_files=[datasets/test_data/AIME25/test.parquet, datasets/test_data/AMC23/test.parquet, datasets/test_data/AIME24/test.parquet]' data.train_batch_size=32 data.max_prompt_length=1024 data.max_response_length=7168 data.filter_overlong_prompts=True data.truncation=error data.return_raw_chat=True actor_rollout_ref.model.path=Qwen/Qwen3-1.7B actor_rollout_ref.model.use_remove_padding=True actor_rollout_ref.model.enable_activation_offload=True actor_rollout_ref.model.enable_gradient_checkpointing=True actor_rollout_ref.actor.optim.lr=1e-6 actor_rollout_ref.actor.ppo_mini_batch_size=32 actor_rollout_ref.actor.use_dynamic_bsz=True actor_rollout_ref.actor.ppo_micro_batch_size_per_gpu=1 actor_rollout_ref.actor.ppo_max_token_len_per_gpu=32768 actor_rollout_ref.actor.ulysses_sequence_parallel_size=1 actor_rollout_ref.actor.use_kl_loss=False actor_rollout_ref.actor.loss_agg_mode=token-mean actor_rollout_ref.actor.fsdp_config.param_offload=False actor_rollout_ref.actor.fsdp_config.optimizer_offload=False actor_rollout_ref.actor.fsdp_config.forward_prefetch=True actor_rollout_ref.actor.fsdp_config.model_dtype=fp32 actor_rollout_ref.rollout.max_num_batched_tokens=32768 actor_rollout_ref.ref.fsdp_config.param_offload=True actor_rollout_ref.ref.fsdp_config.model_dtype=fp32 actor_rollout_ref.ref.log_prob_use_dynamic_bsz=True actor_rollout_ref.rollout.name=vllm actor_rollout_ref.rollout.temperature=1.0 actor_rollout_ref.rollout.log_prob_use_dynamic_bsz=True +actor_rollout_ref.rollout.log_prob_top_k=16 +actor_rollout_ref.rollout.top_k_strategy=only_stu +actor_rollout_ref.rollout.reward_weight_mode=student_p +actor_rollout_ref.rollout.teacher_temperature=1.0 actor_rollout_ref.rollout.tensor_model_parallel_size=1 actor_rollout_ref.rollout.gpu_memory_utilization=0.8 actor_rollout_ref.rollout.max_model_len=32768 actor_rollout_ref.rollout.n=4 actor_rollout_ref.rollout.val_kwargs.do_sample=True +actor_rollout_ref.rollout.val_kwargs.max_tokens=31744 actor_rollout_ref.rollout.val_kwargs.n=16 actor_rollout_ref.rollout.val_kwargs.temperature=0.7 actor_rollout_ref.rollout.val_kwargs.top_p=0.95 actor_rollout_ref.rollout.repetition_penalty=1.0 actor_rollout_ref.rollout.calculate_log_probs=True actor_rollout_ref.ref.log_prob_micro_batch_size_per_gpu=1 reward_model.enable=True +reward_model.reward_kwargs.enable_format_reward=False reward_model.model.path=Qwen/Qwen3-4B reward_model.model.input_tokenizer=null reward_model.model.use_remove_padding=True reward_model.model.fsdp_config.param_offload=False +reward_model.model.dtype=fp32 reward_model.micro_batch_size_per_gpu=24 custom_reward_function.path=verl/verl/utils/reward_score/ttrl_math/__init__.py custom_reward_function.name=reward_func trainer.val_before_train=False trainer.log_val_generations=2 'trainer.logger=[console,wandb]' trainer.project_name=OnPolicyDistillation trainer.experiment_name=token_reward_direct_DAPO-Math-17k_Qwen3-1.7B_Qwen3-4B_7168-T_1.0-Tch_1.0-n_4-mbs_32-topk_16-topk_strategy_only_stu-rw_student_p-2026-05-05_00-20-20 trainer.validation_data_dir=validation_log/token_reward_direct_DAPO-Math-17k_Qwen3-1.7B_Qwen3-4B_7168-T_1.0-Tch_1.0-n_4-mbs_32-topk_16-topk_strategy_only_stu-rw_student_p-2026-05-05_00-20-20 trainer.n_gpus_per_node=4 trainer.nnodes=1 trainer.save_freq=20 trainer.test_freq=20 trainer.total_epochs=1 trainer.default_local_dir=checkpoint/token_reward_direct_DAPO-Math-17k_Qwen3-1.7B_Qwen3-4B_7168-T_1.0-Tch_1.0-n_4-mbs_32-topk_16-topk_strategy_only_stu-rw_student_p-2026-05-05_00-20-20 trainer.is_plot=True
+/home/atuin/v100dd/v100dd18/miniconda3/envs/opd/lib/python3.12/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+ray init kwargs: {'num_cpus': None, 'runtime_env': {'env_vars': {'VLLM_LOGGING_LEVEL': 'WARN', 'VLLM_ALLOW_RUNTIME_LORA_UPDATING': 'true', 'VLLM_ALLREDUCE_USE_SYMM_MEM': '0', 'CUDA_DEVICE_MAX_CONNECTIONS': '1', 'NCCL_CUMEM_ENABLE': '0'}, 'working_dir': None}}
+2026-05-05 00:20:52,028	INFO worker.py:1814 -- Connecting to existing Ray cluster at address: 10.28.53.163:6379...
+2026-05-05 00:20:52,120	INFO worker.py:2012 -- Connected to Ray cluster.
+/home/atuin/v100dd/v100dd18/miniconda3/envs/opd/lib/python3.12/site-packages/ray/_private/worker.py:2051: FutureWarning: Tip: In future versions of Ray, Ray will no longer override accelerator visible devices env var if num_gpus=0 or num_gpus=None (default). To enable this behavior and turn off this error message, set RAY_ACCEL_ENV_VAR_OVERRIDE_ON_ZERO=0
+  warnings.warn(
+[36m(pid=185127)[0m /home/atuin/v100dd/v100dd18/miniconda3/envs/opd/lib/python3.12/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+[36m(pid=185127)[0m   import pynvml  # type: ignore[import]
+[36m(TaskRunner pid=185127)[0m TaskRunner hostname: a0832.nhr.fau.de, PID: 185127
+[36m(TaskRunner pid=185127)[0m {'@algorithm': {'rollout_correction': {'bypass_old_logprob_for_rollout': False,
+[36m(TaskRunner pid=185127)[0m                                        'rollout_is': None,
+[36m(TaskRunner pid=185127)[0m                                        'rollout_is_threshold': 2.0,
+[36m(TaskRunner pid=185127)[0m                                        'rollout_rs': None,
+[36m(TaskRunner pid=185127)[0m                                        'rollout_rs_threshold': None,
+[36m(TaskRunner pid=185127)[0m                                        'rollout_rs_threshold_lower': None,
+[36m(TaskRunner pid=185127)[0m                                        'rollout_token_veto_threshold': None,
+[36m(TaskRunner pid=185127)[0m                                        'use_pure_rollout_correction': False}},
+[36m(TaskRunner pid=185127)[0m  'actor_rollout_ref': {'actor': {'_target_': 'verl.workers.config.FSDPActorConfig',
+[36m(TaskRunner pid=185127)[0m                                  'checkpoint': {'_target_': 'verl.trainer.config.CheckpointConfig',
+[36m(TaskRunner pid=185127)[0m                                                 'async_save': False,
+[36m(TaskRunner pid=185127)[0m                                                 'load_contents': ['model',
+[36m(TaskRunner pid=185127)[0m                                                                   'optimizer',
+[36m(TaskRunner pid=185127)[0m                                                                   'extra'],
+[36m(TaskRunner pid=185127)[0m                                                 'save_contents': ['model',
+[36m(TaskRunner pid=185127)[0m                                                                   'optimizer',
+[36m(TaskRunner pid=185127)[0m                                                                   'extra']},
+[36m(TaskRunner pid=185127)[0m                                  'clip_ratio': 0.2,
+[36m(TaskRunner pid=185127)[0m                                  'clip_ratio_c': 3.0,
+[36m(TaskRunner pid=185127)[0m                                  'clip_ratio_high': 0.2,
+[36m(TaskRunner pid=185127)[0m                                  'clip_ratio_low': 0.2,
+[36m(TaskRunner pid=185127)[0m                                  'entropy_checkpointing': False,
+[36m(TaskRunner pid=185127)[0m                                  'entropy_coeff': 0,
+[36m(TaskRunner pid=185127)[0m                                  'entropy_from_logits_with_chunking': False,
+[36m(TaskRunner pid=185127)[0m                                  'freeze_vision_tower': False,
+[36m(TaskRunner pid=185127)[0m                                  'fsdp_config': {'_target_': 'verl.workers.config.FSDPEngineConfig',
+[36m(TaskRunner pid=185127)[0m                                                  'entropy_checkpointing': False,
+[36m(TaskRunner pid=185127)[0m                                                  'entropy_from_logits_with_chunking': False,
+[36m(TaskRunner pid=185127)[0m                                                  'forward_only': False,
+[36m(TaskRunner pid=185127)[0m                                                  'forward_prefetch': True,
+[36m(TaskRunner pid=185127)[0m                                                  'fsdp_size': -1,
+[36m(TaskRunner pid=185127)[0m                                                  'model_dtype': 'fp32',
+[36m(TaskRunner pid=185127)[0m                                                  'offload_policy': False,
+[36m(TaskRunner pid=185127)[0m                                                  'optimizer_offload': False,
+[36m(TaskRunner pid=185127)[0m                                                  'param_offload': False,
+[36m(TaskRunner pid=185127)[0m                                                  'reshard_after_forward': True,
+[36m(TaskRunner pid=185127)[0m                                                  'strategy': 'fsdp',
+[36m(TaskRunner pid=185127)[0m                                                  'ulysses_sequence_parallel_size': 1,
+[36m(TaskRunner pid=185127)[0m                                                  'use_orig_params': False,
+[36m(TaskRunner pid=185127)[0m                                                  'use_torch_compile': True,
+[36m(TaskRunner pid=185127)[0m                                                  'wrap_policy': {'min_num_params': 0}},
+[36m(TaskRunner pid=185127)[0m                                  'grad_clip': 1.0,
+[36m(TaskRunner pid=185127)[0m                                  'kl_loss_coef': 0.001,
+[36m(TaskRunner pid=185127)[0m                                  'kl_loss_type': 'low_var_kl',
+[36m(TaskRunner pid=185127)[0m                                  'loss_agg_mode': 'token-mean',
+[36m(TaskRunner pid=185127)[0m                                  'optim': {'_target_': 'verl.workers.config.FSDPOptimizerConfig',
+[36m(TaskRunner pid=185127)[0m                                            'betas': [0.9, 0.999],
+[36m(TaskRunner pid=185127)[0m                                            'clip_grad': 1.0,
+[36m(TaskRunner pid=185127)[0m                                            'lr': 1e-06,
+[36m(TaskRunner pid=185127)[0m                                            'lr_scheduler_type': 'constant',
+[36m(TaskRunner pid=185127)[0m                                            'lr_warmup_steps': -1,
+[36m(TaskRunner pid=185127)[0m                                            'lr_warmup_steps_ratio': 0.0,
+[36m(TaskRunner pid=185127)[0m                                            'min_lr_ratio': 0.0,
+[36m(TaskRunner pid=185127)[0m                                            'num_cycles': 0.5,
+[36m(TaskRunner pid=185127)[0m                                            'optimizer': 'AdamW',
+[36m(TaskRunner pid=185127)[0m                                            'optimizer_impl': 'torch.optim',
+[36m(TaskRunner pid=185127)[0m                                            'override_optimizer_config': None,
+[36m(TaskRunner pid=185127)[0m                                            'total_training_steps': -1,
+[36m(TaskRunner pid=185127)[0m                                            'warmup_style': None,
+[36m(TaskRunner pid=185127)[0m                                            'weight_decay': 0.01},
+[36m(TaskRunner pid=185127)[0m                                  'policy_loss': {'_target_': 'verl.workers.config.PolicyLossConfig',
+[36m(TaskRunner pid=185127)[0m                                                  'clip_cov_lb': 1.0,
+[36m(TaskRunner pid=185127)[0m                                                  'clip_cov_ratio': 0.0002,
+[36m(TaskRunner pid=185127)[0m                                                  'clip_cov_ub': 5.0,
+[36m(TaskRunner pid=185127)[0m                                                  'kl_cov_ratio': 0.0002,
+[36m(TaskRunner pid=185127)[0m                                                  'loss_mode': 'vanilla',
+[36m(TaskRunner pid=185127)[0m                                                  'ppo_kl_coef': 0.1},
+[36m(TaskRunner pid=185127)[0m                                  'ppo_epochs': 1,
+[36m(TaskRunner pid=185127)[0m                                  'ppo_max_token_len_per_gpu': 32768,
+[36m(TaskRunner pid=185127)[0m                                  'ppo_micro_batch_size': None,
+[36m(TaskRunner pid=185127)[0m                                  'ppo_micro_batch_size_per_gpu': 1,
+[36m(TaskRunner pid=185127)[0m                                  'ppo_mini_batch_size': 32,
+[36m(TaskRunner pid=185127)[0m                                  'profiler': {'_target_': 'verl.utils.profiler.ProfilerConfig',
+[36m(TaskRunner pid=185127)[0m                                               'all_ranks': False,
+[36m(TaskRunner pid=185127)[0m                                               'enable': False,
+[36m(TaskRunner pid=185127)[0m                                               'ranks': [],
+[36m(TaskRunner pid=185127)[0m                                               'save_path': 'outputs/profile',
+[36m(TaskRunner pid=185127)[0m                                               'tool': None,
+[36m(TaskRunner pid=185127)[0m                                               'tool_config': {'npu': {'_target_': 'verl.utils.profiler.config.NPUToolConfig',
+[36m(TaskRunner pid=185127)[0m                                                                       'analysis': True,
+[36m(TaskRunner pid=185127)[0m                                                                       'contents': [],
+[36m(TaskRunner pid=185127)[0m                                                                       'discrete': False,
+[36m(TaskRunner pid=185127)[0m                                                                       'level': 'level1'},
+[36m(TaskRunner pid=185127)[0m                                                               'nsys': {'_target_': 'verl.utils.profiler.config.NsightToolConfig',
+[36m(TaskRunner pid=185127)[0m                                                                        'discrete': False},
+[36m(TaskRunner pid=185127)[0m                                                               'torch': {'_target_': 'verl.utils.profiler.config.TorchProfilerToolConfig',
+[36m(TaskRunner pid=185127)[0m                                                                         'step_end': None,
+[36m(TaskRunner pid=185127)[0m                                                                         'step_start': 0},
+[36m(TaskRunner pid=185127)[0m                                                               'torch_memory': {'_target_': 'verl.utils.profiler.config.TorchMemoryToolConfig',
+[36m(TaskRunner pid=185127)[0m                                                                                'stack_depth': 32,
+[36m(TaskRunner pid=185127)[0m                                                                                'trace_alloc_max_entries': 100000}}},
+[36m(TaskRunner pid=185127)[0m                                  'shuffle': False,
+[36m(TaskRunner pid=185127)[0m                                  'strategy': 'fsdp',
+[36m(TaskRunner pid=185127)[0m                                  'ulysses_sequence_parallel_size': 1,
+[36m(TaskRunner pid=185127)[0m                                  'use_dynamic_bsz': True,
+[36m(TaskRunner pid=185127)[0m                                  'use_fused_kernels': False,
+[36m(TaskRunner pid=185127)[0m                                  'use_kl_loss': False,
+[36m(TaskRunner pid=185127)[0m                                  'use_remove_padding': True,
+[36m(TaskRunner pid=185127)[0m                                  'use_torch_compile': True},
+[36m(TaskRunner pid=185127)[0m                        'hybrid_engine': True,
+[36m(TaskRunner pid=185127)[0m                        'model': {'_target_': 'verl.workers.config.HFModelConfig',
+[36m(TaskRunner pid=185127)[0m                                  'custom_chat_template': None,
+[36m(TaskRunner pid=185127)[0m                                  'enable_activation_offload': True,
+[36m(TaskRunner pid=185127)[0m                                  'enable_gradient_checkpointing': True,
+[36m(TaskRunner pid=185127)[0m                                  'exclude_modules': None,
+[36m(TaskRunner pid=185127)[0m                                  'external_lib': None,
+[36m(TaskRunner pid=185127)[0m                                  'fused_kernel_options': {'impl_backend': 'torch'},
+[36m(TaskRunner pid=185127)[0m                                  'hf_config_path': None,
+[36m(TaskRunner pid=185127)[0m                                  'lora_adapter_path': None,
+[36m(TaskRunner pid=185127)[0m                                  'lora_alpha': 16,
+[36m(TaskRunner pid=185127)[0m                                  'lora_rank': 0,
+[36m(TaskRunner pid=185127)[0m                                  'override_config': {},
+[36m(TaskRunner pid=185127)[0m                                  'path': 'Qwen/Qwen3-1.7B',
+[36m(TaskRunner pid=185127)[0m                                  'target_modules': 'all-linear',
+[36m(TaskRunner pid=185127)[0m                                  'tokenizer_path': None,
+[36m(TaskRunner pid=185127)[0m                                  'trust_remote_code': False,
+[36m(TaskRunner pid=185127)[0m                                  'use_fused_kernels': False,
+[36m(TaskRunner pid=185127)[0m                                  'use_liger': False,
+[36m(TaskRunner pid=185127)[0m                                  'use_remove_padding': True,
+[36m(TaskRunner pid=185127)[0m                                  'use_shm': False},
+[36m(TaskRunner pid=185127)[0m                        'nccl_timeout': 600,
+[36m(TaskRunner pid=185127)[0m                        'ref': {'entropy_checkpointing': False,
+[36m(TaskRunner pid=185127)[0m                                'entropy_from_logits_with_chunking': False,
+[36m(TaskRunner pid=185127)[0m                                'fsdp_config': {'_target_': 'verl.workers.config.FSDPEngineConfig',
+[36m(TaskRunner pid=185127)[0m                                                'entropy_checkpointing': False,
+[36m(TaskRunner pid=185127)[0m                                                'entropy_from_logits_with_chunking': False,
+[36m(TaskRunner pid=185127)[0m                                                'forward_only': False,
+[36m(TaskRunner pid=185127)[0m                                                'forward_prefetch': False,
+[36m(TaskRunner pid=185127)[0m                                                'fsdp_size': -1,
+[36m(TaskRunner pid=185127)[0m                                                'model_dtype': 'fp32',
+[36m(TaskRunner pid=185127)[0m                                                'offload_policy': False,
+[36m(TaskRunner pid=185127)[0m                                                'optimizer_offload': False,
+[36m(TaskRunner pid=185127)[0m                                                'param_offload': True,
+[36m(TaskRunner pid=185127)[0m                                                'reshard_after_forward': True,
+[36m(TaskRunner pid=185127)[0m                                                'strategy': 'fsdp',
+[36m(TaskRunner pid=185127)[0m                                                'ulysses_sequence_parallel_size': 1,
+[36m(TaskRunner pid=185127)[0m                                                'use_orig_params': False,
+[36m(TaskRunner pid=185127)[0m                                                'use_torch_compile': True,
+[36m(TaskRunner pid=185127)[0m                                                'wrap_policy': {'min_num_params': 0}},
+[36m(TaskRunner pid=185127)[0m                                'log_prob_max_token_len_per_gpu': 32768,
+[36m(TaskRunner pid=185127)[0m                                'log_prob_micro_batch_size': None,
+[36m(TaskRunner pid=185127)[0m                                'log_prob_micro_batch_size_per_gpu': 1,
+[36m(TaskRunner pid=185127)[0m                                'log_prob_use_dynamic_bsz': True,
+[36m(TaskRunner pid=185127)[0m                                'model': None,
+[36m(TaskRunner pid=185127)[0m                                'profiler': {'_target_': 'verl.utils.profiler.ProfilerConfig',
+[36m(TaskRunner pid=185127)[0m                                             'all_ranks': False,
+[36m(TaskRunner pid=185127)[0m                                             'enable': False,
+[36m(TaskRunner pid=185127)[0m                                             'ranks': [],
+[36m(TaskRunner pid=185127)[0m                                             'save_path': 'outputs/profile',
+[36m(TaskRunner pid=185127)[0m                                             'tool': None,
+[36m(TaskRunner pid=185127)[0m                                             'tool_config': {'npu': {'_target_': 'verl.utils.profiler.config.NPUToolConfig',
+[36m(TaskRunner pid=185127)[0m                                                                     'analysis': True,
+[36m(TaskRunner pid=185127)[0m                                                                     'contents': [],
+[36m(TaskRunner pid=185127)[0m                                                                     'discrete': False,
+[36m(TaskRunner pid=185127)[0m                                                                     'level': 'level1'},
+[36m(TaskRunner pid=185127)[0m                                                             'nsys': {'_target_': 'verl.utils.profiler.config.NsightToolConfig',
+[36m(TaskRunner pid=185127)[0m                                                                      'discrete': False},
+[36m(TaskRunner pid=185127)[0m                                                             'torch': {'_target_': 'verl.utils.profiler.config.TorchProfilerToolConfig',
+[36m(TaskRunner pid=185127)[0m                                                                       'step_end': None,
+[36m(TaskRunner pid=185127)[0m                                                                       'step_start': 0},
+[36m(TaskRunner pid=185127)[0m                                                             'torch_memory': {'_target_': 'verl.utils.profiler.config.TorchMemoryToolConfig',
+[36m(TaskRunner pid=185127)[0m                                                                              'stack_depth': 32,
+[36m(TaskRunner pid=185127)[0m                                                                              'trace_alloc_max_entries': 100000}}},
+[36m(TaskRunner pid=185127)[0m                                'strategy': 'fsdp',
+[36m(TaskRunner pid=185127)[0m                                'ulysses_sequence_parallel_size': 1,
+[36m(TaskRunner pid=185127)[0m                                'use_torch_compile': True},
+[36m(TaskRunner pid=185127)[0m                        'rollout': {'_target_': 'verl.workers.config.RolloutConfig',
+[36m(TaskRunner pid=185127)[0m                                    'agent': {'_target_': 'verl.workers.config.AgentLoopConfig',
+[36m(TaskRunner pid=185127)[0m                                              'agent_loop_config_path': None,
+[36m(TaskRunner pid=185127)[0m                                              'custom_async_server': {'_target_': 'verl.workers.config.CustomAsyncServerConfig',
+[36m(TaskRunner pid=185127)[0m                                                                      'name': None,
+[36m(TaskRunner pid=185127)[0m                                                                      'path': None},
+[36m(TaskRunner pid=185127)[0m                                              'default_agent_loop': 'single_turn_agent',
+[36m(TaskRunner pid=185127)[0m                                              'num_workers': 8},
+[36m(TaskRunner pid=185127)[0m                                    'calculate_log_probs': True,
+[36m(TaskRunner pid=185127)[0m                                    'cudagraph_capture_sizes': None,
+[36m(TaskRunner pid=185127)[0m                                    'data_parallel_size': 1,
+[36m(TaskRunner pid=185127)[0m                                    'disable_log_stats': True,
+[36m(TaskRunner pid=185127)[0m                                    'do_sample': True,
+[36m(TaskRunner pid=185127)[0m                                    'dtype': 'bfloat16',
+[36m(TaskRunner pid=185127)[0m                                    'enable_chunked_prefill': True,
+[36m(TaskRunner pid=185127)[0m                                    'enable_prefix_caching': True,
+[36m(TaskRunner pid=185127)[0m                                    'enforce_eager': False,
+[36m(TaskRunner pid=185127)[0m                                    'engine_kwargs': {'sglang': {}, 'vllm': {}},
+[36m(TaskRunner pid=185127)[0m                                    'expert_parallel_size': 1,
+[36m(TaskRunner pid=185127)[0m                                    'free_cache_engine': True,
+[36m(TaskRunner pid=185127)[0m                                    'gpu_memory_utilization': 0.8,
+[36m(TaskRunner pid=185127)[0m                                    'ignore_eos': False,
+[36m(TaskRunner pid=185127)[0m                                    'layered_summon': False,
+[36m(TaskRunner pid=185127)[0m                                    'load_format': 'dummy',
+[36m(TaskRunner pid=185127)[0m                                    'log_prob_max_token_len_per_gpu': 32768,
+[36m(TaskRunner pid=185127)[0m                                    'log_prob_micro_batch_size': None,
+[36m(TaskRunner pid=185127)[0m                                    'log_prob_micro_batch_size_per_gpu': None,
+[36m(TaskRunner pid=185127)[0m                                    'log_prob_top_k': 16,
+[36m(TaskRunner pid=185127)[0m                                    'log_prob_use_dynamic_bsz': True,
+[36m(TaskRunner pid=185127)[0m                                    'max_model_len': 32768,
+[36m(TaskRunner pid=185127)[0m                                    'max_num_batched_tokens': 32768,
+[36m(TaskRunner pid=185127)[0m                                    'max_num_seqs': 1024,
+[36m(TaskRunner pid=185127)[0m                                    'mode': 'sync',
+[36m(TaskRunner pid=185127)[0m                                    'multi_stage_wake_up': False,
+[36m(TaskRunner pid=185127)[0m                                    'multi_turn': {'_target_': 'verl.workers.config.MultiTurnConfig',
+[36m(TaskRunner pid=185127)[0m                                                   'enable': False,
+[36m(TaskRunner pid=185127)[0m                                                   'format': 'hermes',
+[36m(TaskRunner pid=185127)[0m                                                   'interaction_config_path': None,
+[36m(TaskRunner pid=185127)[0m                                                   'max_assistant_turns': None,
+[36m(TaskRunner pid=185127)[0m                                                   'max_parallel_calls': 1,
+[36m(TaskRunner pid=185127)[0m                                                   'max_tool_response_length': 256,
+[36m(TaskRunner pid=185127)[0m                                                   'max_user_turns': None,
+[36m(TaskRunner pid=185127)[0m                                                   'num_repeat_rollouts': None,
+[36m(TaskRunner pid=185127)[0m                                                   'tokenization_sanity_check_mode': 'strict',
+[36m(TaskRunner pid=185127)[0m                                                   'tool_config_path': None,
+[36m(TaskRunner pid=185127)[0m                                                   'tool_response_truncate_side': 'middle',
+[36m(TaskRunner pid=185127)[0m                                                   'use_inference_chat_template': False},
+[36m(TaskRunner pid=185127)[0m                                    'n': 4,
+[36m(TaskRunner pid=185127)[0m                                    'name': 'vllm',
+[36m(TaskRunner pid=185127)[0m                                    'over_sample_rate': 0,
+[36m(TaskRunner pid=185127)[0m                                    'pipeline_model_parallel_size': 1,
+[36m(TaskRunner pid=185127)[0m                                    'profiler': {'_target_': 'verl.utils.profiler.ProfilerConfig',
+[36m(TaskRunner pid=185127)[0m                                                 'all_ranks': False,
+[36m(TaskRunner pid=185127)[0m                                                 'enable': False,
+[36m(TaskRunner pid=185127)[0m                                                 'ranks': [],
+[36m(TaskRunner pid=185127)[0m                                                 'save_path': 'outputs/profile',
+[36m(TaskRunner pid=185127)[0m                                                 'tool': None,
+[36m(TaskRunner pid=185127)[0m                                                 'tool_config': {'npu': {'_target_': 'verl.utils.profiler.config.NPUToolConfig',
+[36m(TaskRunner pid=185127)[0m                                                                         'analysis': True,
+[36m(TaskRunner pid=185127)[0m                                                                         'contents': [],
+[36m(TaskRunner pid=185127)[0m                                                                         'discrete': False,
+[36m(TaskRunner pid=185127)[0m                                                                         'level': 'level1'},
+[36m(TaskRunner pid=185127)[0m                                                                 'nsys': {'_target_': 'verl.utils.profiler.config.NsightToolConfig',
+[36m(TaskRunner pid=185127)[0m                                                                          'discrete': False},
+[36m(TaskRunner pid=185127)[0m                                                                 'torch': {'_target_': 'verl.utils.profiler.config.TorchProfilerToolConfig',
+[36m(TaskRunner pid=185127)[0m                                                                           'step_end': None,
+[36m(TaskRunner pid=185127)[0m                                                                           'step_start': 0},
+[36m(TaskRunner pid=185127)[0m                                                                 'torch_memory': {'_target_': 'verl.utils.profiler.config.TorchMemoryToolConfig',
+[36m(TaskRunner pid=185127)[0m                                                                                  'stack_depth': 32,
+[36m(TaskRunner pid=185127)[0m                                                                                  'trace_alloc_max_entries': 100000}}},
+[36m(TaskRunner pid=185127)[0m                                    'prompt_length': 1024,
+[36m(TaskRunner pid=185127)[0m                                    'repetition_penalty': 1.0,
+[36m(TaskRunner pid=185127)[0m                                    'response_length': 7168,
+[36m(TaskRunner pid=185127)[0m                                    'reward_weight_mode': 'student_p',
+[36m(TaskRunner pid=185127)[0m                                    'skip_dump_dir': '/tmp/rollout_dump',
+[36m(TaskRunner pid=185127)[0m                                    'skip_rollout': False,
+[36m(TaskRunner pid=185127)[0m                                    'skip_tokenizer_init': True,
+[36m(TaskRunner pid=185127)[0m                                    'teacher_temperature': 1.0,
+[36m(TaskRunner pid=185127)[0m                                    'temperature': 1.0,
+[36m(TaskRunner pid=185127)[0m                                    'tensor_model_parallel_size': 1,
+[36m(TaskRunner pid=185127)[0m                                    'top_k': -1,
+[36m(TaskRunner pid=185127)[0m                                    'top_k_strategy': 'only_stu',
+[36m(TaskRunner pid=185127)[0m                                    'top_p': 1,
+[36m(TaskRunner pid=185127)[0m                                    'trace': {'_target_': 'verl.workers.config.TraceConfig',
+[36m(TaskRunner pid=185127)[0m                                              'backend': None,
+[36m(TaskRunner pid=185127)[0m                                              'token2text': False},
+[36m(TaskRunner pid=185127)[0m                                    'update_weights_bucket_megabytes': 512,
+[36m(TaskRunner pid=185127)[0m                                    'val_kwargs': {'_target_': 'verl.workers.config.SamplingConfig',
+[36m(TaskRunner pid=185127)[0m                                                   'do_sample': True,
+[36m(TaskRunner pid=185127)[0m                                                   'max_tokens': 31744,
+[36m(TaskRunner pid=185127)[0m                                                   'n': 16,
+[36m(TaskRunner pid=185127)[0m                                                   'temperature': 0.7,
+[36m(TaskRunner pid=185127)[0m                                                   'top_k': -1,
+[36m(TaskRunner pid=185127)[0m                                                   'top_p': 0.95}}},
+[36m(TaskRunner pid=185127)[0m  'algorithm': {'_target_': 'verl.trainer.config.AlgoConfig',
+[36m(TaskRunner pid=185127)[0m                'adv_estimator': 'token_reward_direct',
+[36m(TaskRunner pid=185127)[0m                'gamma': 1.0,
+[36m(TaskRunner pid=185127)[0m                'grpo_outcome_weight': 1.0,
+[36m(TaskRunner pid=185127)[0m                'kl_ctrl': {'_target_': 'verl.trainer.config.KLControlConfig',
+[36m(TaskRunner pid=185127)[0m                            'horizon': 10000,
+[36m(TaskRunner pid=185127)[0m                            'kl_coef': 0.001,
+[36m(TaskRunner pid=185127)[0m                            'target_kl': 0.1,
+[36m(TaskRunner pid=185127)[0m                            'type': 'fixed'},
+[36m(TaskRunner pid=185127)[0m                'kl_penalty': 'kl',
+[36m(TaskRunner pid=185127)[0m                'lam': 1.0,
+[36m(TaskRunner pid=185127)[0m                'norm_adv_by_std_in_grpo': True,
+[36m(TaskRunner pid=185127)[0m                'pf_ppo': {'reweight_method': 'pow', 'weight_pow': 2.0},
+[36m(TaskRunner pid=185127)[0m                'use_kl_in_reward': False,
+[36m(TaskRunner pid=185127)[0m                'use_pf_ppo': False},
+[36m(TaskRunner pid=185127)[0m  'critic': {'_target_': 'verl.workers.config.FSDPCriticConfig',
+[36m(TaskRunner pid=185127)[0m             'checkpoint': {'_target_': 'verl.trainer.config.CheckpointConfig',
+[36m(TaskRunner pid=185127)[0m                            'async_save': False,
+[36m(TaskRunner pid=185127)[0m                            'load_contents': ['model', 'optimizer', 'extra'],
+[36m(TaskRunner pid=185127)[0m                            'save_contents': ['model', 'optimizer', 'extra']},
+[36m(TaskRunner pid=185127)[0m             'cliprange_value': 0.5,
+[36m(TaskRunner pid=185127)[0m             'enable': None,
+[36m(TaskRunner pid=185127)[0m             'forward_max_token_len_per_gpu': 32768,
+[36m(TaskRunner pid=185127)[0m             'forward_micro_batch_size': None,
+[36m(TaskRunner pid=185127)[0m             'forward_micro_batch_size_per_gpu': None,
+[36m(TaskRunner pid=185127)[0m             'grad_clip': 1.0,
+[36m(TaskRunner pid=185127)[0m             'loss_agg_mode': 'token-mean',
+[36m(TaskRunner pid=185127)[0m             'model': {'_target_': 'verl.workers.config.FSDPCriticModelCfg',
+[36m(TaskRunner pid=185127)[0m                       'enable_activation_offload': False,
+[36m(TaskRunner pid=185127)[0m                       'enable_gradient_checkpointing': True,
+[36m(TaskRunner pid=185127)[0m                       'external_lib': None,
+[36m(TaskRunner pid=185127)[0m                       'fsdp_config': {'_target_': 'verl.workers.config.FSDPEngineConfig',
+[36m(TaskRunner pid=185127)[0m                                       'entropy_checkpointing': False,
+[36m(TaskRunner pid=185127)[0m                                       'entropy_from_logits_with_chunking': False,
+[36m(TaskRunner pid=185127)[0m                                       'forward_only': False,
+[36m(TaskRunner pid=185127)[0m                                       'forward_prefetch': False,
+[36m(TaskRunner pid=185127)[0m                                       'fsdp_size': -1,
+[36m(TaskRunner pid=185127)[0m                                       'model_dtype': 'fp32',
+[36m(TaskRunner pid=185127)[0m                                       'offload_policy': False,
+[36m(TaskRunner pid=185127)[0m                                       'optimizer_offload': False,
+[36m(TaskRunner pid=185127)[0m                                       'param_offload': False,
+[36m(TaskRunner pid=185127)[0m                                       'reshard_after_forward': True,
+[36m(TaskRunner pid=185127)[0m                                       'strategy': 'fsdp',
+[36m(TaskRunner pid=185127)[0m                                       'ulysses_sequence_parallel_size': 1,
+[36m(TaskRunner pid=185127)[0m                                       'use_orig_params': False,
+[36m(TaskRunner pid=185127)[0m                                       'use_torch_compile': True,
+[36m(TaskRunner pid=185127)[0m                                       'wrap_policy': {'min_num_params': 0}},
+[36m(TaskRunner pid=185127)[0m                       'lora_alpha': 16,
+[36m(TaskRunner pid=185127)[0m                       'lora_rank': 0,
+[36m(TaskRunner pid=185127)[0m                       'override_config': {},
+[36m(TaskRunner pid=185127)[0m                       'path': '~/models/deepseek-llm-7b-chat',
+[36m(TaskRunner pid=185127)[0m                       'target_modules': 'all-linear',
+[36m(TaskRunner pid=185127)[0m                       'tokenizer_path': 'Qwen/Qwen3-1.7B',
+[36m(TaskRunner pid=185127)[0m                       'trust_remote_code': False,
+[36m(TaskRunner pid=185127)[0m                       'use_remove_padding': False,
+[36m(TaskRunner pid=185127)[0m                       'use_shm': False},
+[36m(TaskRunner pid=185127)[0m             'optim': {'_target_': 'verl.workers.config.FSDPOptimizerConfig',
+[36m(TaskRunner pid=185127)[0m                       'betas': [0.9, 0.999],
+[36m(TaskRunner pid=185127)[0m                       'clip_grad': 1.0,
+[36m(TaskRunner pid=185127)[0m                       'lr': 1e-05,
+[36m(TaskRunner pid=185127)[0m                       'lr_scheduler_type': 'constant',
+[36m(TaskRunner pid=185127)[0m                       'lr_warmup_steps': -1,
+[36m(TaskRunner pid=185127)[0m                       'lr_warmup_steps_ratio': 0.0,
+[36m(TaskRunner pid=185127)[0m                       'min_lr_ratio': 0.0,
+[36m(TaskRunner pid=185127)[0m                       'num_cycles': 0.5,
+[36m(TaskRunner pid=185127)[0m                       'optimizer': 'AdamW',
+[36m(TaskRunner pid=185127)[0m                       'optimizer_impl': 'torch.optim',
+[36m(TaskRunner pid=185127)[0m                       'override_optimizer_config': None,
+[36m(TaskRunner pid=185127)[0m                       'total_training_steps': -1,
+[36m(TaskRunner pid=185127)[0m                       'warmup_style': None,
+[36m(TaskRunner pid=185127)[0m                       'weight_decay': 0.01},
+[36m(TaskRunner pid=185127)[0m             'ppo_epochs': 1,
+[36m(TaskRunner pid=185127)[0m             'ppo_max_token_len_per_gpu': 32768,
+[36m(TaskRunner pid=185127)[0m             'ppo_micro_batch_size': None,
+[36m(TaskRunner pid=185127)[0m             'ppo_micro_batch_size_per_gpu': None,
+[36m(TaskRunner pid=185127)[0m             'ppo_mini_batch_size': 32,
+[36m(TaskRunner pid=185127)[0m             'profiler': {'_target_': 'verl.utils.profiler.ProfilerConfig',
+[36m(TaskRunner pid=185127)[0m                          'all_ranks': False,
+[36m(TaskRunner pid=185127)[0m                          'enable': False,
+[36m(TaskRunner pid=185127)[0m                          'ranks': [],
+[36m(TaskRunner pid=185127)[0m                          'save_path': 'outputs/profile',
+[36m(TaskRunner pid=185127)[0m                          'tool': None,
+[36m(TaskRunner pid=185127)[0m                          'tool_config': {'npu': {'_target_': 'verl.utils.profiler.config.NPUToolConfig',
+[36m(TaskRunner pid=185127)[0m                                                  'analysis': True,
+[36m(TaskRunner pid=185127)[0m                                                  'contents': [],
+[36m(TaskRunner pid=185127)[0m                                                  'discrete': False,
+[36m(TaskRunner pid=185127)[0m                                                  'level': 'level1'},
+[36m(TaskRunner pid=185127)[0m                                          'nsys': {'_target_': 'verl.utils.profiler.config.NsightToolConfig',
+[36m(TaskRunner pid=185127)[0m                                                   'discrete': False},
+[36m(TaskRunner pid=185127)[0m                                          'torch': {'_target_': 'verl.utils.profiler.config.TorchProfilerToolConfig',
+[36m(TaskRunner pid=185127)[0m                                                    'step_end': None,
+[36m(TaskRunner pid=185127)[0m                                                    'step_start': 0},
+[36m(TaskRunner pid=185127)[0m                                          'torch_memory': {'_target_': 'verl.utils.profiler.config.TorchMemoryToolConfig',
+[36m(TaskRunner pid=185127)[0m                                                           'stack_depth': 32,
+[36m(TaskRunner pid=185127)[0m                                                           'trace_alloc_max_entries': 100000}}},
+[36m(TaskRunner pid=185127)[0m             'rollout_n': 4,
+[36m(TaskRunner pid=185127)[0m             'shuffle': False,
+[36m(TaskRunner pid=185127)[0m             'strategy': 'fsdp',
+[36m(TaskRunner pid=185127)[0m             'ulysses_sequence_parallel_size': 1,
+[36m(TaskRunner pid=185127)[0m             'use_dynamic_bsz': True},
+[36m(TaskRunner pid=185127)[0m  'custom_reward_function': {'name': 'reward_func',
+[36m(TaskRunner pid=185127)[0m                             'path': 'verl/verl/utils/reward_score/ttrl_math/__init__.py'},
+[36m(TaskRunner pid=185127)[0m  'data': {'apply_chat_template_kwargs': {},
+[36m(TaskRunner pid=185127)[0m           'custom_cls': {'name': None, 'path': None},
+[36m(TaskRunner pid=185127)[0m           'datagen': {'name': None, 'path': None},
+[36m(TaskRunner pid=185127)[0m           'dataloader_num_workers': 8,
+[36m(TaskRunner pid=185127)[0m           'filter_overlong_prompts': True,
+[36m(TaskRunner pid=185127)[0m           'filter_overlong_prompts_workers': 1,
+[36m(TaskRunner pid=185127)[0m           'image_key': 'images',
+[36m(TaskRunner pid=185127)[0m           'image_patch_size': 14,
+[36m(TaskRunner pid=185127)[0m           'max_prompt_length': 1024,
+[36m(TaskRunner pid=185127)[0m           'max_response_length': 7168,
+[36m(TaskRunner pid=185127)[0m           'prompt_key': 'prompt',
+[36m(TaskRunner pid=185127)[0m           'return_full_prompt': False,
+[36m(TaskRunner pid=185127)[0m           'return_multi_modal_inputs': True,
+[36m(TaskRunner pid=185127)[0m           'return_raw_chat': True,
+[36m(TaskRunner pid=185127)[0m           'return_raw_input_ids': False,
+[36m(TaskRunner pid=185127)[0m           'reward_fn_key': 'data_source',
+[36m(TaskRunner pid=185127)[0m           'sampler': {'class_name': None, 'class_path': None},
+[36m(TaskRunner pid=185127)[0m           'seed': None,
+[36m(TaskRunner pid=185127)[0m           'shuffle': False,
+[36m(TaskRunner pid=185127)[0m           'tokenizer': None,
+[36m(TaskRunner pid=185127)[0m           'tool_config_path': None,
+[36m(TaskRunner pid=185127)[0m           'train_batch_size': 32,
+[36m(TaskRunner pid=185127)[0m           'train_files': '/home/atuin/v100dd/v100dd18/opd/OPD/datasets/DAPO-MATH-17k.parquet',
+[36m(TaskRunner pid=185127)[0m           'train_max_samples': -1,
+[36m(TaskRunner pid=185127)[0m           'truncation': 'error',
+[36m(TaskRunner pid=185127)[0m           'trust_remote_code': False,
+[36m(TaskRunner pid=185127)[0m           'use_shm': False,
+[36m(TaskRunner pid=185127)[0m           'val_batch_size': None,
+[36m(TaskRunner pid=185127)[0m           'val_files': ['datasets/test_data/AIME25/test.parquet',
+[36m(TaskRunner pid=185127)[0m                         'datasets/test_data/AMC23/test.parquet',
+[36m(TaskRunner pid=185127)[0m                         'datasets/test_data/AIME24/test.parquet'],
+[36m(TaskRunner pid=185127)[0m           'val_max_samples': -1,
+[36m(TaskRunner pid=185127)[0m           'validation_shuffle': False,
+[36m(TaskRunner pid=185127)[0m           'video_key': 'videos'},
+[36m(TaskRunner pid=185127)[0m  'global_profiler': {'_target_': 'verl.utils.profiler.ProfilerConfig',
+[36m(TaskRunner pid=185127)[0m                      'global_tool_config': {'nsys': {'_target_': 'verl.utils.profiler.config.NsightToolConfig',
+[36m(TaskRunner pid=185127)[0m                                                      'controller_nsight_options': {'cuda-graph-trace': 'graph',
+[36m(TaskRunner pid=185127)[0m                                                                                    'cuda-memory-usage': 'true',
+[36m(TaskRunner pid=185127)[0m                                                                                    'trace': 'cuda,nvtx,cublas,ucx'},
+[36m(TaskRunner pid=185127)[0m                                                      'discrete': False,
+[36m(TaskRunner pid=185127)[0m                                                      'worker_nsight_options': {'capture-range': 'cudaProfilerApi',
+[36m(TaskRunner pid=185127)[0m                                                                                'capture-range-end': None,
+[36m(TaskRunner pid=185127)[0m                                                                                'cuda-graph-trace': 'graph',
+[36m(TaskRunner pid=185127)[0m                                                                                'cuda-memory-usage': 'true',
+[36m(TaskRunner pid=185127)[0m                                                                                'kill': 'none',
+[36m(TaskRunner pid=185127)[0m                                                                                'trace': 'cuda,nvtx,cublas,ucx'}},
+[36m(TaskRunner pid=185127)[0m                                             'torch_memory': {'context': 'all',
+[36m(TaskRunner pid=185127)[0m                                                              'kw_args': {},
+[36m(TaskRunner pid=185127)[0m                                                              'stack_depth': 32,
+[36m(TaskRunner pid=185127)[0m                                                              'stacks': 'all',
+[36m(TaskRunner pid=185127)[0m                                                              'trace_alloc_max_entries': 100000}},
+[36m(TaskRunner pid=185127)[0m                      'profile_continuous_steps': False,
+[36m(TaskRunner pid=185127)[0m                      'save_path': 'outputs/profile',
+[36m(TaskRunner pid=185127)[0m                      'steps': None,
+[36m(TaskRunner pid=185127)[0m                      'tool': None},
+[36m(TaskRunner pid=185127)[0m  'ray_kwargs': {'ray_init': {'num_cpus': None}, 'timeline_json_file': None},
+[36m(TaskRunner pid=185127)[0m  'reward_model': {'enable': True,
+[36m(TaskRunner pid=185127)[0m                   'enable_resource_pool': False,
+[36m(TaskRunner pid=185127)[0m                   'forward_max_token_len_per_gpu': 32768,
+[36m(TaskRunner pid=185127)[0m                   'launch_reward_fn_async': False,
+[36m(TaskRunner pid=185127)[0m                   'max_length': None,
+[36m(TaskRunner pid=185127)[0m                   'micro_batch_size': None,
+[36m(TaskRunner pid=185127)[0m                   'micro_batch_size_per_gpu': 24,
+[36m(TaskRunner pid=185127)[0m                   'model': {'dtype': 'fp32',
+[36m(TaskRunner pid=185127)[0m                             'external_lib': None,
+[36m(TaskRunner pid=185127)[0m                             'fsdp_config': {'_target_': 'verl.workers.config.FSDPEngineConfig',
+[36m(TaskRunner pid=185127)[0m                                             'forward_prefetch': False,
+[36m(TaskRunner pid=185127)[0m                                             'fsdp_size': -1,
+[36m(TaskRunner pid=185127)[0m                                             'param_offload': False,
+[36m(TaskRunner pid=185127)[0m                                             'reshard_after_forward': True,
+[36m(TaskRunner pid=185127)[0m                                             'wrap_policy': {'min_num_params': 0}},
+[36m(TaskRunner pid=185127)[0m                             'input_tokenizer': None,
+[36m(TaskRunner pid=185127)[0m                             'path': 'Qwen/Qwen3-4B',
+[36m(TaskRunner pid=185127)[0m                             'trust_remote_code': False,
+[36m(TaskRunner pid=185127)[0m                             'use_fused_kernels': False,
+[36m(TaskRunner pid=185127)[0m                             'use_remove_padding': True,
+[36m(TaskRunner pid=185127)[0m                             'use_shm': False},
+[36m(TaskRunner pid=185127)[0m                   'n_gpus_per_node': 0,
+[36m(TaskRunner pid=185127)[0m                   'nnodes': 0,
+[36m(TaskRunner pid=185127)[0m                   'profiler': {'_target_': 'verl.utils.profiler.ProfilerConfig',
+[36m(TaskRunner pid=185127)[0m                                'all_ranks': False,
+[36m(TaskRunner pid=185127)[0m                                'enable': False,
+[36m(TaskRunner pid=185127)[0m                                'ranks': [],
+[36m(TaskRunner pid=185127)[0m                                'save_path': 'outputs/profile',
+[36m(TaskRunner pid=185127)[0m                                'tool': None,
+[36m(TaskRunner pid=185127)[0m                                'tool_config': {'npu': {'_target_': 'verl.utils.profiler.config.NPUToolConfig',
+[36m(TaskRunner pid=185127)[0m                                                        'analysis': True,
+[36m(TaskRunner pid=185127)[0m                                                        'contents': [],
+[36m(TaskRunner pid=185127)[0m                                                        'discrete': False,
+[36m(TaskRunner pid=185127)[0m                                                        'level': 'level1'},
+[36m(TaskRunner pid=185127)[0m                                                'nsys': {'_target_': 'verl.utils.profiler.config.NsightToolConfig',
+[36m(TaskRunner pid=185127)[0m                                                         'discrete': False},
+[36m(TaskRunner pid=185127)[0m                                                'torch': {'_target_': 'verl.utils.profiler.config.TorchProfilerToolConfig',
+[36m(TaskRunner pid=185127)[0m                                                          'step_end': None,
+[36m(TaskRunner pid=185127)[0m                                                          'step_start': 0},
+[36m(TaskRunner pid=185127)[0m                                                'torch_memory': {'_target_': 'verl.utils.profiler.config.TorchMemoryToolConfig',
+[36m(TaskRunner pid=185127)[0m                                                                 'stack_depth': 32,
+[36m(TaskRunner pid=185127)[0m                                                                 'trace_alloc_max_entries': 100000}}},
+[36m(TaskRunner pid=185127)[0m                   'reward_kwargs': {'enable_format_reward': False},
+[36m(TaskRunner pid=185127)[0m                   'reward_manager': 'naive',
+[36m(TaskRunner pid=185127)[0m                   'sandbox_fusion': {'max_concurrent': 64,
+[36m(TaskRunner pid=185127)[0m                                      'memory_limit_mb': 1024,
+[36m(TaskRunner pid=185127)[0m                                      'url': None},
+[36m(TaskRunner pid=185127)[0m                   'strategy': 'fsdp',
+[36m(TaskRunner pid=185127)[0m                   'ulysses_sequence_parallel_size': 1,
+[36m(TaskRunner pid=185127)[0m                   'use_dynamic_bsz': True},
+[36m(TaskRunner pid=185127)[0m  'trainer': {'balance_batch': True,
+[36m(TaskRunner pid=185127)[0m              'critic_warmup': 0,
+[36m(TaskRunner pid=185127)[0m              'default_hdfs_dir': None,
+[36m(TaskRunner pid=185127)[0m              'default_local_dir': 'checkpoint/token_reward_direct_DAPO-Math-17k_Qwen3-1.7B_Qwen3-4B_7168-T_1.0-Tch_1.0-n_4-mbs_32-topk_16-topk_strategy_only_stu-rw_student_p-2026-05-05_00-20-20',
+[36m(TaskRunner pid=185127)[0m              'del_local_ckpt_after_load': False,
+[36m(TaskRunner pid=185127)[0m              'device': 'cuda',
+[36m(TaskRunner pid=185127)[0m              'esi_redundant_time': 0,
+[36m(TaskRunner pid=185127)[0m              'experiment_name': 'token_reward_direct_DAPO-Math-17k_Qwen3-1.7B_Qwen3-4B_7168-T_1.0-Tch_1.0-n_4-mbs_32-topk_16-topk_strategy_only_stu-rw_student_p-2026-05-05_00-20-20',
+[36m(TaskRunner pid=185127)[0m              'is_plot': True,
+[36m(TaskRunner pid=185127)[0m              'log_val_generations': 2,
+[36m(TaskRunner pid=185127)[0m              'logger': ['console', 'wandb'],
+[36m(TaskRunner pid=185127)[0m              'max_actor_ckpt_to_keep': None,
+[36m(TaskRunner pid=185127)[0m              'max_critic_ckpt_to_keep': None,
+[36m(TaskRunner pid=185127)[0m              'n_gpus_per_node': 4,
+[36m(TaskRunner pid=185127)[0m              'nnodes': 1,
+[36m(TaskRunner pid=185127)[0m              'project_name': 'OnPolicyDistillation',
+[36m(TaskRunner pid=185127)[0m              'ray_wait_register_center_timeout': 300,
+[36m(TaskRunner pid=185127)[0m              'resume_from_path': None,
+[36m(TaskRunner pid=185127)[0m              'resume_mode': 'auto',
+[36m(TaskRunner pid=185127)[0m              'rollout_data_dir': None,
+[36m(TaskRunner pid=185127)[0m              'save_freq': 20,
+[36m(TaskRunner pid=185127)[0m              'test_freq': 20,
+[36m(TaskRunner pid=185127)[0m              'total_epochs': 1,
+[36m(TaskRunner pid=185127)[0m              'total_training_steps': None,
+[36m(TaskRunner pid=185127)[0m              'use_legacy_worker_impl': 'auto',
+[36m(TaskRunner pid=185127)[0m              'val_before_train': False,
+[36m(TaskRunner pid=185127)[0m              'val_only': False,
+[36m(TaskRunner pid=185127)[0m              'validation_data_dir': 'validation_log/token_reward_direct_DAPO-Math-17k_Qwen3-1.7B_Qwen3-4B_7168-T_1.0-Tch_1.0-n_4-mbs_32-topk_16-topk_strategy_only_stu-rw_student_p-2026-05-05_00-20-20'},
+[36m(TaskRunner pid=185127)[0m  'transfer_queue': {'enable': False}}
+[36m(TaskRunner pid=185127)[0m /home/atuin/v100dd/v100dd18/opd/OPD/verl/verl/trainer/main_ppo.py:274: UserWarning: Disabled critic as algorithm.adv_estimator != gae. If it is not intended, please set critic.enable=True
+[36m(TaskRunner pid=185127)[0m   use_critic=need_critic(config),
+[36m(TaskRunner pid=185127)[0m /home/atuin/v100dd/v100dd18/opd/OPD/verl/verl/utils/profiler/config.py:49: UserWarning: Torch profiler tool config is not fully supported now.
+[36m(TaskRunner pid=185127)[0m   warnings.warn("Torch profiler tool config is not fully supported now.", stacklevel=1)
+[36m(TaskRunner pid=185127)[0m [validate_config] All configuration checks passed successfully!
+[36m(TaskRunner pid=185127)[0m using customized reward function 'reward_func' from '/home/atuin/v100dd/v100dd18/opd/OPD/verl/verl/utils/reward_score/ttrl_math/__init__.py'
+[36m(TaskRunner pid=185127)[0m using customized reward function 'reward_func' from '/home/atuin/v100dd/v100dd18/opd/OPD/verl/verl/utils/reward_score/ttrl_math/__init__.py'
+[36m(TaskRunner pid=185127)[0m Using dataset class: RLHFDataset
+[36m(TaskRunner pid=185127)[0m dataset len: 17917
+[36m(TaskRunner pid=185127)[0m Setting TOKENIZERS_PARALLELISM=false for forked processes.
+[36m(TaskRunner pid=185127)[0m WARNING:2026-05-05 00:21:08,257:Setting TOKENIZERS_PARALLELISM=false for forked processes.
+[36m(TaskRunner pid=185127)[0m Filtering prompts longer than 1024 tokens (num_proc=1):   0%|          | 0/17917 [00:00<?, ? examples/s]
+[36m(TaskRunner pid=185127)[0m Filtering prompts longer than 1024 tokens (num_proc=1):   6%|▌         | 1000/17917 [00:01<00:27, 622.72 examples/s]
+[36m(TaskRunner pid=185127)[0m Filtering prompts longer than 1024 tokens (num_proc=1):  11%|█         | 2000/17917 [00:02<00:14, 1097.09 examples/s]
+[36m(TaskRunner pid=185127)[0m Filtering prompts longer than 1024 tokens (num_proc=1):  17%|█▋        | 3000/17917 [00:02<00:10, 1422.47 examples/s]
+[36m(TaskRunner pid=185127)[0m Filtering prompts longer than 1024 tokens (num_proc=1):  22%|██▏       | 4000/17917 [00:02<00:08, 1702.46 examples/s]
+[36m(TaskRunner pid=185127)[0m Filtering prompts longer than 1024 tokens (num_proc=1):  28%|██▊       | 5000/17917 [00:03<00:06, 1938.84 examples/s]
+[36m(TaskRunner pid=185127)[0m Filtering prompts longer than 1024 tokens (num_proc=1):  33%|███▎      | 6000/17917 [00:03<00:05, 2100.03 examples/s]
+[36m(TaskRunner pid=185127)[0m Filtering prompts longer than 1024 tokens (num_proc=1):  39%|███▉      | 7000/17917 [00:04<00:05, 2139.62 examples/s]
+[36m(TaskRunner pid=185127)[0m Filtering prompts longer than 1024 tokens (num_proc=1):  45%|████▍     | 8000/17917 [00:04<00:04, 2234.19 examples/s]
+[36m(TaskRunner pid=185127)[0m Filtering prompts longer than 1024 tokens (num_proc=1):  50%|█████     | 9000/17917 [00:04<00:03, 2320.99 examples/s]
+[36m(TaskRunner pid=185127)[0m Filtering prompts longer than 1024 tokens (num_proc=1):  56%|█████▌    | 10000/17917 [00:05<00:03, 2394.01 examples/s]
+[36m(TaskRunner pid=185127)[0m Filtering prompts longer than 1024 tokens (num_proc=1):  61%|██████▏   | 11000/17917 [00:05<00:02, 2415.87 examples/s]
+[36m(TaskRunner pid=185127)[0m Filtering prompts longer than 1024 tokens (num_proc=1):  67%|██████▋   | 12000/17917 [00:06<00:02, 2451.36 examples/s]
+[36m(TaskRunner pid=185127)[0m Filtering prompts longer than 1024 tokens (num_proc=1):  73%|███████▎  | 13000/17917 [00:06<00:01, 2469.81 examples/s]
+[36m(TaskRunner pid=185127)[0m Filtering prompts longer than 1024 tokens (num_proc=1):  78%|███████▊  | 14000/17917 [00:06<00:01, 2441.76 examples/s]
+[36m(TaskRunner pid=185127)[0m Filtering prompts longer than 1024 tokens (num_proc=1):  84%|████████▎ | 15000/17917 [00:07<00:01, 2447.90 examples/s]
+[36m(TaskRunner pid=185127)[0m Filtering prompts longer than 1024 tokens (num_proc=1):  89%|████████▉ | 16000/17917 [00:07<00:00, 2474.91 examples/s]
+[36m(TaskRunner pid=185127)[0m Filtering prompts longer than 1024 tokens (num_proc=1):  95%|█████████▍| 17000/17917 [00:08<00:00, 2504.76 examples/s]
+[36m(TaskRunner pid=185127)[0m Filtering prompts longer than 1024 tokens (num_proc=1): 100%|██████████| 17917/17917 [00:08<00:00, 2541.30 examples/s]
+[36m(TaskRunner pid=185127)[0m Filtering prompts longer than 1024 tokens (num_proc=1): 100%|██████████| 17917/17917 [00:08<00:00, 2077.77 examples/s]
+[36m(TaskRunner pid=185127)[0m filter dataset len: 17909
+[36m(TaskRunner pid=185127)[0m Using dataset class: RLHFDataset
+[36m(TaskRunner pid=185127)[0m dataset len: 143
+[36m(TaskRunner pid=185127)[0m Setting TOKENIZERS_PARALLELISM=false for forked processes.
+[36m(TaskRunner pid=185127)[0m WARNING:2026-05-05 00:21:17,693:Setting TOKENIZERS_PARALLELISM=false for forked processes.
+[36m(TaskRunner pid=185127)[0m Filtering prompts longer than 1024 tokens (num_proc=1):   0%|          | 0/143 [00:00<?, ? examples/s]
+[36m(TaskRunner pid=185127)[0m Filtering prompts longer than 1024 tokens (num_proc=1): 100%|██████████| 143/143 [00:00<00:00, 198.88 examples/s]
+[36m(TaskRunner pid=185127)[0m Filtering prompts longer than 1024 tokens (num_proc=1): 100%|██████████| 143/143 [00:00<00:00, 165.90 examples/s]
+[36m(TaskRunner pid=185127)[0m /home/atuin/v100dd/v100dd18/opd/OPD/verl/verl/trainer/ppo/ray_trainer.py:336: UserWarning: Disabled critic as algorithm.adv_estimator != gae. If it is not intended, please set critic.enable=True
+[36m(TaskRunner pid=185127)[0m   self.use_critic = need_critic(self.config)
+[36m(TaskRunner pid=185127)[0m filter dataset len: 143
+[36m(TaskRunner pid=185127)[0m Size of train dataloader: 559, Size of val dataloader: 1
+[36m(TaskRunner pid=185127)[0m Total training steps: 559
+[36m(TaskRunner pid=185127)[0m colocated worker base class <class 'verl.single_controller.base.worker.Worker'>
+[36m(pid=185461)[0m /home/atuin/v100dd/v100dd18/miniconda3/envs/opd/lib/python3.12/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+[36m(pid=185461)[0m   import pynvml  # type: ignore[import]
+[36m(WorkerDict pid=185461)[0m Flash Attention 2.0 only supports torch.float16 and torch.bfloat16 dtypes, but the current dype in Qwen3ForCausalLM is torch.float32. You should run training or inference using Automatic Mixed-Precision via the `with torch.autocast(device_type='torch_device'):` decorator, or load the model with the `torch_dtype` argument. Example: `model = AutoModel.from_pretrained("openai/whisper-tiny", attn_implementation="flash_attention_2", torch_dtype=torch.float16)`
+[36m(WorkerDict pid=185461)[0m You are attempting to use Flash Attention 2.0 with a model not initialized on GPU. Make sure to move the model to GPU after initializing it on CPU with `model.to('cuda')`.
+[36m(pid=185463)[0m /home/atuin/v100dd/v100dd18/miniconda3/envs/opd/lib/python3.12/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.[32m [repeated 3x across cluster] (Ray deduplicates logs by default. Set RAY_DEDUP_LOGS=0 to disable log deduplication, or see https://docs.ray.io/en/master/ray-observability/user-guides/configure-logging.html#log-deduplication for more options.)[0m
+[36m(pid=185463)[0m   import pynvml  # type: ignore[import][32m [repeated 3x across cluster][0m
+[36m(WorkerDict pid=185461)[0m Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]
+[36m(WorkerDict pid=185461)[0m Loading checkpoint shards:  33%|███▎      | 1/3 [00:22<00:45, 22.59s/it]
+[36m(WorkerDict pid=185463)[0m Flash Attention 2.0 only supports torch.float16 and torch.bfloat16 dtypes, but the current dype in Qwen3ForCausalLM is torch.float32. You should run training or inference using Automatic Mixed-Precision via the `with torch.autocast(device_type='torch_device'):` decorator, or load the model with the `torch_dtype` argument. Example: `model = AutoModel.from_pretrained("openai/whisper-tiny", attn_implementation="flash_attention_2", torch_dtype=torch.float16)`[32m [repeated 3x across cluster][0m
+[36m(WorkerDict pid=185463)[0m You are attempting to use Flash Attention 2.0 with a model not initialized on GPU. Make sure to move the model to GPU after initializing it on CPU with `model.to('cuda')`.[32m [repeated 3x across cluster][0m
+[36m(WorkerDict pid=185463)[0m Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s][32m [repeated 3x across cluster][0m
+[36m(WorkerDict pid=185462)[0m Loading checkpoint shards:  67%|██████▋   | 2/3 [00:45<00:22, 22.52s/it][32m [repeated 4x across cluster][0m
+[36m(WorkerDict pid=185462)[0m Loading checkpoint shards: 100%|██████████| 3/3 [00:45<00:00, 12.34s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:45<00:00, 15.14s/it]
+[36m(WorkerDict pid=185462)[0m Monkey patch _flash_attention_forward in transformers.integrations.flash_attention
+[36m(WorkerDict pid=185462)[0m Skipping monkey patch for Qwen3ForCausalLM as use_fused_kernels is False or fused_kernels_backend is None
+[36m(WorkerDict pid=185461)[0m Loading checkpoint shards:  67%|██████▋   | 2/3 [00:45<00:22, 22.92s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:45<00:00, 15.27s/it]
+[36m(WorkerDict pid=185461)[0m NCCL version 2.26.2+cuda12.2
+[36m(WorkerDict pid=185461)[0m Model config after override: Qwen3Config {
+[36m(WorkerDict pid=185461)[0m   "architectures": [
+[36m(WorkerDict pid=185461)[0m     "Qwen3ForCausalLM"
+[36m(WorkerDict pid=185461)[0m   ],
+[36m(WorkerDict pid=185461)[0m   "attention_bias": false,
+[36m(WorkerDict pid=185461)[0m   "attention_dropout": 0.0,
+[36m(WorkerDict pid=185461)[0m   "eos_token_id": 151645,
+[36m(WorkerDict pid=185461)[0m   "head_dim": 128,
+[36m(WorkerDict pid=185461)[0m   "hidden_act": "silu",
+[36m(WorkerDict pid=185461)[0m   "hidden_size": 2048,
+[36m(WorkerDict pid=185461)[0m   "initializer_range": 0.02,
+[36m(WorkerDict pid=185461)[0m   "intermediate_size": 6144,
+[36m(WorkerDict pid=185461)[0m   "max_position_embeddings": 40960,
+[36m(WorkerDict pid=185461)[0m   "max_window_layers": 28,
+[36m(WorkerDict pid=185461)[0m   "model_type": "qwen3",
+[36m(WorkerDict pid=185461)[0m   "num_attention_heads": 16,
+[36m(WorkerDict pid=185461)[0m   "num_hidden_layers": 28,
+[36m(WorkerDict pid=185461)[0m   "num_key_value_heads": 8,
+[36m(WorkerDict pid=185461)[0m   "pad_token_id": 151643,
+[36m(WorkerDict pid=185461)[0m   "rms_norm_eps": 1e-06,
+[36m(WorkerDict pid=185461)[0m   "rope_scaling": null,
+[36m(WorkerDict pid=185461)[0m   "rope_theta": 1000000,
+[36m(WorkerDict pid=185461)[0m   "sliding_window": null,
+[36m(WorkerDict pid=185461)[0m   "tie_word_embeddings": true,
+[36m(WorkerDict pid=185461)[0m   "torch_dtype": "bfloat16",
+[36m(WorkerDict pid=185461)[0m   "transformers_version": "4.51.3",
+[36m(WorkerDict pid=185461)[0m   "use_cache": true,
+[36m(WorkerDict pid=185461)[0m   "use_sliding_window": false,
+[36m(WorkerDict pid=185461)[0m   "vocab_size": 151936
+[36m(WorkerDict pid=185461)[0m }
+[36m(WorkerDict pid=185461)[0m 
+[36m(WorkerDict pid=185463)[0m Monkey patch _flash_attention_forward in transformers.integrations.flash_attention[32m [repeated 3x across cluster][0m
+[36m(WorkerDict pid=185463)[0m Skipping monkey patch for Qwen3ForCausalLM as use_fused_kernels is False or fused_kernels_backend is None[32m [repeated 3x across cluster][0m
+[36m(WorkerDict pid=185461)[0m Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]
+[36m(WorkerDict pid=185463)[0m Loading checkpoint shards:  67%|██████▋   | 2/3 [00:45<00:22, 22.84s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:45<00:00, 15.26s/it][32m [repeated 2x across cluster][0m
+[36m(WorkerDict pid=185464)[0m Loading checkpoint shards:  50%|█████     | 1/2 [00:20<00:20, 20.45s/it]
+[36m(WorkerDict pid=185463)[0m Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][32m [repeated 3x across cluster][0m
+[36m(WorkerDict pid=185463)[0m Loading checkpoint shards: 100%|██████████| 2/2 [00:22<00:00,  9.71s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:22<00:00, 11.42s/it]
+[36m(WorkerDict pid=185463)[0m Skipping monkey patch for Qwen3ForCausalLM as use_fused_kernels is False or fused_kernels_backend is torch
+[36m(WorkerDict pid=185463)[0m Monkey patch _flash_attention_forward in transformers.integrations.flash_attention
+[36m(WorkerDict pid=185461)[0m Monkey patch _flash_attention_forward in transformers.integrations.flash_attention
+[36m(WorkerDict pid=185461)[0m Qwen3ForCausalLM contains 1.72B parameters
+[36m(WorkerDict pid=185461)[0m wrap_policy: functools.partial(<function _or_policy at 0x7fac72d751c0>, policies=[functools.partial(<function transformer_auto_wrap_policy at 0x7fac72d75080>, transformer_layer_cls={<class 'transformers.models.qwen3.modeling_qwen3.Qwen3DecoderLayer'>})])
+[36m(WorkerDict pid=185461)[0m Total steps: 559, num_warmup_steps: 0
+[36m(WorkerDict pid=185464)[0m /home/atuin/v100dd/v100dd18/opd/OPD/verl/verl/utils/profiler/config.py:49: UserWarning: Torch profiler tool config is not fully supported now.
+[36m(WorkerDict pid=185464)[0m   warnings.warn("Torch profiler tool config is not fully supported now.", stacklevel=1)
+[36m(WorkerDict pid=185461)[0m Actor use_remove_padding=True
+[36m(WorkerDict pid=185461)[0m Actor use_fused_kernels=False
+[36m(WorkerDict pid=185461)[0m /home/atuin/v100dd/v100dd18/miniconda3/envs/opd/lib/python3.12/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+[36m(WorkerDict pid=185461)[0m   import pynvml  # type: ignore[import]
+[36m(WorkerDict pid=185463)[0m Loading checkpoint shards:  50%|█████     | 1/2 [00:21<00:21, 21.08s/it][32m [repeated 3x across cluster][0m
+[36m(WorkerDict pid=185461)[0m Vllm rollout max_model_len = 32768
+[36m(WorkerDict pid=185462)[0m Skipping monkey patch for Qwen3ForCausalLM as use_fused_kernels is False or fused_kernels_backend is torch[32m [repeated 3x across cluster][0m
+[36m(WorkerDict pid=185462)[0m Monkey patch _flash_attention_forward in transformers.integrations.flash_attention[32m [repeated 2x across cluster][0m
+[36m(WorkerDict pid=185461)[0m /home/atuin/v100dd/v100dd18/miniconda3/envs/opd/lib/python3.12/site-packages/torch/utils/cpp_extension.py:2356: UserWarning: TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+[36m(WorkerDict pid=185461)[0m If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'].
+[36m(WorkerDict pid=185461)[0m   warnings.warn(
+[36m(WorkerDict pid=185464)[0m Loading checkpoint shards: 100%|██████████| 2/2 [00:22<00:00,  9.87s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:22<00:00, 11.45s/it][32m [repeated 3x across cluster][0m
+[36m(WorkerDict pid=185463)[0m /home/atuin/v100dd/v100dd18/opd/OPD/verl/verl/utils/profiler/config.py:49: UserWarning: Torch profiler tool config is not fully supported now.[32m [repeated 3x across cluster][0m
+[36m(WorkerDict pid=185463)[0m   warnings.warn("Torch profiler tool config is not fully supported now.", stacklevel=1)[32m [repeated 3x across cluster][0m
+[36m(WorkerDict pid=185463)[0m /home/atuin/v100dd/v100dd18/miniconda3/envs/opd/lib/python3.12/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.[32m [repeated 3x across cluster][0m
+[36m(WorkerDict pid=185463)[0m   import pynvml  # type: ignore[import][32m [repeated 3x across cluster][0m
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:   0%|          | 0/67 [00:00<?, ?it/s]
+[36m(WorkerDict pid=185463)[0m /home/atuin/v100dd/v100dd18/miniconda3/envs/opd/lib/python3.12/site-packages/torch/utils/cpp_extension.py:2356: UserWarning: TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. [32m [repeated 3x across cluster][0m
+[36m(WorkerDict pid=185463)[0m If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'].[32m [repeated 3x across cluster][0m
+[36m(WorkerDict pid=185463)[0m   warnings.warn([32m [repeated 3x across cluster][0m
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:   1%|▏         | 1/67 [00:00<00:33,  1.97it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:   3%|▎         | 2/67 [00:00<00:31,  2.05it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:   4%|▍         | 3/67 [00:01<00:29,  2.14it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:   6%|▌         | 4/67 [00:01<00:28,  2.20it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:   7%|▋         | 5/67 [00:02<00:27,  2.22it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:   9%|▉         | 6/67 [00:02<00:27,  2.24it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  10%|█         | 7/67 [00:03<00:26,  2.25it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  12%|█▏        | 8/67 [00:03<00:26,  2.23it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  13%|█▎        | 9/67 [00:04<00:26,  2.23it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  15%|█▍        | 10/67 [00:04<00:25,  2.23it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  16%|█▋        | 11/67 [00:04<00:24,  2.24it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  18%|█▊        | 12/67 [00:05<00:24,  2.23it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  19%|█▉        | 13/67 [00:05<00:24,  2.21it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  21%|██        | 14/67 [00:06<00:24,  2.18it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  22%|██▏       | 15/67 [00:06<00:23,  2.20it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  24%|██▍       | 16/67 [00:07<00:23,  2.21it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  25%|██▌       | 17/67 [00:07<00:22,  2.23it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  27%|██▋       | 18/67 [00:08<00:21,  2.24it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  28%|██▊       | 19/67 [00:08<00:21,  2.26it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  30%|██▉       | 20/67 [00:08<00:20,  2.32it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  31%|███▏      | 21/67 [00:09<00:20,  2.29it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  33%|███▎      | 22/67 [00:09<00:19,  2.25it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  34%|███▍      | 23/67 [00:10<00:19,  2.28it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  36%|███▌      | 24/67 [00:10<00:18,  2.28it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  37%|███▋      | 25/67 [00:11<00:18,  2.29it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  39%|███▉      | 26/67 [00:11<00:17,  2.30it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  40%|████      | 27/67 [00:12<00:17,  2.29it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  42%|████▏     | 28/67 [00:12<00:17,  2.29it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  43%|████▎     | 29/67 [00:12<00:16,  2.28it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  45%|████▍     | 30/67 [00:13<00:16,  2.27it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  46%|████▋     | 31/67 [00:13<00:15,  2.26it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  48%|████▊     | 32/67 [00:14<00:15,  2.25it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  49%|████▉     | 33/67 [00:14<00:15,  2.23it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  51%|█████     | 34/67 [00:15<00:15,  2.20it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  52%|█████▏    | 35/67 [00:15<00:14,  2.22it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  54%|█████▎    | 36/67 [00:16<00:13,  2.22it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  55%|█████▌    | 37/67 [00:16<00:13,  2.24it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  57%|█████▋    | 38/67 [00:16<00:12,  2.25it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  58%|█████▊    | 39/67 [00:17<00:12,  2.26it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  60%|█████▉    | 40/67 [00:17<00:11,  2.27it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  61%|██████    | 41/67 [00:18<00:11,  2.28it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  63%|██████▎   | 42/67 [00:18<00:10,  2.28it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  64%|██████▍   | 43/67 [00:19<00:10,  2.29it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  66%|██████▌   | 44/67 [00:19<00:09,  2.32it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  67%|██████▋   | 45/67 [00:19<00:09,  2.37it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  69%|██████▊   | 46/67 [00:20<00:08,  2.40it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  70%|███████   | 47/67 [00:20<00:08,  2.40it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  72%|███████▏  | 48/67 [00:21<00:07,  2.42it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  73%|███████▎  | 49/67 [00:21<00:07,  2.42it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  75%|███████▍  | 50/67 [00:22<00:06,  2.43it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  76%|███████▌  | 51/67 [00:22<00:06,  2.44it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  78%|███████▊  | 52/67 [00:22<00:06,  2.45it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  79%|███████▉  | 53/67 [00:23<00:05,  2.45it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  81%|████████  | 54/67 [00:23<00:05,  2.46it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  82%|████████▏ | 55/67 [00:24<00:04,  2.45it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  84%|████████▎ | 56/67 [00:24<00:04,  2.45it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  85%|████████▌ | 57/67 [00:24<00:04,  2.45it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  87%|████████▋ | 58/67 [00:25<00:03,  2.45it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  88%|████████▊ | 59/67 [00:25<00:03,  2.35it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  90%|████████▉ | 60/67 [00:26<00:03,  2.28it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  91%|█████████ | 61/67 [00:26<00:02,  2.19it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  93%|█████████▎| 62/67 [00:27<00:02,  2.18it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  94%|█████████▍| 63/67 [00:27<00:01,  2.18it/s]
+[36m(WorkerDict pid=185463)[0m [vLLM Rollout] repetition_penalty set to: 1.0
+[36m(WorkerDict pid=185463)[0m kwargs: {'n': 1, 'logprobs': 0, 'max_tokens': 7168, 'repetition_penalty': 1.0, 'detokenize': False, 'temperature': 1.0, 'top_k': -1, 'top_p': 1, 'ignore_eos': False}
+[36m(WorkerDict pid=185462)[0m Vllm rollout max_model_len = 32768[32m [repeated 3x across cluster][0m
+[36m(WorkerDict pid=185463)[0m /home/atuin/v100dd/v100dd18/miniconda3/envs/opd/lib/python3.12/site-packages/torch/distributed/fsdp/fully_sharded_data_parallel.py:680: FutureWarning: FSDP.state_dict_type() and FSDP.set_state_dict_type() are being deprecated. Please use APIs, get_state_dict() and set_state_dict(), which can support different parallelisms, FSDP1, FSDP2, DDP. API doc: https://pytorch.org/docs/stable/distributed.checkpoint.html#torch.distributed.checkpoint.state_dict.get_state_dict .Tutorial: https://pytorch.org/tutorials/recipes/distributed_checkpoint_recipe.html .
+[36m(WorkerDict pid=185463)[0m   warnings.warn(
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  96%|█████████▌| 64/67 [00:28<00:01,  2.19it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  97%|█████████▋| 65/67 [00:28<00:00,  2.21it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes:  99%|█████████▊| 66/67 [00:28<00:00,  2.23it/s]
+[36m(WorkerDict pid=185461)[0m Capturing CUDA graph shapes: 100%|██████████| 67/67 [00:29<00:00,  2.21it/s]Capturing CUDA graph shapes: 100%|██████████| 67/67 [00:29<00:00,  2.28it/s]
+[36m(WorkerDict pid=185462)[0m /home/atuin/v100dd/v100dd18/miniconda3/envs/opd/lib/python3.12/site-packages/torch/distributed/fsdp/fully_sharded_data_parallel.py:680: FutureWarning: FSDP.state_dict_type() and FSDP.set_state_dict_type() are being deprecated. Please use APIs, get_state_dict() and set_state_dict(), which can support different parallelisms, FSDP1, FSDP2, DDP. API doc: https://pytorch.org/docs/stable/distributed.checkpoint.html#torch.distributed.checkpoint.state_dict.get_state_dict .Tutorial: https://pytorch.org/tutorials/recipes/distributed_checkpoint_recipe.html .[32m [repeated 3x across cluster][0m
+[36m(WorkerDict pid=185462)[0m   warnings.warn([32m [repeated 3x across cluster][0m
+[36m(WorkerDict pid=185462)[0m [vLLM Rollout] repetition_penalty set to: 1.0[32m [repeated 3x across cluster][0m
+[36m(WorkerDict pid=185462)[0m kwargs: {'n': 1, 'logprobs': 0, 'max_tokens': 7168, 'repetition_penalty': 1.0, 'detokenize': False, 'temperature': 1.0, 'top_k': -1, 'top_p': 1, 'ignore_eos': False}[32m [repeated 3x across cluster][0m
+[36m(TaskRunner pid=185127)[0m wandb: [wandb.login()] Loaded credentials for https://api.wandb.ai from /home/hpc/v100dd/v100dd18/.netrc.
+[36m(TaskRunner pid=185127)[0m wandb: Currently logged in as: pl03818948 (pl03818948-ludwig-maximilianuniversity-of-munich) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+[36m(TaskRunner pid=185127)[0m wandb: Tracking run with wandb version 0.26.1
+[36m(TaskRunner pid=185127)[0m wandb: Run data is saved locally in /home/atuin/v100dd/v100dd18/opd/OPD/wandb/run-20260505_002558-v0xzm1rs
+[36m(TaskRunner pid=185127)[0m wandb: Run `wandb offline` to turn off syncing.
+[36m(TaskRunner pid=185127)[0m wandb: Syncing run token_reward_direct_DAPO-Math-17k_Qwen3-1.7B_Qwen3-4B_7168-T_1.0-Tch_1.0-n_4-mbs_32-topk_16-topk_strategy_only_stu-rw_student_p-2026-05-05_00-20-20
+[36m(TaskRunner pid=185127)[0m wandb: ⭐️ View project at https://wandb.ai/pl03818948-ludwig-maximilianuniversity-of-munich/OnPolicyDistillation
+[36m(TaskRunner pid=185127)[0m wandb: 🚀 View run at https://wandb.ai/pl03818948-ludwig-maximilianuniversity-of-munich/OnPolicyDistillation/runs/v0xzm1rs
+[36m(TaskRunner pid=185127)[0m Training Progress:   0%|          | 0/559 [00:00<?, ?it/s]
+[36m(TaskRunner pid=185127)[0m Checkpoint tracker file does not exist: /home/atuin/v100dd/v100dd18/opd/OPD/checkpoint/token_reward_direct_DAPO-Math-17k_Qwen3-1.7B_Qwen3-4B_7168-T_1.0-Tch_1.0-n_4-mbs_32-topk_16-topk_strategy_only_stu-rw_student_p-2026-05-05_00-20-20/latest_checkpointed_iteration.txt
+[36m(TaskRunner pid=185127)[0m Training from scratch
+[36m(TaskRunner pid=185127)[0m First forward, get student top k ids and log probs
+[36m(WorkerDict pid=185461)[0m In compute_log_prob, top_k: 16
+[36m(WorkerDict pid=185461)[0m The input hidden states seems to be silently casted in float32, this might be related to the fact you have upcasted embedding or layer norm layers in float32. We will cast back the input in torch.bfloat16.
+[36m(TaskRunner pid=185127)[0m Error plotting candidate counts: No module named 'matplotlib'
+[36m(WorkerDict pid=185462)[0m In compute_log_prob, top_k: 16[32m [repeated 3x across cluster][0m
+[36m(TaskRunner pid=185127)[0m Now we are using rm_scores!
+[36m(TaskRunner pid=185127)[0m True reward score has been added to reward_extra_info!
+[36m(TaskRunner pid=185127)[0m We don't need to re-merge old_log_probs, it's already there.
+[36m(TaskRunner pid=185127)[0m Traceback (most recent call last):
+[36m(TaskRunner pid=185127)[0m   File "/home/atuin/v100dd/v100dd18/opd/OPD/verl/verl/trainer/ppo/ray_trainer.py", line 2054, in fit
+[36m(TaskRunner pid=185127)[0m     import matplotlib.pyplot as plt
+[36m(TaskRunner pid=185127)[0m ModuleNotFoundError: No module named 'matplotlib'
+[36m(WorkerDict pid=185463)[0m The input hidden states seems to be silently casted in float32, this might be related to the fact you have upcasted embedding or layer norm layers in float32. We will cast back the input in torch.bfloat16.[32m [repeated 3x across cluster][0m
+[36m(TaskRunner pid=185127)[0m Error plotting/logging: No module named 'matplotlib'
+[36m(WorkerDict pid=185461)[0m on_policy
+[36m(WorkerDict pid=185461)[0m Advantages shape: torch.Size([4, 7168, 16])
+[36m(WorkerDict pid=185461)[0m on_policy[32m [repeated 4x across cluster][0m
+[36m(WorkerDict pid=185461)[0m Advantages shape: torch.Size([4, 7168, 16])[32m [repeated 4x across cluster][0m
+[36m(WorkerDict pid=185461)[0m on_policy[32m [repeated 4x across cluster][0m
+[36m(WorkerDict pid=185461)[0m Advantages shape: torch.Size([5, 7168, 16])[32m [repeated 4x across cluster][0m
+[36m(WorkerDict pid=185461)[0m on_policy[32m [repeated 4x across cluster][0m
+[36m(WorkerDict pid=185461)[0m Advantages shape: torch.Size([5, 7168, 16])[32m [repeated 4x across cluster][0m
+[36m(WorkerDict pid=185461)[0m on_policy[32m [repeated 8x across cluster][0m
+[36m(WorkerDict pid=185461)[0m Advantages shape: torch.Size([5, 7168, 16])[32m [repeated 8x across cluster][0m
+[36m(TaskRunner pid=185127)[0m Training Progress:   0%|          | 1/559 [04:24<40:59:40, 264.48s/it]
+[36m(TaskRunner pid=185127)[0m step:1 - actor/entropy:0.29912593960762024 - teacher/entropy:0.3803307116031647 - training/rollout_probs_diff_valid:1 - training/rollout_probs_diff_max:0.8491509556770325 - training/rollout_probs_diff_mean:0.0064934841357171535 - training/rollout_probs_diff_std:0.015084272250533104 - training/rollout_actor_probs_pearson_corr:0.9980848431587219 - val-topk/overlap_ratio:0.7643653750419617 - val-topk/adv_intersection:-0.013135542161762714 - val-topk/student_p_sum_intersection:0.9990252256393433 - val-topk/teacher_p_sum_intersection:0.997982382774353 - val-topk/max_student_p_intersection:0.887666642665863 - val-topk/teacher_p_at_max_student_intersection:0.8216091394424438 - val-topk/adv_at_max_student_intersection:-0.130557119846344 - val-topk/max_teacher_p_intersection:0.8593683242797852 - val-topk/student_p_at_max_teacher_intersection:0.8446011543273926 - val-topk/adv_at_max_teacher_intersection:-0.016555530950427055 - val-extrema/max_adv_intersection:0.03854489326477051 - val-extrema/student_p_at_max_adv_intersection:0.20564782619476318 - val-extrema/teacher_p_at_max_adv_intersection:0.2835579216480255 - val-extrema/min_adv_intersection:-0.17855031788349152 - val-extrema/student_p_at_min_adv_intersection:0.6248540282249451 - val-extrema/teacher_p_at_min_adv_intersection:0.5320681929588318 - val-topk/adv_only_stu:-0.0011738028842955828 - val-topk/overlap_ratio_chunk_0_1024:0.7412986755371094 - val-topk/adv_intersection_chunk_0_1024:-0.019111452624201775 - val-topk/student_p_sum_intersection_chunk_0_1024:0.999072790145874 - val-topk/teacher_p_sum_intersection_chunk_0_1024:0.9982056617736816 - val-topk/max_student_p_intersection_chunk_0_1024:0.9009756445884705 - val-topk/teacher_p_at_max_student_intersection_chunk_0_1024:0.822293758392334 - val-topk/adv_at_max_student_intersection_chunk_0_1024:-0.18216536939144135 - val-topk/max_teacher_p_intersection_chunk_0_1024:0.8744392395019531 - val-topk/student_p_at_max_teacher_intersection_chunk_0_1024:0.8428032994270325 - val-topk/adv_at_max_teacher_intersection_chunk_0_1024:-0.012018634006381035 - val-extrema/max_adv_intersection_chunk_0_1024:0.040741968899965286 - val-extrema/student_p_at_max_adv_intersection_chunk_0_1024:0.22415442764759064 - val-extrema/teacher_p_at_max_adv_intersection_chunk_0_1024:0.3159479796886444 - val-extrema/min_adv_intersection_chunk_0_1024:-0.24023941159248352 - val-extrema/student_p_at_min_adv_intersection_chunk_0_1024:0.5816574692726135 - val-extrema/teacher_p_at_min_adv_intersection_chunk_0_1024:0.4745492935180664 - val-topk/adv_only_stu_chunk_0_1024:-0.0016139900544658303 - val-topk/overlap_ratio_chunk_1024_2048:0.764674186706543 - val-topk/adv_intersection_chunk_1024_2048:-0.0134207708761096 - val-topk/student_p_sum_intersection_chunk_1024_2048:0.9992228746414185 - val-topk/teacher_p_sum_intersection_chunk_1024_2048:0.9982925057411194 - val-topk/max_student_p_intersection_chunk_1024_2048:0.8908629417419434 - val-topk/teacher_p_at_max_student_intersection_chunk_1024_2048:0.822901725769043 - val-topk/adv_at_max_student_intersection_chunk_1024_2048:-0.13418275117874146 - val-topk/max_teacher_p_intersection_chunk_1024_2048:0.861609935760498 - val-topk/student_p_at_max_teacher_intersection_chunk_1024_2048:0.8464527726173401 - val-topk/adv_at_max_teacher_intersection_chunk_1024_2048:-0.017003074288368225 - val-extrema/max_adv_intersection_chunk_1024_2048:0.03866021707653999 - val-extrema/student_p_at_max_adv_intersection_chunk_1024_2048:0.18956279754638672 - val-extrema/teacher_p_at_max_adv_intersection_chunk_1024_2048:0.26881441473960876 - val-extrema/min_adv_intersection_chunk_1024_2048:-0.18241964280605316 - val-extrema/student_p_at_min_adv_intersection_chunk_1024_2048:0.6409313082695007 - val-extrema/teacher_p_at_min_adv_intersection_chunk_1024_2048:0.546308159828186 - val-topk/adv_only_stu_chunk_1024_2048:-0.0010686619207262993 - val-topk/overlap_ratio_chunk_2048_3072:0.7689995765686035 - val-topk/adv_intersection_chunk_2048_3072:-0.012862424366176128 - val-topk/student_p_sum_intersection_chunk_2048_3072:0.999112069606781 - val-topk/teacher_p_sum_intersection_chunk_2048_3072:0.9981490969657898 - val-topk/max_student_p_intersection_chunk_2048_3072:0.8865426182746887 - val-topk/teacher_p_at_max_student_intersection_chunk_2048_3072:0.8190758228302002 - val-topk/adv_at_max_student_intersection_chunk_2048_3072:-0.13003797829151154 - val-topk/max_teacher_p_intersection_chunk_2048_3072:0.8562700748443604 - val-topk/student_p_at_max_teacher_intersection_chunk_2048_3072:0.8434432744979858 - val-topk/adv_at_max_teacher_intersection_chunk_2048_3072:-0.018289608880877495 - val-extrema/max_adv_intersection_chunk_2048_3072:0.038712311536073685 - val-extrema/student_p_at_max_adv_intersection_chunk_2048_3072:0.1966860592365265 - val-extrema/teacher_p_at_max_adv_intersection_chunk_2048_3072:0.2748047709465027 - val-extrema/min_adv_intersection_chunk_2048_3072:-0.17693820595741272 - val-extrema/student_p_at_min_adv_intersection_chunk_2048_3072:0.6367753744125366 - val-extrema/teacher_p_at_min_adv_intersection_chunk_2048_3072:0.5429282784461975 - val-topk/adv_only_stu_chunk_2048_3072:-0.0012405681191012263 - val-topk/overlap_ratio_chunk_3072_4096:0.7697980999946594 - val-topk/adv_intersection_chunk_3072_4096:-0.012216403149068356 - val-topk/student_p_sum_intersection_chunk_3072_4096:0.9990946650505066 - val-topk/teacher_p_sum_intersection_chunk_3072_4096:0.9980350136756897 - val-topk/max_student_p_intersection_chunk_3072_4096:0.8847467303276062 - val-topk/teacher_p_at_max_student_intersection_chunk_3072_4096:0.820959746837616 - val-topk/adv_at_max_student_intersection_chunk_3072_4096:-0.1223529726266861 - val-topk/max_teacher_p_intersection_chunk_3072_4096:0.8563711047172546 - val-topk/student_p_at_max_teacher_intersection_chunk_3072_4096:0.8440836071968079 - val-topk/adv_at_max_teacher_intersection_chunk_3072_4096:-0.0170553270727396 - val-extrema/max_adv_intersection_chunk_3072_4096:0.03810109198093414 - val-extrema/student_p_at_max_adv_intersection_chunk_3072_4096:0.2020038664340973 - val-extrema/teacher_p_at_max_adv_intersection_chunk_3072_4096:0.2775350511074066 - val-extrema/min_adv_intersection_chunk_3072_4096:-0.16879330575466156 - val-extrema/student_p_at_min_adv_intersection_chunk_3072_4096:0.6290396451950073 - val-extrema/teacher_p_at_min_adv_intersection_chunk_3072_4096:0.5385980606079102 - val-topk/adv_only_stu_chunk_3072_4096:-0.0010007875971496105 - val-topk/overlap_ratio_chunk_4096_5120:0.7681118249893188 - val-topk/adv_intersection_chunk_4096_5120:-0.011784756556153297 - val-topk/student_p_sum_intersection_chunk_4096_5120:0.9989880919456482 - val-topk/teacher_p_sum_intersection_chunk_4096_5120:0.9977994561195374 - val-topk/max_student_p_intersection_chunk_4096_5120:0.8844578266143799 - val-topk/teacher_p_at_max_student_intersection_chunk_4096_5120:0.8219743967056274 - val-topk/adv_at_max_student_intersection_chunk_4096_5120:-0.11822572350502014 - val-topk/max_teacher_p_intersection_chunk_4096_5120:0.8564815521240234 - val-topk/student_p_at_max_teacher_intersection_chunk_4096_5120:0.8449691534042358 - val-topk/adv_at_max_teacher_intersection_chunk_4096_5120:-0.01679534837603569 - val-extrema/max_adv_intersection_chunk_4096_5120:0.037718597799539566 - val-extrema/student_p_at_max_adv_intersection_chunk_4096_5120:0.20605263113975525 - val-extrema/teacher_p_at_max_adv_intersection_chunk_4096_5120:0.2800977826118469 - val-extrema/min_adv_intersection_chunk_4096_5120:-0.1633276343345642 - val-extrema/student_p_at_min_adv_intersection_chunk_4096_5120:0.6258379220962524 - val-extrema/teacher_p_at_min_adv_intersection_chunk_4096_5120:0.5372810363769531 - val-topk/adv_only_stu_chunk_4096_5120:-0.001026177778840065 - val-topk/overlap_ratio_chunk_5120_6144:0.7704023718833923 - val-topk/adv_intersection_chunk_5120_6144:-0.011111093685030937 - val-topk/student_p_sum_intersection_chunk_5120_6144:0.9988061785697937 - val-topk/teacher_p_sum_intersection_chunk_5120_6144:0.9976320862770081 - val-topk/max_student_p_intersection_chunk_5120_6144:0.8811507225036621 - val-topk/teacher_p_at_max_student_intersection_chunk_5120_6144:0.8203572034835815 - val-topk/adv_at_max_student_intersection_chunk_5120_6144:-0.1111433207988739 - val-topk/max_teacher_p_intersection_chunk_5120_6144:0.852764904499054 - val-topk/student_p_at_max_teacher_intersection_chunk_5120_6144:0.8437573909759521 - val-topk/adv_at_max_teacher_intersection_chunk_5120_6144:-0.017873436212539673 - val-extrema/max_adv_intersection_chunk_5120_6144:0.03793983906507492 - val-extrema/student_p_at_max_adv_intersection_chunk_5120_6144:0.2104027420282364 - val-extrema/teacher_p_at_max_adv_intersection_chunk_5120_6144:0.28344351053237915 - val-extrema/min_adv_intersection_chunk_5120_6144:-0.15637995302677155 - val-extrema/student_p_at_min_adv_intersection_chunk_5120_6144:0.6283482909202576 - val-extrema/teacher_p_at_min_adv_intersection_chunk_5120_6144:0.541083812713623 - val-topk/adv_only_stu_chunk_5120_6144:-0.001127728377468884 - val-topk/overlap_ratio_chunk_6144_7168:0.7690093517303467 - val-topk/adv_intersection_chunk_6144_7168:-0.010964127257466316 - val-topk/student_p_sum_intersection_chunk_6144_7168:0.9988132119178772 - val-topk/teacher_p_sum_intersection_chunk_6144_7168:0.9976543188095093 - val-topk/max_student_p_intersection_chunk_6144_7168:0.8831986784934998 - val-topk/teacher_p_at_max_student_intersection_chunk_6144_7168:0.8240151405334473 - val-topk/adv_at_max_student_intersection_chunk_6144_7168:-0.10899101942777634 - val-topk/max_teacher_p_intersection_chunk_6144_7168:0.8561450242996216 - val-topk/student_p_at_max_teacher_intersection_chunk_6144_7168:0.8470736145973206 - val-topk/adv_at_max_teacher_intersection_chunk_6144_7168:-0.01712522655725479 - val-extrema/max_adv_intersection_chunk_6144_7168:0.03767376393079758 - val-extrema/student_p_at_max_adv_intersection_chunk_6144_7168:0.21251513063907623 - val-extrema/teacher_p_at_max_adv_intersection_chunk_6144_7168:0.2842199504375458 - val-extrema/min_adv_intersection_chunk_6144_7168:-0.1539483368396759 - val-extrema/student_p_at_min_adv_intersection_chunk_6144_7168:0.6334567070007324 - val-extrema/teacher_p_at_min_adv_intersection_chunk_6144_7168:0.5479777455329895 - val-topk/adv_only_stu_chunk_6144_7168:-0.0010535368928685784 - actor/pg_clipfrac:np.float64(0.0) - actor/ppo_kl:np.float64(0.0) - actor/pg_clipfrac_lower:np.float64(0.0) - actor/pg_loss:np.float64(0.02356183898103024) - actor/grad_norm:np.float64(2.3341846466064453) - perf/mfu/actor:np.float64(0.2797800165544918) - perf/max_memory_allocated_gb:np.float64(123.89331293106079) - perf/max_memory_reserved_gb:np.float64(130.884765625) - perf/cpu_memory_used_gb:np.float64(193.70483016967773) - actor/lr:np.float64(1e-06) - training/global_step:1 - training/epoch:0 - critic/score/mean:-0.15696096420288086 - critic/score/max:1.942990593306604e-06 - critic/score/min:-25.957300186157227 - critic/rewards/mean:-0.15696096420288086 - critic/rewards/max:1.942990593306604e-06 - critic/rewards/min:-25.957300186157227 - critic/true_reward/mean:0.140625 - critic/true_reward/max:1.0 - critic/true_reward/min:0.0 - critic/advantages/max:0.3677538335323334 - critic/advantages/min:-25.921016693115234 - critic/advantages/mean_sum_over_k:-0.16507108509540558 - critic/advantages/mean_overall:-0.010462242178618908 - critic/advantages/std:0.13288231194019318 - critic/advantages/abs_mean:0.016413941979408264 - critic/advantages/extreme_count:1223 - critic/advantages/abs_max:25.921016693115234 - critic/advantages/mean_first_2k:-0.01463821530342102 - critic/advantages/mean_first_4k:-0.012798868119716644 - critic/advantages/mean_first_6k:-0.011783980764448643 - critic/returns/max:0.3677538335323334 - critic/returns/min:-25.921016693115234 - critic/returns/mean:-0.010462242178618908 - response_length/mean:6814.2890625 - response_length/max:7168.0 - response_length/min:3814.0 - response_length/clip_ratio:0.7890625 - response_length_non_aborted/mean:6814.2890625 - response_length_non_aborted/max:7168.0 - response_length_non_aborted/min:3814.0 - response_length_non_aborted/clip_ratio:0.7890625 - response/aborted_ratio:0.0 - prompt_length/mean:146.90625 - prompt_length/max:213.0 - prompt_length/min:94.0 - prompt_length/clip_ratio:0.0 - timing_s/start_profile:0.0002919249818660319 - timing_s/generate_sequences:162.61483764648438 - timing_s/generation_timing/max:171.531982421875 - timing_s/generation_timing/min:155.59405517578125 - timing_s/generation_timing/topk_ratio:0.25 - timing_s/gen:175.04262791899964 - timing_s/compute_log_prob:12.14793836302124 - timing_s/compute_rm_score:29.228082769957837 - timing_s/compute_distillation_reward:0.6293202979722992 - timing_s/reward:42.35452279599849 - timing_s/adv:2.0165039700223133 - timing_s/update_actor:44.0438454769901 - timing_s/step:263.5874268490006 - timing_s/stop_profile:9.34670097194612e-05 - timing_per_token_ms/update_actor:0.049430094594689646 - timing_per_token_ms/gen:0.20068425599125878 - timing_per_token_ms/adv:0.0022631080667296424 - perf/total_num_tokens:891033 - perf/time_per_step:263.5874268490006 - perf/throughput:845.101955973074
+[36m(WorkerDict pid=185462)[0m on_policy[32m [repeated 7x across cluster][0m
+[36m(WorkerDict pid=185462)[0m Advantages shape: torch.Size([4, 7168, 16])[32m [repeated 7x across cluster][0m
+[36m(TaskRunner pid=185127)[0m First forward, get student top k ids and log probs
+[36m(WorkerDict pid=185461)[0m In compute_log_prob, top_k: 16
+[36m(TaskRunner pid=185127)[0m Now we are using rm_scores!
+[36m(TaskRunner pid=185127)[0m True reward score has been added to reward_extra_info!
+[36m(TaskRunner pid=185127)[0m We don't need to re-merge old_log_probs, it's already there.
+[36m(WorkerDict pid=185462)[0m In compute_log_prob, top_k: 16[32m [repeated 3x across cluster][0m
+[36m(WorkerDict pid=185461)[0m on_policy
+[36m(WorkerDict pid=185461)[0m Advantages shape: torch.Size([4, 7168, 16])
+[36m(WorkerDict pid=185461)[0m on_policy[32m [repeated 4x across cluster][0m
+[36m(WorkerDict pid=185461)[0m Advantages shape: torch.Size([4, 7168, 16])[32m [repeated 4x across cluster][0m
+[36m(WorkerDict pid=185461)[0m on_policy[32m [repeated 8x across cluster][0m
+[36m(WorkerDict pid=185461)[0m Advantages shape: torch.Size([5, 7168, 16])[32m [repeated 8x across cluster][0m
+[36m(WorkerDict pid=185461)[0m on_policy[32m [repeated 4x across cluster][0m
+[36m(WorkerDict pid=185461)[0m Advantages shape: torch.Size([5, 7168, 16])[32m [repeated 4x across cluster][0m
+[36m(WorkerDict pid=185461)[0m on_policy[32m [repeated 8x across cluster][0m
+[36m(WorkerDict pid=185461)[0m Advantages shape: torch.Size([4, 7168, 16])[32m [repeated 8x across cluster][0m
+[36m(TaskRunner pid=185127)[0m Training Progress:   0%|          | 2/559 [08:30<39:15:30, 253.74s/it]
+[36m(TaskRunner pid=185127)[0m step:2 - actor/entropy:0.30188485980033875 - teacher/entropy:0.38156914710998535 - training/rollout_probs_diff_valid:1 - training/rollout_probs_diff_max:0.6118556261062622 - training/rollout_probs_diff_mean:0.0064926715567708015 - training/rollout_probs_diff_std:0.015045523643493652 - training/rollout_actor_probs_pearson_corr:0.9982510805130005 - val-topk/overlap_ratio:0.7678736448287964 - val-topk/adv_intersection:-0.012652608565986156 - val-topk/student_p_sum_intersection:0.9990725517272949 - val-topk/teacher_p_sum_intersection:0.9981070756912231 - val-topk/max_student_p_intersection:0.8866776823997498 - val-topk/teacher_p_at_max_student_intersection:0.8222436904907227 - val-topk/adv_at_max_student_intersection:-0.12524721026420593 - val-topk/max_teacher_p_intersection:0.8587695360183716 - val-topk/student_p_at_max_teacher_intersection:0.8450618386268616 - val-topk/adv_at_max_teacher_intersection:-0.016529757529497147 - val-extrema/max_adv_intersection:0.03834085911512375 - val-extrema/student_p_at_max_adv_intersection:0.2118111550807953 - val-extrema/teacher_p_at_max_adv_intersection:0.28840866684913635 - val-extrema/min_adv_intersection:-0.17307589948177338 - val-extrema/student_p_at_min_adv_intersection:0.6067498922348022 - val-extrema/teacher_p_at_min_adv_intersection:0.5155739784240723 - val-topk/adv_only_stu:-0.0011180132860317826 - val-topk/overlap_ratio_chunk_0_1024:0.7432036399841309 - val-topk/adv_intersection_chunk_0_1024:-0.017678488045930862 - val-topk/student_p_sum_intersection_chunk_0_1024:0.9992120862007141 - val-topk/teacher_p_sum_intersection_chunk_0_1024:0.9984509348869324 - val-topk/max_student_p_intersection_chunk_0_1024:0.903364360332489 - val-topk/teacher_p_at_max_student_intersection_chunk_0_1024:0.8282119631767273 - val-topk/adv_at_max_student_intersection_chunk_0_1024:-0.16834861040115356 - val-topk/max_teacher_p_intersection_chunk_0_1024:0.8767166137695312 - val-topk/student_p_at_max_teacher_intersection_chunk_0_1024:0.847960889339447 - val-topk/adv_at_max_teacher_intersection_chunk_0_1024:-0.012375871650874615 - val-extrema/max_adv_intersection_chunk_0_1024:0.03947221115231514 - val-extrema/student_p_at_max_adv_intersection_chunk_0_1024:0.22715288400650024 - val-extrema/teacher_p_at_max_adv_intersection_chunk_0_1024:0.3154403567314148 - val-extrema/min_adv_intersection_chunk_0_1024:-0.22420230507850647 - val-extrema/student_p_at_min_adv_intersection_chunk_0_1024:0.5721064805984497 - val-extrema/teacher_p_at_min_adv_intersection_chunk_0_1024:0.46897539496421814 - val-topk/adv_only_stu_chunk_0_1024:-0.0014210473746061325 - val-topk/overlap_ratio_chunk_1024_2048:0.7663965225219727 - val-topk/adv_intersection_chunk_1024_2048:-0.013274733908474445 - val-topk/student_p_sum_intersection_chunk_1024_2048:0.9991793632507324 - val-topk/teacher_p_sum_intersection_chunk_1024_2048:0.9982184767723083 - val-topk/max_student_p_intersection_chunk_1024_2048:0.888837993144989 - val-topk/teacher_p_at_max_student_intersection_chunk_1024_2048:0.8211134076118469 - val-topk/adv_at_max_student_intersection_chunk_1024_2048:-0.13257160782814026 - val-topk/max_teacher_p_intersection_chunk_1024_2048:0.8598810434341431 - val-topk/student_p_at_max_teacher_intersection_chunk_1024_2048:0.8450371026992798 - val-topk/adv_at_max_teacher_intersection_chunk_1024_2048:-0.01692683808505535 - val-extrema/max_adv_intersection_chunk_1024_2048:0.03907148540019989 - val-extrema/student_p_at_max_adv_intersection_chunk_1024_2048:0.19871972501277924 - val-extrema/teacher_p_at_max_adv_intersection_chunk_1024_2048:0.2776460647583008 - val-extrema/min_adv_intersection_chunk_1024_2048:-0.18106959760189056 - val-extrema/student_p_at_min_adv_intersection_chunk_1024_2048:0.6237340569496155 - val-extrema/teacher_p_at_min_adv_intersection_chunk_1024_2048:0.5292905569076538 - val-topk/adv_only_stu_chunk_1024_2048:-0.0010786261409521103 - val-topk/overlap_ratio_chunk_2048_3072:0.7698965072631836 - val-topk/adv_intersection_chunk_2048_3072:-0.012332092970609665 - val-topk/student_p_sum_intersection_chunk_2048_3072:0.9990789890289307 - val-topk/teacher_p_sum_intersection_chunk_2048_3072:0.9981456398963928 - val-topk/max_student_p_intersection_chunk_2048_3072:0.8875468373298645 - val-topk/teacher_p_at_max_student_intersection_chunk_2048_3072:0.8236246109008789 - val-topk/adv_at_max_student_intersection_chunk_2048_3072:-0.12233313173055649 - val-topk/max_teacher_p_intersection_chunk_2048_3072:0.8592360615730286 - val-topk/student_p_at_max_teacher_intersection_chunk_2048_3072:0.8467126488685608 - val-topk/adv_at_max_teacher_intersection_chunk_2048_3072:-0.01711047999560833 - val-extrema/max_adv_intersection_chunk_2048_3072:0.037948284298181534 - val-extrema/student_p_at_max_adv_intersection_chunk_2048_3072:0.19954513013362885 - val-extrema/teacher_p_at_max_adv_intersection_chunk_2048_3072:0.2752770185470581 - val-extrema/min_adv_intersection_chunk_2048_3072:-0.1691676676273346 - val-extrema/student_p_at_min_adv_intersection_chunk_2048_3072:0.6168494820594788 - val-extrema/teacher_p_at_min_adv_intersection_chunk_2048_3072:0.526553750038147 - val-topk/adv_only_stu_chunk_2048_3072:-0.0011510263429954648 - val-topk/overlap_ratio_chunk_3072_4096:0.7737521529197693 - val-topk/adv_intersection_chunk_3072_4096:-0.011558368802070618 - val-topk/student_p_sum_intersection_chunk_3072_4096:0.9991163611412048 - val-topk/teacher_p_sum_intersection_chunk_3072_4096:0.9982000589370728 - val-topk/max_student_p_intersection_chunk_3072_4096:0.8856514692306519 - val-topk/teacher_p_at_max_student_intersection_chunk_3072_4096:0.8240517973899841 - val-topk/adv_at_max_student_intersection_chunk_3072_4096:-0.11571259051561356 - val-topk/max_teacher_p_intersection_chunk_3072_4096:0.8580030202865601 - val-topk/student_p_at_max_teacher_intersection_chunk_3072_4096:0.8470242619514465 - val-topk/adv_at_max_teacher_intersection_chunk_3072_4096:-0.016940398141741753 - val-extrema/max_adv_intersection_chunk_3072_4096:0.037831321358680725 - val-extrema/student_p_at_max_adv_intersection_chunk_3072_4096:0.21016237139701843 - val-extrema/teacher_p_at_max_adv_intersection_chunk_3072_4096:0.2838136553764343 - val-extrema/min_adv_intersection_chunk_3072_4096:-0.16153950989246368 - val-extrema/student_p_at_min_adv_intersection_chunk_3072_4096:0.6022480726242065 - val-extrema/teacher_p_at_min_adv_intersection_chunk_3072_4096:0.514453649520874 - val-topk/adv_only_stu_chunk_3072_4096:-0.0010519205825403333 - val-topk/overlap_ratio_chunk_4096_5120:0.7748090624809265 - val-topk/adv_intersection_chunk_4096_5120:-0.011962170712649822 - val-topk/student_p_sum_intersection_chunk_4096_5120:0.9990243911743164 - val-topk/teacher_p_sum_intersection_chunk_4096_5120:0.9979988932609558 - val-topk/max_student_p_intersection_chunk_4096_5120:0.8791274428367615 - val-topk/teacher_p_at_max_student_intersection_chunk_4096_5120:0.815577507019043 - val-topk/adv_at_max_student_intersection_chunk_4096_5120:-0.11937377601861954 - val-topk/max_teacher_p_intersection_chunk_4096_5120:0.8506066799163818 - val-topk/student_p_at_max_teacher_intersection_chunk_4096_5120:0.8391199111938477 - val-topk/adv_at_max_teacher_intersection_chunk_4096_5120:-0.017382588237524033 - val-extrema/max_adv_intersection_chunk_4096_5120:0.039072196930646896 - val-extrema/student_p_at_max_adv_intersection_chunk_4096_5120:0.21360674500465393 - val-extrema/teacher_p_at_max_adv_intersection_chunk_4096_5120:0.2895202934741974 - val-extrema/min_adv_intersection_chunk_4096_5120:-0.166784405708313 - val-extrema/student_p_at_min_adv_intersection_chunk_4096_5120:0.6108651757240295 - val-extrema/teacher_p_at_min_adv_intersection_chunk_4096_5120:0.5201106667518616 - val-topk/adv_only_stu_chunk_4096_5120:-0.0010499585187062621 - val-topk/overlap_ratio_chunk_5120_6144:0.7747666835784912 - val-topk/adv_intersection_chunk_5120_6144:-0.010807588696479797 - val-topk/student_p_sum_intersection_chunk_5120_6144:0.9989839792251587 - val-topk/teacher_p_sum_intersection_chunk_5120_6144:0.9979149699211121 - val-topk/max_student_p_intersection_chunk_5120_6144:0.8813490867614746 - val-topk/teacher_p_at_max_student_intersection_chunk_5120_6144:0.8220700025558472 - val-topk/adv_at_max_student_intersection_chunk_5120_6144:-0.10780434310436249 - val-topk/max_teacher_p_intersection_chunk_5120_6144:0.8533971309661865 - val-topk/student_p_at_max_teacher_intersection_chunk_5120_6144:0.8459988236427307 - val-topk/adv_at_max_teacher_intersection_chunk_5120_6144:-0.01829296536743641 - val-extrema/max_adv_intersection_chunk_5120_6144:0.03725247457623482 - val-extrema/student_p_at_max_adv_intersection_chunk_5120_6144:0.21427880227565765 - val-extrema/teacher_p_at_max_adv_intersection_chunk_5120_6144:0.28543567657470703 - val-extrema/min_adv_intersection_chunk_5120_6144:-0.15239235758781433 - val-extrema/student_p_at_min_adv_intersection_chunk_5120_6144:0.6132704019546509 - val-extrema/teacher_p_at_min_adv_intersection_chunk_5120_6144:0.5279393196105957 - val-topk/adv_only_stu_chunk_5120_6144:-0.001030751271173358 - val-topk/overlap_ratio_chunk_6144_7168:0.7748504281044006 - val-topk/adv_intersection_chunk_6144_7168:-0.010520108975470066 - val-topk/student_p_sum_intersection_chunk_6144_7168:0.9988648295402527 - val-topk/teacher_p_sum_intersection_chunk_6144_7168:0.9977293610572815 - val-topk/max_student_p_intersection_chunk_6144_7168:0.8783213496208191 - val-topk/teacher_p_at_max_student_intersection_chunk_6144_7168:0.8203146457672119 - val-topk/adv_at_max_student_intersection_chunk_6144_7168:-0.10446044057607651 - val-topk/max_teacher_p_intersection_chunk_6144_7168:0.8510788083076477 - val-topk/student_p_at_max_teacher_intersection_chunk_6144_7168:0.8429775834083557 - val-topk/adv_at_max_teacher_intersection_chunk_6144_7168:-0.017016854137182236 - val-extrema/max_adv_intersection_chunk_6144_7168:0.03751129284501076 - val-extrema/student_p_at_max_adv_intersection_chunk_6144_7168:0.22114646434783936 - val-extrema/teacher_p_at_max_adv_intersection_chunk_6144_7168:0.2919483184814453 - val-extrema/min_adv_intersection_chunk_6144_7168:-0.1493021696805954 - val-extrema/student_p_at_min_adv_intersection_chunk_6144_7168:0.609538197517395 - val-extrema/teacher_p_at_min_adv_intersection_chunk_6144_7168:0.5249465107917786 - val-topk/adv_only_stu_chunk_6144_7168:-0.0009579082834534347 - actor/pg_clipfrac:np.float64(0.0) - actor/ppo_kl:np.float64(0.0) - actor/pg_clipfrac_lower:np.float64(0.0) - actor/pg_loss:np.float64(0.022804079186503907) - actor/grad_norm:np.float64(2.3084030151367188) - perf/mfu/actor:np.float64(0.33436803993295794) - perf/max_memory_allocated_gb:np.float64(127.83860778808594) - perf/max_memory_reserved_gb:np.float64(133.130859375) - perf/cpu_memory_used_gb:np.float64(194.95302391052246) - actor/lr:np.float64(1e-06) - training/global_step:2 - training/epoch:0 - critic/score/mean:-0.15106678009033203 - critic/score/max:1.9113297184958356e-06 - critic/score/min:-24.498388290405273 - critic/rewards/mean:-0.15106678009033203 - critic/rewards/max:1.9113297184958356e-06 - critic/rewards/min:-24.498388290405273 - critic/true_reward/mean:0.1953125 - critic/true_reward/max:1.0 - critic/true_reward/min:0.0 - critic/advantages/max:0.38356396555900574 - critic/advantages/min:-24.498842239379883 - critic/advantages/mean_sum_over_k:-0.15960201621055603 - critic/advantages/mean_overall:-0.010123903863132 - critic/advantages/std:0.12748344242572784 - critic/advantages/abs_mean:0.01607857458293438 - critic/advantages/extreme_count:1017 - critic/advantages/abs_max:24.498842239379883 - critic/advantages/mean_first_2k:-0.013643425889313221 - critic/advantages/mean_first_4k:-0.011932854540646076 - critic/advantages/mean_first_6k:-0.011160992085933685 - critic/returns/max:0.38356396555900574 - critic/returns/min:-24.498842239379883 - critic/returns/mean:-0.010123903863132 - response_length/mean:6783.6875 - response_length/max:7168.0 - response_length/min:2742.0 - response_length/clip_ratio:0.7890625 - response_length_non_aborted/mean:6783.6875 - response_length_non_aborted/max:7168.0 - response_length_non_aborted/min:2742.0 - response_length_non_aborted/clip_ratio:0.7890625 - response/aborted_ratio:0.0 - prompt_length/mean:132.90625 - prompt_length/max:211.0 - prompt_length/min:90.0 - prompt_length/clip_ratio:0.0 - timing_s/start_profile:8.468999294564128e-05 - timing_s/generate_sequences:162.8314208984375 - timing_s/generation_timing/max:169.37017822265625 - timing_s/generation_timing/min:144.68699645996094 - timing_s/generation_timing/topk_ratio:0.25 - timing_s/gen:174.58032302901847 - timing_s/compute_log_prob:10.750957632029895 - timing_s/compute_rm_score:20.339910234033596 - timing_s/compute_distillation_reward:0.880762037995737 - timing_s/reward:32.249769526999444 - timing_s/adv:2.0514617179869674 - timing_s/update_actor:36.640003052016255 - timing_s/step:245.58302362001268 - timing_s/stop_profile:4.5972003135830164e-05 - timing_per_token_ms/update_actor:0.04138598191398432 - timing_per_token_ms/gen:0.20105713502637124 - timing_per_token_ms/adv:0.0023171875132572566 - perf/total_num_tokens:885324 - perf/time_per_step:245.58302362001268 - perf/throughput:901.2471494872646
+[36m(TaskRunner pid=185127)[0m First forward, get student top k ids and log probs
+[36m(WorkerDict pid=185462)[0m on_policy[32m [repeated 3x across cluster][0m
+[36m(WorkerDict pid=185462)[0m Advantages shape: torch.Size([4, 7168, 16])[32m [repeated 3x across cluster][0m
+[36m(WorkerDict pid=185461)[0m In compute_log_prob, top_k: 16
+[36m(TaskRunner pid=185127)[0m Now we are using rm_scores!
+[36m(TaskRunner pid=185127)[0m True reward score has been added to reward_extra_info!
+[36m(TaskRunner pid=185127)[0m We don't need to re-merge old_log_probs, it's already there.
+[36m(WorkerDict pid=185462)[0m In compute_log_prob, top_k: 16[32m [repeated 3x across cluster][0m
+[36m(WorkerDict pid=185461)[0m on_policy
+[36m(WorkerDict pid=185461)[0m Advantages shape: torch.Size([4, 7168, 16])
+[36m(WorkerDict pid=185461)[0m on_policy[32m [repeated 4x across cluster][0m
+[36m(WorkerDict pid=185461)[0m Advantages shape: torch.Size([4, 7168, 16])[32m [repeated 4x across cluster][0m
+[36m(WorkerDict pid=185461)[0m on_policy[32m [repeated 8x across cluster][0m
+[36m(WorkerDict pid=185461)[0m Advantages shape: torch.Size([5, 7168, 16])[32m [repeated 8x across cluster][0m
+[36m(WorkerDict pid=185461)[0m on_policy[32m [repeated 4x across cluster][0m
+[36m(WorkerDict pid=185461)[0m Advantages shape: torch.Size([5, 7168, 16])[32m [repeated 4x across cluster][0m
+[36m(WorkerDict pid=185461)[0m on_policy[32m [repeated 8x across cluster][0m
+[36m(WorkerDict pid=185461)[0m Advantages shape: torch.Size([4, 7168, 16])[32m [repeated 8x across cluster][0m
+[36m(TaskRunner pid=185127)[0m Training Progress:   1%|          | 3/559 [12:36<38:38:21, 250.18s/it]
+[36m(TaskRunner pid=185127)[0m step:3 - actor/entropy:0.273600310087204 - teacher/entropy:0.34192878007888794 - training/rollout_probs_diff_valid:1 - training/rollout_probs_diff_max:0.6224240064620972 - training/rollout_probs_diff_mean:0.006011024583131075 - training/rollout_probs_diff_std:0.01467349473387003 - training/rollout_actor_probs_pearson_corr:0.9981563687324524 - val-topk/overlap_ratio:0.7664824724197388 - val-topk/adv_intersection:-0.011233069933950901 - val-topk/student_p_sum_intersection:0.9992550015449524 - val-topk/teacher_p_sum_intersection:0.9984975457191467 - val-topk/max_student_p_intersection:0.8968968987464905 - val-topk/teacher_p_at_max_student_intersection:0.8394933938980103 - val-topk/adv_at_max_student_intersection:-0.11165796965360641 - val-topk/max_teacher_p_intersection:0.8725938200950623 - val-topk/student_p_at_max_teacher_intersection:0.8598511219024658 - val-topk/adv_at_max_teacher_intersection:-0.01432758942246437 - val-extrema/max_adv_intersection:0.03550180047750473 - val-extrema/student_p_at_max_adv_intersection:0.21341663599014282 - val-extrema/teacher_p_at_max_adv_intersection:0.28366342186927795 - val-extrema/min_adv_intersection:-0.15542729198932648 - val-extrema/student_p_at_min_adv_intersection:0.6049219965934753 - val-extrema/teacher_p_at_min_adv_intersection:0.5226559042930603 - val-topk/adv_only_stu:-0.0008501434931531549 - val-topk/overlap_ratio_chunk_0_1024:0.7439985275268555 - val-topk/adv_intersection_chunk_0_1024:-0.014931493438780308 - val-topk/student_p_sum_intersection_chunk_0_1024:0.9995075464248657 - val-topk/teacher_p_sum_intersection_chunk_0_1024:0.9989244937896729 - val-topk/max_student_p_intersection_chunk_0_1024:0.912484884262085 - val-topk/teacher_p_at_max_student_intersection_chunk_0_1024:0.8478889465332031 - val-topk/adv_at_max_student_intersection_chunk_0_1024:-0.14373604953289032 - val-topk/max_teacher_p_intersection_chunk_0_1024:0.8906185030937195 - val-topk/student_p_at_max_teacher_intersection_chunk_0_1024:0.8661174774169922 - val-topk/adv_at_max_teacher_intersection_chunk_0_1024:-0.010757590644061565 - val-extrema/max_adv_intersection_chunk_0_1024:0.03627275675535202 - val-extrema/student_p_at_max_adv_intersection_chunk_0_1024:0.23275794088840485 - val-extrema/teacher_p_at_max_adv_intersection_chunk_0_1024:0.31202203035354614 - val-extrema/min_adv_intersection_chunk_0_1024:-0.19341272115707397 - val-extrema/student_p_at_min_adv_intersection_chunk_0_1024:0.5535181164741516 - val-extrema/teacher_p_at_min_adv_intersection_chunk_0_1024:0.46312281489372253 - val-topk/adv_only_stu_chunk_0_1024:-0.0007512869196943939 - val-topk/overlap_ratio_chunk_1024_2048:0.7658247947692871 - val-topk/adv_intersection_chunk_1024_2048:-0.011982988566160202 - val-topk/student_p_sum_intersection_chunk_1024_2048:0.999330461025238 - val-topk/teacher_p_sum_intersection_chunk_1024_2048:0.9986304640769958 - val-topk/max_student_p_intersection_chunk_1024_2048:0.8988466262817383 - val-topk/teacher_p_at_max_student_intersection_chunk_1024_2048:0.838441789150238 - val-topk/adv_at_max_student_intersection_chunk_1024_2048:-0.11937864869832993 - val-topk/max_teacher_p_intersection_chunk_1024_2048:0.8734897971153259 - val-topk/student_p_at_max_teacher_intersection_chunk_1024_2048:0.8596309423446655 - val-topk/adv_at_max_teacher_intersection_chunk_1024_2048:-0.014972822740674019 - val-extrema/max_adv_intersection_chunk_1024_2048:0.035958874970674515 - val-extrema/student_p_at_max_adv_intersection_chunk_1024_2048:0.2012595385313034 - val-extrema/teacher_p_at_max_adv_intersection_chunk_1024_2048:0.27391719818115234 - val-extrema/min_adv_intersection_chunk_1024_2048:-0.16405931115150452 - val-extrema/student_p_at_min_adv_intersection_chunk_1024_2048:0.6196010708808899 - val-extrema/teacher_p_at_min_adv_intersection_chunk_1024_2048:0.5343829393386841 - val-topk/adv_only_stu_chunk_1024_2048:-0.0009247612324543297 - val-topk/overlap_ratio_chunk_2048_3072:0.769390881061554 - val-topk/adv_intersection_chunk_2048_3072:-0.01120607927441597 - val-topk/student_p_sum_intersection_chunk_2048_3072:0.9992166757583618 - val-topk/teacher_p_sum_intersection_chunk_2048_3072:0.9984245896339417 - val-topk/max_student_p_intersection_chunk_2048_3072:0.895799994468689 - val-topk/teacher_p_at_max_student_intersection_chunk_2048_3072:0.8369939923286438 - val-topk/adv_at_max_student_intersection_chunk_2048_3072:-0.11243485659360886 - val-topk/max_teacher_p_intersection_chunk_2048_3072:0.8695363402366638 - val-topk/student_p_at_max_teacher_intersection_chunk_2048_3072:0.8584544658660889 - val-topk/adv_at_max_teacher_intersection_chunk_2048_3072:-0.015898048877716064 - val-extrema/max_adv_intersection_chunk_2048_3072:0.03585860878229141 - val-extrema/student_p_at_max_adv_intersection_chunk_2048_3072:0.20166762173175812 - val-extrema/teacher_p_at_max_adv_intersection_chunk_2048_3072:0.2724604904651642 - val-extrema/min_adv_intersection_chunk_2048_3072:-0.15609315037727356 - val-extrema/student_p_at_min_adv_intersection_chunk_2048_3072:0.6194586157798767 - val-extrema/teacher_p_at_min_adv_intersection_chunk_2048_3072:0.5359157919883728 - val-topk/adv_only_stu_chunk_2048_3072:-0.0009830667404457927 - val-topk/overlap_ratio_chunk_3072_4096:0.771660327911377 - val-topk/adv_intersection_chunk_3072_4096:-0.010731239803135395 - val-topk/student_p_sum_intersection_chunk_3072_4096:0.9991942048072815 - val-topk/teacher_p_sum_intersection_chunk_3072_4096:0.9983726143836975 - val-topk/max_student_p_intersection_chunk_3072_4096:0.8898730278015137 - val-topk/teacher_p_at_max_student_intersection_chunk_3072_4096:0.8328791260719299 - val-topk/adv_at_max_student_intersection_chunk_3072_4096:-0.10659470409154892 - val-topk/max_teacher_p_intersection_chunk_3072_4096:0.8649649620056152 - val-topk/student_p_at_max_teacher_intersection_chunk_3072_4096:0.8534724712371826 - val-topk/adv_at_max_teacher_intersection_chunk_3072_4096:-0.014756714925169945 - val-extrema/max_adv_intersection_chunk_3072_4096:0.03631134703755379 - val-extrema/student_p_at_max_adv_intersection_chunk_3072_4096:0.2109661102294922 - val-extrema/teacher_p_at_max_adv_intersection_chunk_3072_4096:0.28111565113067627 - val-extrema/min_adv_intersection_chunk_3072_4096:-0.15033474564552307 - val-extrema/student_p_at_min_adv_intersection_chunk_3072_4096:0.6088334918022156 - val-extrema/teacher_p_at_min_adv_intersection_chunk_3072_4096:0.5262256860733032 - val-topk/adv_only_stu_chunk_3072_4096:-0.0008569731726311147 - val-topk/overlap_ratio_chunk_4096_5120:0.7714863419532776 - val-topk/adv_intersection_chunk_4096_5120:-0.009971835650503635 - val-topk/student_p_sum_intersection_chunk_4096_5120:0.9992666840553284 - val-topk/teacher_p_sum_intersection_chunk_4096_5120:0.9984984397888184 - val-topk/max_student_p_intersection_chunk_4096_5120:0.89422208070755 - val-topk/teacher_p_at_max_student_intersection_chunk_4096_5120:0.8407259583473206 - val-topk/adv_at_max_student_intersection_chunk_4096_5120:-0.09925527125597 - val-topk/max_teacher_p_intersection_chunk_4096_5120:0.8706725239753723 - val-topk/student_p_at_max_teacher_intersection_chunk_4096_5120:0.8604486584663391 - val-topk/adv_at_max_teacher_intersection_chunk_4096_5120:-0.013973506167531013 - val-extrema/max_adv_intersection_chunk_4096_5120:0.034797634929418564 - val-extrema/student_p_at_max_adv_intersection_chunk_4096_5120:0.21471840143203735 - val-extrema/teacher_p_at_max_adv_intersection_chunk_4096_5120:0.2811222970485687 - val-extrema/min_adv_intersection_chunk_4096_5120:-0.1413482427597046 - val-extrema/student_p_at_min_adv_intersection_chunk_4096_5120:0.6067939400672913 - val-extrema/teacher_p_at_min_adv_intersection_chunk_4096_5120:0.5287354588508606 - val-topk/adv_only_stu_chunk_4096_5120:-0.0007319030119106174 - val-topk/overlap_ratio_chunk_5120_6144:0.7742903828620911 - val-topk/adv_intersection_chunk_5120_6144:-0.009829930029809475 - val-topk/student_p_sum_intersection_chunk_5120_6144:0.9990901947021484 - val-topk/teacher_p_sum_intersection_chunk_5120_6144:0.9982975125312805 - val-topk/max_student_p_intersection_chunk_5120_6144:0.8913921117782593 - val-topk/teacher_p_at_max_student_intersection_chunk_5120_6144:0.8378380537033081 - val-topk/adv_at_max_student_intersection_chunk_5120_6144:-0.09937774389982224 - val-topk/max_teacher_p_intersection_chunk_5120_6144:0.8673396706581116 - val-topk/student_p_at_max_teacher_intersection_chunk_5120_6144:0.8586663007736206 - val-topk/adv_at_max_teacher_intersection_chunk_5120_6144:-0.014901074580848217 - val-extrema/max_adv_intersection_chunk_5120_6144:0.03480184078216553 - val-extrema/student_p_at_max_adv_intersection_chunk_5120_6144:0.21455605328083038 - val-extrema/teacher_p_at_max_adv_intersection_chunk_5120_6144:0.2804109454154968 - val-extrema/min_adv_intersection_chunk_5120_6144:-0.14020037651062012 - val-extrema/student_p_at_min_adv_intersection_chunk_5120_6144:0.612436830997467 - val-extrema/teacher_p_at_min_adv_intersection_chunk_5120_6144:0.5346113443374634 - val-topk/adv_only_stu_chunk_5120_6144:-0.0008805291727185249 - val-topk/overlap_ratio_chunk_6144_7168:0.7720792889595032 - val-topk/adv_intersection_chunk_6144_7168:-0.009300673380494118 - val-topk/student_p_sum_intersection_chunk_6144_7168:0.999119758605957 - val-topk/teacher_p_sum_intersection_chunk_6144_7168:0.9982364177703857 - val-topk/max_student_p_intersection_chunk_6144_7168:0.8932925462722778 - val-topk/teacher_p_at_max_student_intersection_chunk_6144_7168:0.8416578769683838 - val-topk/adv_at_max_student_intersection_chunk_6144_7168:-0.09312179684638977 - val-topk/max_teacher_p_intersection_chunk_6144_7168:0.8693157434463501 - val-topk/student_p_at_max_teacher_intersection_chunk_6144_7168:0.8622155785560608 - val-topk/adv_at_max_teacher_intersection_chunk_6144_7168:-0.01535151619464159 - val-extrema/max_adv_intersection_chunk_6144_7168:0.034042611718177795 - val-extrema/student_p_at_max_adv_intersection_chunk_6144_7168:0.219441756606102 - val-extrema/teacher_p_at_max_adv_intersection_chunk_6144_7168:0.2835518419742584 - val-extrema/min_adv_intersection_chunk_6144_7168:-0.13339248299598694 - val-extrema/student_p_at_min_adv_intersection_chunk_6144_7168:0.6185888648033142 - val-extrema/teacher_p_at_min_adv_intersection_chunk_6144_7168:0.5430083274841309 - val-topk/adv_only_stu_chunk_6144_7168:-0.0008184884791262448 - actor/pg_clipfrac:np.float64(0.0) - actor/ppo_kl:np.float64(0.0) - actor/pg_clipfrac_lower:np.float64(0.0) - actor/pg_loss:np.float64(0.020106878006897335) - actor/grad_norm:np.float64(1.9752991199493408) - perf/mfu/actor:np.float64(0.3290400323710881) - perf/max_memory_allocated_gb:np.float64(127.83860778808594) - perf/max_memory_reserved_gb:np.float64(138.59765625) - perf/cpu_memory_used_gb:np.float64(197.48992538452148) - actor/lr:np.float64(1e-06) - training/global_step:3 - training/epoch:0 - critic/score/mean:-0.12988527119159698 - critic/score/max:2.0109960132685956e-06 - critic/score/min:-21.697153091430664 - critic/rewards/mean:-0.12988527119159698 - critic/rewards/max:2.0109960132685956e-06 - critic/rewards/min:-21.697153091430664 - critic/true_reward/mean:0.2109375 - critic/true_reward/max:1.0 - critic/true_reward/min:0.0 - critic/advantages/max:0.36787259578704834 - critic/advantages/min:-21.746200561523438 - critic/advantages/mean_sum_over_k:-0.14093558490276337 - critic/advantages/mean_overall:-0.008955211378633976 - critic/advantages/std:0.1205853745341301 - critic/advantages/abs_mean:0.014410841278731823 - critic/advantages/extreme_count:895 - critic/advantages/abs_max:21.746200561523438 - critic/advantages/mean_first_2k:-0.012506410479545593 - critic/advantages/mean_first_4k:-0.011012174189090729 - critic/advantages/mean_first_6k:-0.010207290761172771 - critic/returns/max:0.36787259578704834 - critic/returns/min:-21.746200561523438 - critic/returns/mean:-0.008955211378633976 - response_length/mean:6603.0703125 - response_length/max:7168.0 - response_length/min:2464.0 - response_length/clip_ratio:0.7421875 - response_length_non_aborted/mean:6603.0703125 - response_length_non_aborted/max:7168.0 - response_length_non_aborted/min:2464.0 - response_length_non_aborted/clip_ratio:0.7421875 - response/aborted_ratio:0.0 - prompt_length/mean:138.125 - prompt_length/max:191.0 - prompt_length/min:93.0 - prompt_length/clip_ratio:0.0 - timing_s/start_profile:5.338696064427495e-05 - timing_s/generate_sequences:157.62420654296875 - timing_s/generation_timing/max:170.42098999023438 - timing_s/generation_timing/min:148.04287719726562 - timing_s/generation_timing/topk_ratio:0.25 - timing_s/gen:175.81830438697943 - timing_s/compute_log_prob:10.422103467048146 - timing_s/compute_rm_score:19.91085372195812 - timing_s/compute_distillation_reward:0.658933294005692 - timing_s/reward:31.266356223030016 - timing_s/adv:2.0121731130057015 - timing_s/update_actor:36.20276657503564 - timing_s/step:245.35603946901392 - timing_s/stop_profile:0.00011017103679478168 - timing_per_token_ms/update_actor:0.04195607763255501 - timing_per_token_ms/gen:0.20802148667461684 - timing_per_token_ms/adv:0.0023319458518295294 - perf/total_num_tokens:862873 - perf/time_per_step:245.35603946901392 - perf/throughput:879.2049727687388
+[36m(TaskRunner pid=185127)[0m First forward, get student top k ids and log probs
+[36m(WorkerDict pid=185462)[0m on_policy[32m [repeated 3x across cluster][0m
+[36m(WorkerDict pid=185462)[0m Advantages shape: torch.Size([4, 7168, 16])[32m [repeated 3x across cluster][0m
+[36m(WorkerDict pid=185461)[0m In compute_log_prob, top_k: 16
+[36m(TaskRunner pid=185127)[0m Now we are using rm_scores!
+[36m(TaskRunner pid=185127)[0m True reward score has been added to reward_extra_info!
+[36m(TaskRunner pid=185127)[0m We don't need to re-merge old_log_probs, it's already there.
+[36m(WorkerDict pid=185462)[0m In compute_log_prob, top_k: 16[32m [repeated 3x across cluster][0m
+[36m(WorkerDict pid=185461)[0m on_policy
+[36m(WorkerDict pid=185461)[0m Advantages shape: torch.Size([4, 7168, 16])
+[36m(WorkerDict pid=185461)[0m on_policy[32m [repeated 4x across cluster][0m
+[36m(WorkerDict pid=185461)[0m Advantages shape: torch.Size([4, 7168, 16])[32m [repeated 4x across cluster][0m
+[36m(WorkerDict pid=185461)[0m on_policy[32m [repeated 8x across cluster][0m
+[36m(WorkerDict pid=185461)[0m Advantages shape: torch.Size([5, 7168, 16])[32m [repeated 8x across cluster][0m
+[36m(WorkerDict pid=185461)[0m on_policy[32m [repeated 8x across cluster][0m
+[36m(WorkerDict pid=185461)[0m Advantages shape: torch.Size([5, 7168, 16])[32m [repeated 8x across cluster][0m
+[36m(TaskRunner pid=185127)[0m Training Progress:   1%|          | 4/559 [16:45<38:28:04, 249.52s/it]
+[36m(TaskRunner pid=185127)[0m step:4 - actor/entropy:0.3050411343574524 - teacher/entropy:0.38531726598739624 - training/rollout_probs_diff_valid:1 - training/rollout_probs_diff_max:0.875576913356781 - training/rollout_probs_diff_mean:0.006477129179984331 - training/rollout_probs_diff_std:0.014993058517575264 - training/rollout_actor_probs_pearson_corr:0.9985194802284241 - val-topk/overlap_ratio:0.7695884108543396 - val-topk/adv_intersection:-0.012804144062101841 - val-topk/student_p_sum_intersection:0.9990949034690857 - val-topk/teacher_p_sum_intersection:0.9981389045715332 - val-topk/max_student_p_intersection:0.8855558037757874 - val-topk/teacher_p_at_max_student_intersection:0.8203432559967041 - val-topk/adv_at_max_student_intersection:-0.12738028168678284 - val-topk/max_teacher_p_intersection:0.8574094772338867 - val-topk/student_p_at_max_teacher_intersection:0.8432586789131165 - val-topk/adv_at_max_teacher_intersection:-0.016659358516335487 - val-extrema/max_adv_intersection:0.03877127170562744 - val-extrema/student_p_at_max_adv_intersection:0.20371225476264954 - val-extrema/teacher_p_at_max_adv_intersection:0.2813371419906616 - val-extrema/min_adv_intersection:-0.17566458880901337 - val-extrema/student_p_at_min_adv_intersection:0.6276909112930298 - val-extrema/teacher_p_at_min_adv_intersection:0.5353825092315674 - val-topk/adv_only_stu:-0.0010779526783153415 - val-topk/overlap_ratio_chunk_0_1024:0.7442512512207031 - val-topk/adv_intersection_chunk_0_1024:-0.018871817737817764 - val-topk/student_p_sum_intersection_chunk_0_1024:0.9991252422332764 - val-topk/teacher_p_sum_intersection_chunk_0_1024:0.998133659362793 - val-topk/max_student_p_intersection_chunk_0_1024:0.9002022743225098 - val-topk/teacher_p_at_max_student_intersection_chunk_0_1024:0.8208580613136292 - val-topk/adv_at_max_student_intersection_chunk_0_1024:-0.1807917058467865 - val-topk/max_teacher_p_intersection_chunk_0_1024:0.8721904158592224 - val-topk/student_p_at_max_teacher_intersection_chunk_0_1024:0.8417332172393799 - val-topk/adv_at_max_teacher_intersection_chunk_0_1024:-0.013537360355257988 - val-extrema/max_adv_intersection_chunk_0_1024:0.04061353951692581 - val-extrema/student_p_at_max_adv_intersection_chunk_0_1024:0.21120403707027435 - val-extrema/teacher_p_at_max_adv_intersection_chunk_0_1024:0.3030715882778168 - val-extrema/min_adv_intersection_chunk_0_1024:-0.2386312335729599 - val-extrema/student_p_at_min_adv_intersection_chunk_0_1024:0.6071977019309998 - val-extrema/teacher_p_at_min_adv_intersection_chunk_0_1024:0.4990510642528534 - val-topk/adv_only_stu_chunk_0_1024:-0.0015207607066258788 - val-topk/overlap_ratio_chunk_1024_2048:0.7704639434814453 - val-topk/adv_intersection_chunk_1024_2048:-0.01367963943630457 - val-topk/student_p_sum_intersection_chunk_1024_2048:0.9992345571517944 - val-topk/teacher_p_sum_intersection_chunk_1024_2048:0.9983124732971191 - val-topk/max_student_p_intersection_chunk_1024_2048:0.8839085698127747 - val-topk/teacher_p_at_max_student_intersection_chunk_1024_2048:0.8138253688812256 - val-topk/adv_at_max_student_intersection_chunk_1024_2048:-0.13694074749946594 - val-topk/max_teacher_p_intersection_chunk_1024_2048:0.8539168834686279 - val-topk/student_p_at_max_teacher_intersection_chunk_1024_2048:0.838039755821228 - val-topk/adv_at_max_teacher_intersection_chunk_1024_2048:-0.017375919967889786 - val-extrema/max_adv_intersection_chunk_1024_2048:0.04044048860669136 - val-extrema/student_p_at_max_adv_intersection_chunk_1024_2048:0.19104298949241638 - val-extrema/teacher_p_at_max_adv_intersection_chunk_1024_2048:0.27341440320014954 - val-extrema/min_adv_intersection_chunk_1024_2048:-0.18683864176273346 - val-extrema/student_p_at_min_adv_intersection_chunk_1024_2048:0.6501441597938538 - val-extrema/teacher_p_at_min_adv_intersection_chunk_1024_2048:0.5523777008056641 - val-topk/adv_only_stu_chunk_1024_2048:-0.0009189170086756349 - val-topk/overlap_ratio_chunk_2048_3072:0.7723859548568726 - val-topk/adv_intersection_chunk_2048_3072:-0.012246869504451752 - val-topk/student_p_sum_intersection_chunk_2048_3072:0.9991702437400818 - val-topk/teacher_p_sum_intersection_chunk_2048_3072:0.9982748627662659 - val-topk/max_student_p_intersection_chunk_2048_3072:0.8878058791160583 - val-topk/teacher_p_at_max_student_intersection_chunk_2048_3072:0.8235411047935486 - val-topk/adv_at_max_student_intersection_chunk_2048_3072:-0.12366706132888794 - val-topk/max_teacher_p_intersection_chunk_2048_3072:0.8590911626815796 - val-topk/student_p_at_max_teacher_intersection_chunk_2048_3072:0.846676766872406 - val-topk/adv_at_max_teacher_intersection_chunk_2048_3072:-0.01747649721801281 - val-extrema/max_adv_intersection_chunk_2048_3072:0.03788794204592705 - val-extrema/student_p_at_max_adv_intersection_chunk_2048_3072:0.19208844006061554 - val-extrema/teacher_p_at_max_adv_intersection_chunk_2048_3072:0.2677624225616455 - val-extrema/min_adv_intersection_chunk_2048_3072:-0.16995419561862946 - val-extrema/student_p_at_min_adv_intersection_chunk_2048_3072:0.6400368213653564 - val-extrema/teacher_p_at_min_adv_intersection_chunk_2048_3072:0.5493566393852234 - val-topk/adv_only_stu_chunk_2048_3072:-0.0010338580468669534 - val-topk/overlap_ratio_chunk_3072_4096:0.7756417989730835 - val-topk/adv_intersection_chunk_3072_4096:-0.011566517874598503 - val-topk/student_p_sum_intersection_chunk_3072_4096:0.9992000460624695 - val-topk/teacher_p_sum_intersection_chunk_3072_4096:0.9981843829154968 - val-topk/max_student_p_intersection_chunk_3072_4096:0.8843452334403992 - val-topk/teacher_p_at_max_student_intersection_chunk_3072_4096:0.8221521973609924 - val-topk/adv_at_max_student_intersection_chunk_3072_4096:-0.11616333574056625 - val-topk/max_teacher_p_intersection_chunk_3072_4096:0.8561912775039673 - val-topk/student_p_at_max_teacher_intersection_chunk_3072_4096:0.8457418084144592 - val-topk/adv_at_max_teacher_intersection_chunk_3072_4096:-0.01749655231833458 - val-extrema/max_adv_intersection_chunk_3072_4096:0.037923991680145264 - val-extrema/student_p_at_max_adv_intersection_chunk_3072_4096:0.2005956619977951 - val-extrema/teacher_p_at_max_adv_intersection_chunk_3072_4096:0.27460920810699463 - val-extrema/min_adv_intersection_chunk_3072_4096:-0.1615997850894928 - val-extrema/student_p_at_min_adv_intersection_chunk_3072_4096:0.6305331587791443 - val-extrema/teacher_p_at_min_adv_intersection_chunk_3072_4096:0.5423778891563416 - val-topk/adv_only_stu_chunk_3072_4096:-0.0008069921168498695 - val-topk/overlap_ratio_chunk_4096_5120:0.7764687538146973 - val-topk/adv_intersection_chunk_4096_5120:-0.011042908765375614 - val-topk/student_p_sum_intersection_chunk_4096_5120:0.999072253704071 - val-topk/teacher_p_sum_intersection_chunk_4096_5120:0.9982193112373352 - val-topk/max_student_p_intersection_chunk_4096_5120:0.8804688453674316 - val-topk/teacher_p_at_max_student_intersection_chunk_4096_5120:0.8200325965881348 - val-topk/adv_at_max_student_intersection_chunk_4096_5120:-0.11024373024702072 - val-topk/max_teacher_p_intersection_chunk_4096_5120:0.8524618148803711 - val-topk/student_p_at_max_teacher_intersection_chunk_4096_5120:0.8433722257614136 - val-topk/adv_at_max_teacher_intersection_chunk_4096_5120:-0.017506081610918045 - val-extrema/max_adv_intersection_chunk_4096_5120:0.03819086775183678 - val-extrema/student_p_at_max_adv_intersection_chunk_4096_5120:0.20547685027122498 - val-extrema/teacher_p_at_max_adv_intersection_chunk_4096_5120:0.278636634349823 - val-extrema/min_adv_intersection_chunk_4096_5120:-0.15651260316371918 - val-extrema/student_p_at_min_adv_intersection_chunk_4096_5120:0.6247692704200745 - val-extrema/teacher_p_at_min_adv_intersection_chunk_4096_5120:0.5374075770378113 - val-topk/adv_only_stu_chunk_4096_5120:-0.0010248966282233596 - val-topk/overlap_ratio_chunk_5120_6144:0.7752501964569092 - val-topk/adv_intersection_chunk_5120_6144:-0.01108701154589653 - val-topk/student_p_sum_intersection_chunk_5120_6144:0.9988743662834167 - val-topk/teacher_p_sum_intersection_chunk_5120_6144:0.9978074431419373 - val-topk/max_student_p_intersection_chunk_5120_6144:0.8781326413154602 - val-topk/teacher_p_at_max_student_intersection_chunk_5120_6144:0.8183714151382446 - val-topk/adv_at_max_student_intersection_chunk_5120_6144:-0.11044994741678238 - val-topk/max_teacher_p_intersection_chunk_5120_6144:0.8509047627449036 - val-topk/student_p_at_max_teacher_intersection_chunk_5120_6144:0.8414909243583679 - val-topk/adv_at_max_teacher_intersection_chunk_5120_6144:-0.016943437978625298 - val-extrema/max_adv_intersection_chunk_5120_6144:0.03845968097448349 - val-extrema/student_p_at_max_adv_intersection_chunk_5120_6144:0.2136530727148056 - val-extrema/teacher_p_at_max_adv_intersection_chunk_5120_6144:0.2865051031112671 - val-extrema/min_adv_intersection_chunk_5120_6144:-0.1566944569349289 - val-extrema/student_p_at_min_adv_intersection_chunk_5120_6144:0.6207068562507629 - val-extrema/teacher_p_at_min_adv_intersection_chunk_5120_6144:0.533614993095398 - val-topk/adv_only_stu_chunk_5120_6144:-0.0011734028812497854 - val-topk/overlap_ratio_chunk_6144_7168:0.7757043838500977 - val-topk/adv_intersection_chunk_6144_7168:-0.010396423749625683 - val-topk/student_p_sum_intersection_chunk_6144_7168:0.9989220499992371 - val-topk/teacher_p_sum_intersection_chunk_6144_7168:0.9979648590087891 - val-topk/max_student_p_intersection_chunk_6144_7168:0.881610095500946 - val-topk/teacher_p_at_max_student_intersection_chunk_6144_7168:0.8242765069007874 - val-topk/adv_at_max_student_intersection_chunk_6144_7168:-0.10376293957233429 - val-topk/max_teacher_p_intersection_chunk_6144_7168:0.8552209138870239 - val-topk/student_p_at_max_teacher_intersection_chunk_6144_7168:0.8463168144226074 - val-topk/adv_at_max_teacher_intersection_chunk_6144_7168:-0.01637325808405876 - val-extrema/max_adv_intersection_chunk_6144_7168:0.03745470568537712 - val-extrema/student_p_at_max_adv_intersection_chunk_6144_7168:0.2160140424966812 - val-extrema/teacher_p_at_max_adv_intersection_chunk_6144_7168:0.2866717576980591 - val-extrema/min_adv_intersection_chunk_6144_7168:-0.14836008846759796 - val-extrema/student_p_at_min_adv_intersection_chunk_6144_7168:0.6170254945755005 - val-extrema/teacher_p_at_min_adv_intersection_chunk_6144_7168:0.5333420634269714 - val-topk/adv_only_stu_chunk_6144_7168:-0.0009839123813435435 - actor/pg_clipfrac:np.float64(0.0) - actor/ppo_kl:np.float64(0.0) - actor/pg_clipfrac_lower:np.float64(0.0) - actor/pg_loss:np.float64(0.023095106406669532) - actor/grad_norm:np.float64(2.216254472732544) - perf/mfu/actor:np.float64(0.33249856093230507) - perf/max_memory_allocated_gb:np.float64(127.83860778808594) - perf/max_memory_reserved_gb:np.float64(138.59765625) - perf/cpu_memory_used_gb:np.float64(194.8313217163086) - actor/lr:np.float64(1e-06) - training/global_step:4 - training/epoch:0 - critic/score/mean:-0.15013115108013153 - critic/score/max:3.972123067796929e-06 - critic/score/min:-20.473772048950195 - critic/rewards/mean:-0.15013115108013153 - critic/rewards/max:3.972123067796929e-06 - critic/rewards/min:-20.473772048950195 - critic/true_reward/mean:0.203125 - critic/true_reward/max:1.0 - critic/true_reward/min:0.0 - critic/advantages/max:0.3719511926174164 - critic/advantages/min:-20.78310203552246 - critic/advantages/mean_sum_over_k:-0.16163669526576996 - critic/advantages/mean_overall:-0.01024826429784298 - critic/advantages/std:0.1290798932313919 - critic/advantages/abs_mean:0.01626349613070488 - critic/advantages/extreme_count:1078 - critic/advantages/abs_max:20.78310203552246 - critic/advantages/mean_first_2k:-0.01447237003594637 - critic/advantages/mean_first_4k:-0.012362715788185596 - critic/advantages/mean_first_6k:-0.011371256783604622 - critic/returns/max:0.3719511926174164 - critic/returns/min:-20.78310203552246 - critic/returns/mean:-0.01024826429784298 - response_length/mean:6656.21875 - response_length/max:7168.0 - response_length/min:2721.0 - response_length/clip_ratio:0.7421875 - response_length_non_aborted/mean:6656.21875 - response_length_non_aborted/max:7168.0 - response_length_non_aborted/min:2721.0 - response_length_non_aborted/clip_ratio:0.7421875 - response/aborted_ratio:0.0 - prompt_length/mean:157.375 - prompt_length/max:269.0 - prompt_length/min:85.0 - prompt_length/clip_ratio:0.0 - timing_s/start_profile:6.71250163577497e-05 - timing_s/generate_sequences:158.37001037597656 - timing_s/generation_timing/max:172.53167724609375 - timing_s/generation_timing/min:150.77931213378906 - timing_s/generation_timing/topk_ratio:0.25 - timing_s/gen:178.1317812979687 - timing_s/compute_log_prob:10.495742068975233 - timing_s/compute_rm_score:20.029033803963102 - timing_s/compute_distillation_reward:0.6917635450372472 - timing_s/reward:31.46906117699109 - timing_s/adv:2.0125386159634218 - timing_s/update_actor:36.2349966270267 - timing_s/step:247.90172521397471 - timing_s/stop_profile:0.0001043090014718473 - timing_per_token_ms/update_actor:0.041547224788482016 - timing_per_token_ms/gen:0.2090758422550912 - timing_per_token_ms/adv:0.0023075866443041503 - perf/total_num_tokens:872140 - perf/time_per_step:247.90172521397471 - perf/throughput:879.5219146288899
+[36m(WorkerDict pid=185462)[0m on_policy[32m [repeated 7x across cluster][0m
+[36m(WorkerDict pid=185462)[0m Advantages shape: torch.Size([4, 7168, 16])[32m [repeated 7x across cluster][0m
+[36m(TaskRunner pid=185127)[0m First forward, get student top k ids and log probs
+[36m(WorkerDict pid=185461)[0m In compute_log_prob, top_k: 16
+[36m(TaskRunner pid=185127)[0m Now we are using rm_scores!
+[36m(TaskRunner pid=185127)[0m True reward score has been added to reward_extra_info!
+[36m(TaskRunner pid=185127)[0m We don't need to re-merge old_log_probs, it's already there.
+[36m(WorkerDict pid=185462)[0m In compute_log_prob, top_k: 16[32m [repeated 3x across cluster][0m
+[36m(WorkerDict pid=185461)[0m on_policy
+[36m(WorkerDict pid=185461)[0m Advantages shape: torch.Size([4, 7168, 16])
+[36m(WorkerDict pid=185461)[0m on_policy[32m [repeated 4x across cluster][0m
+[36m(WorkerDict pid=185461)[0m Advantages shape: torch.Size([5, 7168, 16])[32m [repeated 4x across cluster][0m
+[36m(WorkerDict pid=185461)[0m on_policy[32m [repeated 8x across cluster][0m
+[36m(WorkerDict pid=185461)[0m Advantages shape: torch.Size([5, 7168, 16])[32m [repeated 8x across cluster][0m
+[36m(WorkerDict pid=185461)[0m on_policy[32m [repeated 8x across cluster][0m
+[36m(WorkerDict pid=185461)[0m Advantages shape: torch.Size([5, 7168, 16])[32m [repeated 8x across cluster][0m
+[36m(TaskRunner pid=185127)[0m Training Progress:   1%|          | 5/559 [20:49<38:06:45, 247.66s/it]
+[36m(TaskRunner pid=185127)[0m step:5 - actor/entropy:0.3042784631252289 - teacher/entropy:0.38129812479019165 - training/rollout_probs_diff_valid:1 - training/rollout_probs_diff_max:0.48481354117393494 - training/rollout_probs_diff_mean:0.006376182660460472 - training/rollout_probs_diff_std:0.01480010524392128 - training/rollout_actor_probs_pearson_corr:0.9979982376098633 - val-topk/overlap_ratio:0.7699341177940369 - val-topk/adv_intersection:-0.012417353689670563 - val-topk/student_p_sum_intersection:0.9989943504333496 - val-topk/teacher_p_sum_intersection:0.9979870915412903 - val-topk/max_student_p_intersection:0.8861744403839111 - val-topk/teacher_p_at_max_student_intersection:0.8232080936431885 - val-topk/adv_at_max_student_intersection:-0.12310270220041275 - val-topk/max_teacher_p_intersection:0.859372615814209 - val-topk/student_p_at_max_teacher_intersection:0.8453443646430969 - val-topk/adv_at_max_teacher_intersection:-0.01571805775165558 - val-extrema/max_adv_intersection:0.03821265324950218 - val-extrema/student_p_at_max_adv_intersection:0.21878840029239655 - val-extrema/teacher_p_at_max_adv_intersection:0.2946775555610657 - val-extrema/min_adv_intersection:-0.17057767510414124 - val-extrema/student_p_at_min_adv_intersection:0.6033568382263184 - val-extrema/teacher_p_at_min_adv_intersection:0.5136303305625916 - val-topk/adv_only_stu:-0.0011296538868919015 - val-topk/overlap_ratio_chunk_0_1024:0.7479195594787598 - val-topk/adv_intersection_chunk_0_1024:-0.017076972872018814 - val-topk/student_p_sum_intersection_chunk_0_1024:0.9992329478263855 - val-topk/teacher_p_sum_intersection_chunk_0_1024:0.9985185861587524 - val-topk/max_student_p_intersection_chunk_0_1024:0.9037941694259644 - val-topk/teacher_p_at_max_student_intersection_chunk_0_1024:0.831823468208313 - val-topk/adv_at_max_student_intersection_chunk_0_1024:-0.16351845860481262 - val-topk/max_teacher_p_intersection_chunk_0_1024:0.8799394369125366 - val-topk/student_p_at_max_teacher_intersection_chunk_0_1024:0.8508592844009399 - val-topk/adv_at_max_teacher_intersection_chunk_0_1024:-0.010911945253610611 - val-extrema/max_adv_intersection_chunk_0_1024:0.03930382803082466 - val-extrema/student_p_at_max_adv_intersection_chunk_0_1024:0.23433296382427216 - val-extrema/teacher_p_at_max_adv_intersection_chunk_0_1024:0.3214288055896759 - val-extrema/min_adv_intersection_chunk_0_1024:-0.21871043741703033 - val-extrema/student_p_at_min_adv_intersection_chunk_0_1024:0.5598589777946472 - val-extrema/teacher_p_at_min_adv_intersection_chunk_0_1024:0.4598681628704071 - val-topk/adv_only_stu_chunk_0_1024:-0.0012905282201245427 - val-topk/overlap_ratio_chunk_1024_2048:0.7714652419090271 - val-topk/adv_intersection_chunk_1024_2048:-0.012632215395569801 - val-topk/student_p_sum_intersection_chunk_1024_2048:0.9991625547409058 - val-topk/teacher_p_sum_intersection_chunk_1024_2048:0.9982601404190063 - val-topk/max_student_p_intersection_chunk_1024_2048:0.8863667249679565 - val-topk/teacher_p_at_max_student_intersection_chunk_1024_2048:0.8219449520111084 - val-topk/adv_at_max_student_intersection_chunk_1024_2048:-0.12639838457107544 - val-topk/max_teacher_p_intersection_chunk_1024_2048:0.8592820763587952 - val-topk/student_p_at_max_teacher_intersection_chunk_1024_2048:0.8444294333457947 - val-topk/adv_at_max_teacher_intersection_chunk_1024_2048:-0.01551994401961565 - val-extrema/max_adv_intersection_chunk_1024_2048:0.039135102182626724 - val-extrema/student_p_at_max_adv_intersection_chunk_1024_2048:0.20872651040554047 - val-extrema/teacher_p_at_max_adv_intersection_chunk_1024_2048:0.2863171398639679 - val-extrema/min_adv_intersection_chunk_1024_2048:-0.17475251853466034 - val-extrema/student_p_at_min_adv_intersection_chunk_1024_2048:0.6168000102043152 - val-extrema/teacher_p_at_min_adv_intersection_chunk_1024_2048:0.5249180197715759 - val-topk/adv_only_stu_chunk_1024_2048:-0.001085162628442049 - val-topk/overlap_ratio_chunk_2048_3072:0.7732368111610413 - val-topk/adv_intersection_chunk_2048_3072:-0.012240326032042503 - val-topk/student_p_sum_intersection_chunk_2048_3072:0.9990112781524658 - val-topk/teacher_p_sum_intersection_chunk_2048_3072:0.9980213046073914 - val-topk/max_student_p_intersection_chunk_2048_3072:0.8840039968490601 - val-topk/teacher_p_at_max_student_intersection_chunk_2048_3072:0.8201056122779846 - val-topk/adv_at_max_student_intersection_chunk_2048_3072:-0.12278629839420319 - val-topk/max_teacher_p_intersection_chunk_2048_3072:0.8556510210037231 - val-topk/student_p_at_max_teacher_intersection_chunk_2048_3072:0.8434720635414124 - val-topk/adv_at_max_teacher_intersection_chunk_2048_3072:-0.017165131866931915 - val-extrema/max_adv_intersection_chunk_2048_3072:0.03863364830613136 - val-extrema/student_p_at_max_adv_intersection_chunk_2048_3072:0.210255965590477 - val-extrema/teacher_p_at_max_adv_intersection_chunk_2048_3072:0.28649452328681946 - val-extrema/min_adv_intersection_chunk_2048_3072:-0.16945722699165344 - val-extrema/student_p_at_min_adv_intersection_chunk_2048_3072:0.6128155589103699 - val-extrema/teacher_p_at_min_adv_intersection_chunk_2048_3072:0.5222147703170776 - val-topk/adv_only_stu_chunk_2048_3072:-0.0011819219216704369 - val-topk/overlap_ratio_chunk_3072_4096:0.7770969867706299 - val-topk/adv_intersection_chunk_3072_4096:-0.011264009401202202 - val-topk/student_p_sum_intersection_chunk_3072_4096:0.998978316783905 - val-topk/teacher_p_sum_intersection_chunk_3072_4096:0.9979248046875 - val-topk/max_student_p_intersection_chunk_3072_4096:0.8812962770462036 - val-topk/teacher_p_at_max_student_intersection_chunk_3072_4096:0.8208823800086975 - val-topk/adv_at_max_student_intersection_chunk_3072_4096:-0.11248872429132462 - val-topk/max_teacher_p_intersection_chunk_3072_4096:0.854030191898346 - val-topk/student_p_at_max_teacher_intersection_chunk_3072_4096:0.84396892786026 - val-topk/adv_at_max_teacher_intersection_chunk_3072_4096:-0.017152363434433937 - val-extrema/max_adv_intersection_chunk_3072_4096:0.03810429573059082 - val-extrema/student_p_at_max_adv_intersection_chunk_3072_4096:0.21947906911373138 - val-extrema/teacher_p_at_max_adv_intersection_chunk_3072_4096:0.292836993932724 - val-extrema/min_adv_intersection_chunk_3072_4096:-0.1585005521774292 - val-extrema/student_p_at_min_adv_intersection_chunk_3072_4096:0.6039235591888428 - val-extrema/teacher_p_at_min_adv_intersection_chunk_3072_4096:0.5170136094093323 - val-topk/adv_only_stu_chunk_3072_4096:-0.0010797025170177221 - val-topk/overlap_ratio_chunk_4096_5120:0.7755584716796875 - val-topk/adv_intersection_chunk_4096_5120:-0.010919936932623386 - val-topk/student_p_sum_intersection_chunk_4096_5120:0.9988648891448975 - val-topk/teacher_p_sum_intersection_chunk_4096_5120:0.997808575630188 - val-topk/max_student_p_intersection_chunk_4096_5120:0.8834609389305115 - val-topk/teacher_p_at_max_student_intersection_chunk_4096_5120:0.8246859312057495 - val-topk/adv_at_max_student_intersection_chunk_4096_5120:-0.10857021808624268 - val-topk/max_teacher_p_intersection_chunk_4096_5120:0.8571059107780457 - val-topk/student_p_at_max_teacher_intersection_chunk_4096_5120:0.8464490175247192 - val-topk/adv_at_max_teacher_intersection_chunk_4096_5120:-0.01594586670398712 - val-extrema/max_adv_intersection_chunk_4096_5120:0.037013713270425797 - val-extrema/student_p_at_max_adv_intersection_chunk_4096_5120:0.2208276093006134 - val-extrema/teacher_p_at_max_adv_intersection_chunk_4096_5120:0.2922370135784149 - val-extrema/min_adv_intersection_chunk_4096_5120:-0.15306586027145386 - val-extrema/student_p_at_min_adv_intersection_chunk_4096_5120:0.6069214344024658 - val-extrema/teacher_p_at_min_adv_intersection_chunk_4096_5120:0.5222434997558594 - val-topk/adv_only_stu_chunk_4096_5120:-0.0011022338876500726 - val-topk/overlap_ratio_chunk_5120_6144:0.7746450901031494 - val-topk/adv_intersection_chunk_5120_6144:-0.011027553118765354 - val-topk/student_p_sum_intersection_chunk_5120_6144:0.9987493753433228 - val-topk/teacher_p_sum_intersection_chunk_5120_6144:0.9976083636283875 - val-topk/max_student_p_intersection_chunk_5120_6144:0.8803374171257019 - val-topk/teacher_p_at_max_student_intersection_chunk_5120_6144:0.820660412311554 - val-topk/adv_at_max_student_intersection_chunk_5120_6144:-0.10949956625699997 - val-topk/max_teacher_p_intersection_chunk_5120_6144:0.8525428771972656 - val-topk/student_p_at_max_teacher_intersection_chunk_5120_6144:0.843821108341217 - val-topk/adv_at_max_teacher_intersection_chunk_5120_6144:-0.017535502091050148 - val-extrema/max_adv_intersection_chunk_5120_6144:0.03727703541517258 - val-extrema/student_p_at_max_adv_intersection_chunk_5120_6144:0.21715126931667328 - val-extrema/teacher_p_at_max_adv_intersection_chunk_5120_6144:0.2883903682231903 - val-extrema/min_adv_intersection_chunk_5120_6144:-0.15443788468837738 - val-extrema/student_p_at_min_adv_intersection_chunk_5120_6144:0.6126665472984314 - val-extrema/teacher_p_at_min_adv_intersection_chunk_5120_6144:0.5269822478294373 - val-topk/adv_only_stu_chunk_5120_6144:-0.0011905155843123794 - val-topk/overlap_ratio_chunk_6144_7168:0.773668646812439 - val-topk/adv_intersection_chunk_6144_7168:-0.010733594186604023 - val-topk/student_p_sum_intersection_chunk_6144_7168:0.9988342523574829 - val-topk/teacher_p_sum_intersection_chunk_6144_7168:0.9975048899650574 - val-topk/max_student_p_intersection_chunk_6144_7168:0.879600465297699 - val-topk/teacher_p_at_max_student_intersection_chunk_6144_7168:0.8209195137023926 - val-topk/adv_at_max_student_intersection_chunk_6144_7168:-0.10708815604448318 - val-topk/max_teacher_p_intersection_chunk_6144_7168:0.8522457480430603 - val-topk/student_p_at_max_teacher_intersection_chunk_6144_7168:0.8434345126152039 - val-topk/adv_at_max_teacher_intersection_chunk_6144_7168:-0.01680954545736313 - val-extrema/max_adv_intersection_chunk_6144_7168:0.03737042471766472 - val-extrema/student_p_at_max_adv_intersection_chunk_6144_7168:0.22097773849964142 - val-extrema/teacher_p_at_max_adv_intersection_chunk_6144_7168:0.29168933629989624 - val-extrema/min_adv_intersection_chunk_6144_7168:-0.1516239494085312 - val-extrema/student_p_at_min_adv_intersection_chunk_6144_7168:0.618004560470581 - val-extrema/teacher_p_at_min_adv_intersection_chunk_6144_7168:0.5330936312675476 - val-topk/adv_only_stu_chunk_6144_7168:-0.0009012699010781944 - actor/pg_clipfrac:np.float64(0.0) - actor/ppo_kl:np.float64(0.0) - actor/pg_clipfrac_lower:np.float64(0.0) - actor/pg_loss:np.float64(0.02245323474718524) - actor/grad_norm:np.float64(2.0663154125213623) - perf/mfu/actor:np.float64(0.3483564211531182) - perf/max_memory_allocated_gb:np.float64(127.83860778808594) - perf/max_memory_reserved_gb:np.float64(138.59765625) - perf/cpu_memory_used_gb:np.float64(198.75681686401367) - actor/lr:np.float64(1e-06) - training/global_step:5 - training/epoch:0 - critic/score/mean:-0.1382155865430832 - critic/score/max:1.932970008056145e-06 - critic/score/min:-25.874813079833984 - critic/rewards/mean:-0.1382155865430832 - critic/rewards/max:1.932970008056145e-06 - critic/rewards/min:-25.874813079833984 - critic/true_reward/mean:0.2890625 - critic/true_reward/max:1.0 - critic/true_reward/min:0.0 - critic/advantages/max:0.4438835382461548 - critic/advantages/min:-25.8748722076416 - critic/advantages/mean_sum_over_k:-0.1571270376443863 - critic/advantages/mean_overall:-0.00995948538184166 - critic/advantages/std:0.1266072690486908 - critic/advantages/abs_mean:0.015888145193457603 - critic/advantages/extreme_count:986 - critic/advantages/abs_max:25.8748722076416 - critic/advantages/mean_first_2k:-0.013184011913836002 - critic/advantages/mean_first_4k:-0.01166477706283331 - critic/advantages/mean_first_6k:-0.01092858612537384 - critic/returns/max:0.4438835382461548 - critic/returns/min:-25.8748722076416 - critic/returns/mean:-0.00995948538184166 - response_length/mean:6303.71875 - response_length/max:7168.0 - response_length/min:1993.0 - response_length/clip_ratio:0.6953125 - response_length_non_aborted/mean:6303.71875 - response_length_non_aborted/max:7168.0 - response_length_non_aborted/min:1993.0 - response_length_non_aborted/clip_ratio:0.6953125 - response/aborted_ratio:0.0 - prompt_length/mean:131.3125 - prompt_length/max:292.0 - prompt_length/min:85.0 - prompt_length/clip_ratio:0.0 - timing_s/start_profile:4.6674045734107494e-05 - timing_s/generate_sequences:153.55836486816406 - timing_s/generation_timing/max:172.17286682128906 - timing_s/generation_timing/min:136.90396118164062 - timing_s/generation_timing/topk_ratio:0.25 - timing_s/gen:179.14503757900093 - timing_s/compute_log_prob:9.84704247902846 - timing_s/compute_rm_score:19.137565591023304 - timing_s/compute_distillation_reward:0.7320251389755867 - timing_s/reward:29.967113011982292 - timing_s/adv:2.090940036054235 - timing_s/update_actor:32.52986199298175 - timing_s/step:243.77841293101665 - timing_s/stop_profile:8.734501898288727e-05 - timing_per_token_ms/update_actor:0.03949313328045919 - timing_per_token_ms/gen:0.2220230092095947 - timing_per_token_ms/adv:0.0025385220983462527 - perf/total_num_tokens:823684 - perf/time_per_step:243.77841293101665 - perf/throughput:844.7056387157243
+[36m(WorkerDict pid=185462)[0m on_policy[32m [repeated 7x across cluster][0m
+[36m(WorkerDict pid=185462)[0m Advantages shape: torch.Size([4, 7168, 16])[32m [repeated 7x across cluster][0m
+[36m(TaskRunner pid=185127)[0m First forward, get student top k ids and log probs
+[36m(WorkerDict pid=185461)[0m In compute_log_prob, top_k: 16
+[36m(TaskRunner pid=185127)[0m Now we are using rm_scores!
+[36m(TaskRunner pid=185127)[0m True reward score has been added to reward_extra_info!
+[36m(TaskRunner pid=185127)[0m We don't need to re-merge old_log_probs, it's already there.
+[36m(WorkerDict pid=185462)[0m In compute_log_prob, top_k: 16[32m [repeated 3x across cluster][0m
+[36m(WorkerDict pid=185463)[0m on_policy
+[36m(WorkerDict pid=185463)[0m Advantages shape: torch.Size([4, 7168, 16])
+[36m(WorkerDict pid=185461)[0m on_policy[32m [repeated 4x across cluster][0m
+[36m(WorkerDict pid=185461)[0m Advantages shape: torch.Size([4, 7168, 16])[32m [repeated 4x across cluster][0m
+[36m(WorkerDict pid=185461)[0m on_policy[32m [repeated 8x across cluster][0m
+[36m(WorkerDict pid=185461)[0m Advantages shape: torch.Size([5, 7168, 16])[32m [repeated 8x across cluster][0m
+[36m(WorkerDict pid=185461)[0m on_policy[32m [repeated 4x across cluster][0m
+[36m(WorkerDict pid=185461)[0m Advantages shape: torch.Size([5, 7168, 16])[32m [repeated 4x across cluster][0m
+[36m(WorkerDict pid=185461)[0m on_policy[32m [repeated 8x across cluster][0m
+[36m(WorkerDict pid=185461)[0m Advantages shape: torch.Size([4, 7168, 16])[32m [repeated 8x across cluster][0m
+[36m(TaskRunner pid=185127)[0m Training Progress:   1%|          | 6/559 [24:57<38:04:22, 247.85s/it]
+[36m(TaskRunner pid=185127)[0m step:6 - actor/entropy:0.2898884415626526 - teacher/entropy:0.3574512004852295 - training/rollout_probs_diff_valid:1 - training/rollout_probs_diff_max:0.35351407527923584 - training/rollout_probs_diff_mean:0.006136403884738684 - training/rollout_probs_diff_std:0.014589699916541576 - training/rollout_actor_probs_pearson_corr:0.9976497888565063 - val-topk/overlap_ratio:0.7700415849685669 - val-topk/adv_intersection:-0.011484050191938877 - val-topk/student_p_sum_intersection:0.9991570711135864 - val-topk/teacher_p_sum_intersection:0.9983074069023132 - val-topk/max_student_p_intersection:0.8912591934204102 - val-topk/teacher_p_at_max_student_intersection:0.8337148427963257 - val-topk/adv_at_max_student_intersection:-0.11299598962068558 - val-topk/max_teacher_p_intersection:0.8674308061599731 - val-topk/student_p_at_max_teacher_intersection:0.8538511395454407 - val-topk/adv_at_max_teacher_intersection:-0.013740823604166508 - val-extrema/max_adv_intersection:0.0365753099322319 - val-extrema/student_p_at_max_adv_intersection:0.22454231977462769 - val-extrema/teacher_p_at_max_adv_intersection:0.29603147506713867 - val-extrema/min_adv_intersection:-0.1588498055934906 - val-extrema/student_p_at_min_adv_intersection:0.5863756537437439 - val-extrema/teacher_p_at_min_adv_intersection:0.5027328133583069 - val-topk/adv_only_stu:-0.0009716139174997807 - val-topk/overlap_ratio_chunk_0_1024:0.746617317199707 - val-topk/adv_intersection_chunk_0_1024:-0.016272107139229774 - val-topk/student_p_sum_intersection_chunk_0_1024:0.9993250966072083 - val-topk/teacher_p_sum_intersection_chunk_0_1024:0.9986883997917175 - val-topk/max_student_p_intersection_chunk_0_1024:0.9065412282943726 - val-topk/teacher_p_at_max_student_intersection_chunk_0_1024:0.8392019867897034 - val-topk/adv_at_max_student_intersection_chunk_0_1024:-0.15376386046409607 - val-topk/max_teacher_p_intersection_chunk_0_1024:0.8850653171539307 - val-topk/student_p_at_max_teacher_intersection_chunk_0_1024:0.8567753434181213 - val-topk/adv_at_max_teacher_intersection_chunk_0_1024:-0.009210146963596344 - val-extrema/max_adv_intersection_chunk_0_1024:0.0382503867149353 - val-extrema/student_p_at_max_adv_intersection_chunk_0_1024:0.23807737231254578 - val-extrema/teacher_p_at_max_adv_intersection_chunk_0_1024:0.32116928696632385 - val-extrema/min_adv_intersection_chunk_0_1024:-0.2085093855857849 - val-extrema/student_p_at_min_adv_intersection_chunk_0_1024:0.5455200672149658 - val-extrema/teacher_p_at_min_adv_intersection_chunk_0_1024:0.450222909450531 - val-topk/adv_only_stu_chunk_0_1024:-0.0011607530759647489 - val-topk/overlap_ratio_chunk_1024_2048:0.7691612243652344 - val-topk/adv_intersection_chunk_1024_2048:-0.01249680295586586 - val-topk/student_p_sum_intersection_chunk_1024_2048:0.9992098808288574 - val-topk/teacher_p_sum_intersection_chunk_1024_2048:0.9983583092689514 - val-topk/max_student_p_intersection_chunk_1024_2048:0.8871204853057861 - val-topk/teacher_p_at_max_student_intersection_chunk_1024_2048:0.8251692056655884 - val-topk/adv_at_max_student_intersection_chunk_1024_2048:-0.12190863490104675 - val-topk/max_teacher_p_intersection_chunk_1024_2048:0.8617157936096191 - val-topk/student_p_at_max_teacher_intersection_chunk_1024_2048:0.8462469577789307 - val-topk/adv_at_max_teacher_intersection_chunk_1024_2048:-0.014204053208231926 - val-extrema/max_adv_intersection_chunk_1024_2048:0.03902605175971985 - val-extrema/student_p_at_max_adv_intersection_chunk_1024_2048:0.2146252542734146 - val-extrema/teacher_p_at_max_adv_intersection_chunk_1024_2048:0.29145461320877075 - val-extrema/min_adv_intersection_chunk_1024_2048:-0.17154769599437714 - val-extrema/student_p_at_min_adv_intersection_chunk_1024_2048:0.6000339388847351 - val-extrema/teacher_p_at_min_adv_intersection_chunk_1024_2048:0.5102000832557678 - val-topk/adv_only_stu_chunk_1024_2048:-0.0009684031829237938 - val-topk/overlap_ratio_chunk_2048_3072:0.7734161615371704 - val-topk/adv_intersection_chunk_2048_3072:-0.01088707335293293 - val-topk/student_p_sum_intersection_chunk_2048_3072:0.9992078542709351 - val-topk/teacher_p_sum_intersection_chunk_2048_3072:0.9984283447265625 - val-topk/max_student_p_intersection_chunk_2048_3072:0.8926445245742798 - val-topk/teacher_p_at_max_student_intersection_chunk_2048_3072:0.8363524079322815 - val-topk/adv_at_max_student_intersection_chunk_2048_3072:-0.10831677913665771 - val-topk/max_teacher_p_intersection_chunk_2048_3072:0.8686386346817017 - val-topk/student_p_at_max_teacher_intersection_chunk_2048_3072:0.8568865656852722 - val-topk/adv_at_max_teacher_intersection_chunk_2048_3072:-0.014385050162672997 - val-extrema/max_adv_intersection_chunk_2048_3072:0.03583504632115364 - val-extrema/student_p_at_max_adv_intersection_chunk_2048_3072:0.216104656457901 - val-extrema/teacher_p_at_max_adv_intersection_chunk_2048_3072:0.28586047887802124 - val-extrema/min_adv_intersection_chunk_2048_3072:-0.15193665027618408 - val-extrema/student_p_at_min_adv_intersection_chunk_2048_3072:0.5905238389968872 - val-extrema/teacher_p_at_min_adv_intersection_chunk_2048_3072:0.5090197324752808 - val-topk/adv_only_stu_chunk_2048_3072:-0.0010442950297147036 - val-topk/overlap_ratio_chunk_3072_4096:0.774633526802063 - val-topk/adv_intersection_chunk_3072_4096:-0.010618395172059536 - val-topk/student_p_sum_intersection_chunk_3072_4096:0.9991819858551025 - val-topk/teacher_p_sum_intersection_chunk_3072_4096:0.9983716011047363 - val-topk/max_student_p_intersection_chunk_3072_4096:0.8895548582077026 - val-topk/teacher_p_at_max_student_intersection_chunk_3072_4096:0.833530843257904 - val-topk/adv_at_max_student_intersection_chunk_3072_4096:-0.10653641074895859 - val-topk/max_teacher_p_intersection_chunk_3072_4096:0.8654601573944092 - val-topk/student_p_at_max_teacher_intersection_chunk_3072_4096:0.8542650938034058 - val-topk/adv_at_max_teacher_intersection_chunk_3072_4096:-0.014375146478414536 - val-extrema/max_adv_intersection_chunk_3072_4096:0.036285076290369034 - val-extrema/student_p_at_max_adv_intersection_chunk_3072_4096:0.2224401980638504 - val-extrema/teacher_p_at_max_adv_intersection_chunk_3072_4096:0.29188960790634155 - val-extrema/min_adv_intersection_chunk_3072_4096:-0.1500346064567566 - val-extrema/student_p_at_min_adv_intersection_chunk_3072_4096:0.5882520079612732 - val-extrema/teacher_p_at_min_adv_intersection_chunk_3072_4096:0.5068177580833435 - val-topk/adv_only_stu_chunk_3072_4096:-0.0009374619112350047 - val-topk/overlap_ratio_chunk_4096_5120:0.7774618864059448 - val-topk/adv_intersection_chunk_4096_5120:-0.010474635288119316 - val-topk/student_p_sum_intersection_chunk_4096_5120:0.999122679233551 - val-topk/teacher_p_sum_intersection_chunk_4096_5120:0.9982646107673645 - val-topk/max_student_p_intersection_chunk_4096_5120:0.8868855834007263 - val-topk/teacher_p_at_max_student_intersection_chunk_4096_5120:0.8311730623245239 - val-topk/adv_at_max_student_intersection_chunk_4096_5120:-0.10408271849155426 - val-topk/max_teacher_p_intersection_chunk_4096_5120:0.8621856570243835 - val-topk/student_p_at_max_teacher_intersection_chunk_4096_5120:0.8519171476364136 - val-topk/adv_at_max_teacher_intersection_chunk_4096_5120:-0.0149773508310318 - val-extrema/max_adv_intersection_chunk_4096_5120:0.036440521478652954 - val-extrema/student_p_at_max_adv_intersection_chunk_4096_5120:0.22298464179039001 - val-extrema/teacher_p_at_max_adv_intersection_chunk_4096_5120:0.2922578454017639 - val-extrema/min_adv_intersection_chunk_4096_5120:-0.14841486513614655 - val-extrema/student_p_at_min_adv_intersection_chunk_4096_5120:0.5917443037033081 - val-extrema/teacher_p_at_min_adv_intersection_chunk_4096_5120:0.510099470615387 - val-topk/adv_only_stu_chunk_4096_5120:-0.0009694027248769999 - val-topk/overlap_ratio_chunk_5120_6144:0.7764419317245483 - val-topk/adv_intersection_chunk_5120_6144:-0.009762158617377281 - val-topk/student_p_sum_intersection_chunk_5120_6144:0.9990695714950562 - val-topk/teacher_p_sum_intersection_chunk_5120_6144:0.9980242848396301 - val-topk/max_student_p_intersection_chunk_5120_6144:0.8856761455535889 - val-topk/teacher_p_at_max_student_intersection_chunk_5120_6144:0.8332392573356628 - val-topk/adv_at_max_student_intersection_chunk_5120_6144:-0.09651193767786026 - val-topk/max_teacher_p_intersection_chunk_5120_6144:0.8621404767036438 - val-topk/student_p_at_max_teacher_intersection_chunk_5120_6144:0.8534221053123474 - val-topk/adv_at_max_teacher_intersection_chunk_5120_6144:-0.014557814225554466 - val-extrema/max_adv_intersection_chunk_5120_6144:0.03554479777812958 - val-extrema/student_p_at_max_adv_intersection_chunk_5120_6144:0.22995221614837646 - val-extrema/teacher_p_at_max_adv_intersection_chunk_5120_6144:0.29626378417015076 - val-extrema/min_adv_intersection_chunk_5120_6144:-0.13981786370277405 - val-extrema/student_p_at_min_adv_intersection_chunk_5120_6144:0.5899840593338013 - val-extrema/teacher_p_at_min_adv_intersection_chunk_5120_6144:0.5118112564086914 - val-topk/adv_only_stu_chunk_5120_6144:-0.0007708344492129982 - val-topk/overlap_ratio_chunk_6144_7168:0.7746390700340271 - val-topk/adv_intersection_chunk_6144_7168:-0.009451485238969326 - val-topk/student_p_sum_intersection_chunk_6144_7168:0.9989344477653503 - val-topk/teacher_p_sum_intersection_chunk_6144_7168:0.9979212284088135 - val-topk/max_student_p_intersection_chunk_6144_7168:0.8890824317932129 - val-topk/teacher_p_at_max_student_intersection_chunk_6144_7168:0.8377686738967896 - val-topk/adv_at_max_student_intersection_chunk_6144_7168:-0.09419926255941391 - val-topk/max_teacher_p_intersection_chunk_6144_7168:0.8655070066452026 - val-topk/student_p_at_max_teacher_intersection_chunk_6144_7168:0.8579451441764832 - val-topk/adv_at_max_teacher_intersection_chunk_6144_7168:-0.014847485348582268 - val-extrema/max_adv_intersection_chunk_6144_7168:0.03411379083991051 - val-extrema/student_p_at_max_adv_intersection_chunk_6144_7168:0.2287200391292572 - val-extrema/teacher_p_at_max_adv_intersection_chunk_6144_7168:0.29238361120224 - val-extrema/min_adv_intersection_chunk_6144_7168:-0.1347196400165558 - val-extrema/student_p_at_min_adv_intersection_chunk_6144_7168:0.6019170880317688 - val-extrema/teacher_p_at_min_adv_intersection_chunk_6144_7168:0.526428759098053 - val-topk/adv_only_stu_chunk_6144_7168:-0.0008882156107574701 - actor/pg_clipfrac:np.float64(0.0) - actor/ppo_kl:np.float64(0.0) - actor/pg_clipfrac_lower:np.float64(0.0) - actor/pg_loss:np.float64(0.020732663114488657) - actor/grad_norm:np.float64(1.8302903175354004) - perf/mfu/actor:np.float64(0.33339349356114845) - perf/max_memory_allocated_gb:np.float64(127.83860778808594) - perf/max_memory_reserved_gb:np.float64(138.59765625) - perf/cpu_memory_used_gb:np.float64(199.9057960510254) - actor/lr:np.float64(1e-06) - training/global_step:6 - training/epoch:0 - critic/score/mean:-0.13747070729732513 - critic/score/max:1.945868461916689e-06 - critic/score/min:-27.394914627075195 - critic/rewards/mean:-0.13747070729732513 - critic/rewards/max:1.945868461916689e-06 - critic/rewards/min:-27.394914627075195 - critic/true_reward/mean:0.1796875 - critic/true_reward/max:1.0 - critic/true_reward/min:0.0 - critic/advantages/max:0.36795198917388916 - critic/advantages/min:-24.701801300048828 - critic/advantages/mean_sum_over_k:-0.1450660228729248 - critic/advantages/mean_overall:-0.009211773052811623 - critic/advantages/std:0.12326260656118393 - critic/advantages/abs_mean:0.014868964441120625 - critic/advantages/extreme_count:1017 - critic/advantages/abs_max:24.701801300048828 - critic/advantages/mean_first_2k:-0.012726420536637306 - critic/advantages/mean_first_4k:-0.01104146521538496 - critic/advantages/mean_first_6k:-0.010239832103252411 - critic/returns/max:0.36795198917388916 - critic/returns/min:-24.701801300048828 - critic/returns/mean:-0.009211773052811623 - response_length/mean:6791.4375 - response_length/max:7168.0 - response_length/min:2986.0 - response_length/clip_ratio:0.7890625 - response_length_non_aborted/mean:6791.4375 - response_length_non_aborted/max:7168.0 - response_length_non_aborted/min:2986.0 - response_length_non_aborted/clip_ratio:0.7890625 - response/aborted_ratio:0.0 - prompt_length/mean:128.9375 - prompt_length/max:247.0 - prompt_length/min:93.0 - prompt_length/clip_ratio:0.0 - timing_s/start_profile:0.00010610203025862575 - timing_s/generate_sequences:162.6497802734375 - timing_s/generation_timing/max:170.95664978027344 - timing_s/generation_timing/min:157.7663116455078 - timing_s/generation_timing/topk_ratio:0.25 - timing_s/gen:176.6962660640129 - timing_s/compute_log_prob:10.783383411995601 - timing_s/compute_rm_score:20.351951926015317 - timing_s/compute_distillation_reward:0.6877843900001608 - timing_s/reward:32.07110553601524 - timing_s/adv:1.9654861679882742 - timing_s/update_actor:36.81021794502158 - timing_s/step:247.59442683501402 - timing_s/stop_profile:0.00010499003110453486 - timing_per_token_ms/update_actor:0.04155552664349563 - timing_per_token_ms/gen:0.20326176580806357 - timing_per_token_ms/adv:0.0022188625164688896 - perf/total_num_tokens:885808 - perf/time_per_step:247.59442683501402 - perf/throughput:894.414316310786
+[36m(TaskRunner pid=185127)[0m First forward, get student top k ids and log probs
+[36m(WorkerDict pid=185462)[0m on_policy[32m [repeated 3x across cluster][0m
+[36m(WorkerDict pid=185462)[0m Advantages shape: torch.Size([4, 7168, 16])[32m [repeated 3x across cluster][0m
+[36m(WorkerDict pid=185461)[0m In compute_log_prob, top_k: 16
+[36m(TaskRunner pid=185127)[0m Now we are using rm_scores!
+[36m(TaskRunner pid=185127)[0m True reward score has been added to reward_extra_info!
+[36m(TaskRunner pid=185127)[0m We don't need to re-merge old_log_probs, it's already there.
+[36m(WorkerDict pid=185462)[0m In compute_log_prob, top_k: 16[32m [repeated 3x across cluster][0m
+[36m(WorkerDict pid=185461)[0m on_policy
+[36m(WorkerDict pid=185461)[0m Advantages shape: torch.Size([4, 7168, 16])
+[36m(WorkerDict pid=185461)[0m on_policy[32m [repeated 4x across cluster][0m
+[36m(WorkerDict pid=185461)[0m Advantages shape: torch.Size([4, 7168, 16])[32m [repeated 4x across cluster][0m
+[36m(WorkerDict pid=185461)[0m on_policy[32m [repeated 8x across cluster][0m
+[36m(WorkerDict pid=185461)[0m Advantages shape: torch.Size([5, 7168, 16])[32m [repeated 8x across cluster][0m
+[36m(WorkerDict pid=185461)[0m on_policy[32m [repeated 4x across cluster][0m
+[36m(WorkerDict pid=185461)[0m Advantages shape: torch.Size([5, 7168, 16])[32m [repeated 4x across cluster][0m
+[36m(WorkerDict pid=185461)[0m on_policy[32m [repeated 4x across cluster][0m
+[36m(WorkerDict pid=185461)[0m Advantages shape: torch.Size([5, 7168, 16])[32m [repeated 4x across cluster][0m
+[36m(TaskRunner pid=185127)[0m Training Progress:   1%|▏         | 7/559 [29:08<38:08:35, 248.76s/it]
+[36m(TaskRunner pid=185127)[0m step:7 - actor/entropy:0.30415788292884827 - teacher/entropy:0.3779009282588959 - training/rollout_probs_diff_valid:1 - training/rollout_probs_diff_max:0.8049383759498596 - training/rollout_probs_diff_mean:0.006388598587363958 - training/rollout_probs_diff_std:0.014882396906614304 - training/rollout_actor_probs_pearson_corr:0.9981446862220764 - val-topk/overlap_ratio:0.7733249068260193 - val-topk/adv_intersection:-0.012218118645250797 - val-topk/student_p_sum_intersection:0.9990390539169312 - val-topk/teacher_p_sum_intersection:0.9981133937835693 - val-topk/max_student_p_intersection:0.8860841393470764 - val-topk/teacher_p_at_max_student_intersection:0.8244874477386475 - val-topk/adv_at_max_student_intersection:-0.12108547240495682 - val-topk/max_teacher_p_intersection:0.8602827787399292 - val-topk/student_p_at_max_teacher_intersection:0.8459984064102173 - val-topk/adv_at_max_teacher_intersection:-0.014930582605302334 - val-extrema/max_adv_intersection:0.03811095282435417 - val-extrema/student_p_at_max_adv_intersection:0.21947237849235535 - val-extrema/teacher_p_at_max_adv_intersection:0.29463082551956177 - val-extrema/min_adv_intersection:-0.168903648853302 - val-extrema/student_p_at_min_adv_intersection:0.5967243909835815 - val-extrema/teacher_p_at_min_adv_intersection:0.5081221461296082 - val-topk/adv_only_stu:-0.0011051815235987306 - val-topk/overlap_ratio_chunk_0_1024:0.7478094100952148 - val-topk/adv_intersection_chunk_0_1024:-0.017629200592637062 - val-topk/student_p_sum_intersection_chunk_0_1024:0.9991550445556641 - val-topk/teacher_p_sum_intersection_chunk_0_1024:0.9983763694763184 - val-topk/max_student_p_intersection_chunk_0_1024:0.9012143015861511 - val-topk/teacher_p_at_max_student_intersection_chunk_0_1024:0.8269919753074646 - val-topk/adv_at_max_student_intersection_chunk_0_1024:-0.16944245994091034 - val-topk/max_teacher_p_intersection_chunk_0_1024:0.8754948377609253 - val-topk/student_p_at_max_teacher_intersection_chunk_0_1024:0.8472524285316467 - val-topk/adv_at_max_teacher_intersection_chunk_0_1024:-0.012564423494040966 - val-extrema/max_adv_intersection_chunk_0_1024:0.03986535966396332 - val-extrema/student_p_at_max_adv_intersection_chunk_0_1024:0.22741207480430603 - val-extrema/teacher_p_at_max_adv_intersection_chunk_0_1024:0.31559738516807556 - val-extrema/min_adv_intersection_chunk_0_1024:-0.22641906142234802 - val-extrema/student_p_at_min_adv_intersection_chunk_0_1024:0.5701580047607422 - val-extrema/teacher_p_at_min_adv_intersection_chunk_0_1024:0.46700432896614075 - val-topk/adv_only_stu_chunk_0_1024:-0.0014351247809827328 - val-topk/overlap_ratio_chunk_1024_2048:0.7718119621276855 - val-topk/adv_intersection_chunk_1024_2048:-0.012953483499586582 - val-topk/student_p_sum_intersection_chunk_1024_2048:0.9990757703781128 - val-topk/teacher_p_sum_intersection_chunk_1024_2048:0.9980772137641907 - val-topk/max_student_p_intersection_chunk_1024_2048:0.8867126703262329 - val-topk/teacher_p_at_max_student_intersection_chunk_1024_2048:0.8212732076644897 - val-topk/adv_at_max_student_intersection_chunk_1024_2048:-0.12850549817085266 - val-topk/max_teacher_p_intersection_chunk_1024_2048:0.8591407537460327 - val-topk/student_p_at_max_teacher_intersection_chunk_1024_2048:0.8440935611724854 - val-topk/adv_at_max_teacher_intersection_chunk_1024_2048:-0.016011178493499756 - val-extrema/max_adv_intersection_chunk_1024_2048:0.03870563954114914 - val-extrema/student_p_at_max_adv_intersection_chunk_1024_2048:0.20520396530628204 - val-extrema/teacher_p_at_max_adv_intersection_chunk_1024_2048:0.28305840492248535 - val-extrema/min_adv_intersection_chunk_1024_2048:-0.1772078275680542 - val-extrema/student_p_at_min_adv_intersection_chunk_1024_2048:0.6133521199226379 - val-extrema/teacher_p_at_min_adv_intersection_chunk_1024_2048:0.5208551287651062 - val-topk/adv_only_stu_chunk_1024_2048:-0.0011779790511354804 - val-topk/overlap_ratio_chunk_2048_3072:0.7762556076049805 - val-topk/adv_intersection_chunk_2048_3072:-0.011989730410277843 - val-topk/student_p_sum_intersection_chunk_2048_3072:0.9991857409477234 - val-topk/teacher_p_sum_intersection_chunk_2048_3072:0.9982922077178955 - val-topk/max_student_p_intersection_chunk_2048_3072:0.887630820274353 - val-topk/teacher_p_at_max_student_intersection_chunk_2048_3072:0.8250007629394531 - val-topk/adv_at_max_student_intersection_chunk_2048_3072:-0.12043328583240509 - val-topk/max_teacher_p_intersection_chunk_2048_3072:0.8603843450546265 - val-topk/student_p_at_max_teacher_intersection_chunk_2048_3072:0.8474485874176025 - val-topk/adv_at_max_teacher_intersection_chunk_2048_3072:-0.016273947432637215 - val-extrema/max_adv_intersection_chunk_2048_3072:0.0379776805639267 - val-extrema/student_p_at_max_adv_intersection_chunk_2048_3072:0.20817281305789948 - val-extrema/teacher_p_at_max_adv_intersection_chunk_2048_3072:0.2834160625934601 - val-extrema/min_adv_intersection_chunk_2048_3072:-0.166848823428154 - val-extrema/student_p_at_min_adv_intersection_chunk_2048_3072:0.6077104806900024 - val-extrema/teacher_p_at_min_adv_intersection_chunk_2048_3072:0.5186759233474731 - val-topk/adv_only_stu_chunk_2048_3072:-0.0010172006441280246 - val-topk/overlap_ratio_chunk_3072_4096:0.7791982889175415 - val-topk/adv_intersection_chunk_3072_4096:-0.011359501630067825 - val-topk/student_p_sum_intersection_chunk_3072_4096:0.9991748929023743 - val-topk/teacher_p_sum_intersection_chunk_3072_4096:0.9982896447181702 - val-topk/max_student_p_intersection_chunk_3072_4096:0.8846067786216736 - val-topk/teacher_p_at_max_student_intersection_chunk_3072_4096:0.8249680399894714 - val-topk/adv_at_max_student_intersection_chunk_3072_4096:-0.11426910012960434 - val-topk/max_teacher_p_intersection_chunk_3072_4096:0.8588286638259888 - val-topk/student_p_at_max_teacher_intersection_chunk_3072_4096:0.8470439314842224 - val-topk/adv_at_max_teacher_intersection_chunk_3072_4096:-0.015515169128775597 - val-extrema/max_adv_intersection_chunk_3072_4096:0.0378575474023819 - val-extrema/student_p_at_max_adv_intersection_chunk_3072_4096:0.2168123722076416 - val-extrema/teacher_p_at_max_adv_intersection_chunk_3072_4096:0.28991901874542236 - val-extrema/min_adv_intersection_chunk_3072_4096:-0.1601778119802475 - val-extrema/student_p_at_min_adv_intersection_chunk_3072_4096:0.6020868420600891 - val-extrema/teacher_p_at_min_adv_intersection_chunk_3072_4096:0.5158311128616333 - val-topk/adv_only_stu_chunk_3072_4096:-0.0009437751723453403 - val-topk/overlap_ratio_chunk_4096_5120:0.778778076171875 - val-topk/adv_intersection_chunk_4096_5120:-0.011087999679148197 - val-topk/student_p_sum_intersection_chunk_4096_5120:0.9989840388298035 - val-topk/teacher_p_sum_intersection_chunk_4096_5120:0.9979861378669739 - val-topk/max_student_p_intersection_chunk_4096_5120:0.8823481798171997 - val-topk/teacher_p_at_max_student_intersection_chunk_4096_5120:0.8241784572601318 - val-topk/adv_at_max_student_intersection_chunk_4096_5120:-0.10917302221059799 - val-topk/max_teacher_p_intersection_chunk_4096_5120:0.8573130369186401 - val-topk/student_p_at_max_teacher_intersection_chunk_4096_5120:0.8454164266586304 - val-topk/adv_at_max_teacher_intersection_chunk_4096_5120:-0.01469840295612812 - val-extrema/max_adv_intersection_chunk_4096_5120:0.037854257971048355 - val-extrema/student_p_at_max_adv_intersection_chunk_4096_5120:0.2208171933889389 - val-extrema/teacher_p_at_max_adv_intersection_chunk_4096_5120:0.2929885983467102 - val-extrema/min_adv_intersection_chunk_4096_5120:-0.15597350895404816 - val-extrema/student_p_at_min_adv_intersection_chunk_4096_5120:0.5986310839653015 - val-extrema/teacher_p_at_min_adv_intersection_chunk_4096_5120:0.5135798454284668 - val-topk/adv_only_stu_chunk_4096_5120:-0.0010018693283200264 - val-topk/overlap_ratio_chunk_5120_6144:0.7797488570213318 - val-topk/adv_intersection_chunk_5120_6144:-0.010348192416131496 - val-topk/student_p_sum_intersection_chunk_5120_6144:0.9988976716995239 - val-topk/teacher_p_sum_intersection_chunk_5120_6144:0.9978815317153931 - val-topk/max_student_p_intersection_chunk_5120_6144:0.8814296126365662 - val-topk/teacher_p_at_max_student_intersection_chunk_5120_6144:0.8260437250137329 - val-topk/adv_at_max_student_intersection_chunk_5120_6144:-0.10274393111467361 - val-topk/max_teacher_p_intersection_chunk_5120_6144:0.8567349910736084 - val-topk/student_p_at_max_teacher_intersection_chunk_5120_6144:0.8468092679977417 - val-topk/adv_at_max_teacher_intersection_chunk_5120_6144:-0.01475407276302576 - val-extrema/max_adv_intersection_chunk_5120_6144:0.03708892688155174 - val-extrema/student_p_at_max_adv_intersection_chunk_5120_6144:0.22656980156898499 - val-extrema/teacher_p_at_max_adv_intersection_chunk_5120_6144:0.2959803640842438 - val-extrema/min_adv_intersection_chunk_5120_6144:-0.14776469767093658 - val-extrema/student_p_at_min_adv_intersection_chunk_5120_6144:0.5951325297355652 - val-extrema/teacher_p_at_min_adv_intersection_chunk_5120_6144:0.513160765171051 - val-topk/adv_only_stu_chunk_5120_6144:-0.0009842765284702182 - val-topk/overlap_ratio_chunk_6144_7168:0.781446635723114 - val-topk/adv_intersection_chunk_6144_7168:-0.00990174151957035 - val-topk/student_p_sum_intersection_chunk_6144_7168:0.9987502694129944 - val-topk/teacher_p_sum_intersection_chunk_6144_7168:0.9978343844413757 - val-topk/max_student_p_intersection_chunk_6144_7168:0.8769227266311646 - val-topk/teacher_p_at_max_student_intersection_chunk_6144_7168:0.8228011131286621 - val-topk/adv_at_max_student_intersection_chunk_6144_7168:-0.09822037816047668 - val-topk/max_teacher_p_intersection_chunk_6144_7168:0.8526721000671387 - val-topk/student_p_at_max_teacher_intersection_chunk_6144_7168:0.8436235785484314 - val-topk/adv_at_max_teacher_intersection_chunk_6144_7168:-0.014644015580415726 - val-extrema/max_adv_intersection_chunk_6144_7168:0.03722922503948212 - val-extrema/student_p_at_max_adv_intersection_chunk_6144_7168:0.23382140696048737 - val-extrema/teacher_p_at_max_adv_intersection_chunk_6144_7168:0.3025857210159302 - val-extrema/min_adv_intersection_chunk_6144_7168:-0.14238011837005615 - val-extrema/student_p_at_min_adv_intersection_chunk_6144_7168:0.5888864994049072 - val-extrema/teacher_p_at_min_adv_intersection_chunk_6144_7168:0.5083168148994446 - val-topk/adv_only_stu_chunk_6144_7168:-0.0011178071144968271 - actor/pg_clipfrac:np.float64(0.0) - actor/ppo_kl:np.float64(0.0) - actor/pg_clipfrac_lower:np.float64(0.0) - actor/pg_loss:np.float64(0.022187271820647374) - actor/grad_norm:np.float64(2.028331995010376) - perf/mfu/actor:np.float64(0.33447722786127976) - perf/max_memory_allocated_gb:np.float64(129.2229871749878) - perf/max_memory_reserved_gb:np.float64(138.59765625) - perf/cpu_memory_used_gb:np.float64(201.2831974029541) - actor/lr:np.float64(1e-06) - training/global_step:7 - training/epoch:0 - critic/score/mean:-0.14980454742908478 - critic/score/max:1.9420281205384526e-06 - critic/score/min:-20.401729583740234 - critic/rewards/mean:-0.14980454742908478 - critic/rewards/max:1.9420281205384526e-06 - critic/rewards/min:-20.401729583740234 - critic/true_reward/mean:0.1640625 - critic/true_reward/max:1.0 - critic/true_reward/min:0.0 - critic/advantages/max:0.36865776777267456 - critic/advantages/min:-19.495479583740234 - critic/advantages/mean_sum_over_k:-0.1551854908466339 - critic/advantages/mean_overall:-0.009844118729233742 - critic/advantages/std:0.12717710435390472 - critic/advantages/abs_mean:0.015755927190184593 - critic/advantages/extreme_count:1068 - critic/advantages/abs_max:19.495479583740234 - critic/advantages/mean_first_2k:-0.013569317758083344 - critic/advantages/mean_first_4k:-0.011811921373009682 - critic/advantages/mean_first_6k:-0.010921846143901348 - critic/returns/max:0.36865776777267456 - critic/returns/min:-19.495479583740234 - critic/returns/mean:-0.009844118729233742 - response_length/mean:6918.578125 - response_length/max:7168.0 - response_length/min:3407.0 - response_length/clip_ratio:0.8125 - response_length_non_aborted/mean:6918.578125 - response_length_non_aborted/max:7168.0 - response_length_non_aborted/min:3407.0 - response_length_non_aborted/clip_ratio:0.8125 - response/aborted_ratio:0.0 - prompt_length/mean:141.84375 - prompt_length/max:287.0 - prompt_length/min:85.0 - prompt_length/clip_ratio:0.0 - timing_s/start_profile:0.0002708529937081039 - timing_s/generate_sequences:166.257080078125 - timing_s/generation_timing/max:171.15130615234375 - timing_s/generation_timing/min:160.58250427246094 - timing_s/generation_timing/topk_ratio:0.25 - timing_s/gen:177.77166582201608 - timing_s/compute_log_prob:11.05089733301429 - timing_s/compute_rm_score:20.61424074997194 - timing_s/compute_distillation_reward:0.6951722039957531 - timing_s/reward:32.60512165498221 - timing_s/adv:2.009443263988942 - timing_s/update_actor:37.58075189200463 - timing_s/step:250.02098986698547 - timing_s/stop_profile:4.8227026127278805e-05 - timing_per_token_ms/update_actor:0.041583864159149296 - timing_per_token_ms/gen:0.2007408334692326 - timing_per_token_ms/adv:0.002223489725946951 - perf/total_num_tokens:903734 - perf/time_per_step:250.02098986698547 - perf/throughput:903.6581293442589
+[36m(WorkerDict pid=185464)[0m on_policy[32m [repeated 7x across cluster][0m
+[36m(WorkerDict pid=185464)[0m Advantages shape: torch.Size([4, 7168, 16])[32m [repeated 7x across cluster][0m

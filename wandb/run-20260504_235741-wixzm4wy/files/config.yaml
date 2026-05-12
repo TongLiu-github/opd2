@@ -1,0 +1,757 @@
+'@algorithm':
+    value:
+        rollout_correction:
+            bypass_old_logprob_for_rollout: false
+            rollout_is: null
+            rollout_is_threshold: 2
+            rollout_rs: null
+            rollout_rs_threshold: null
+            rollout_rs_threshold_lower: null
+            rollout_token_veto_threshold: null
+            use_pure_rollout_correction: false
+_wandb:
+    value:
+        cli_version: 0.26.1
+        e:
+            lnlo7gqa9urkp0vrs8wvg94yztyvv43d:
+                args:
+                    - --node-ip-address=10.28.53.138
+                    - --node-manager-port=42099
+                    - --object-store-name=/tmp/ray/session_2026-05-04_23-54-34_028008_215042/sockets/plasma_store
+                    - --raylet-name=/tmp/ray/session_2026-05-04_23-54-34_028008_215042/sockets/raylet
+                    - --redis-address=None
+                    - --metrics-agent-port=0
+                    - --logging-rotate-bytes=536870912
+                    - --logging-rotate-backup-count=5
+                    - --runtime-env-agent-port=0
+                    - --gcs-address=10.28.53.138:6379
+                    - --session-name=session_2026-05-04_23-54-34_028008_215042
+                    - --temp-dir=/tmp/ray
+                    - --webui=
+                    - --cluster-id=f3a80fbc9f4a79bd1f25490f799011b13161bd661a483d89be1bb9b5
+                    - --worker-id=97d795711eab85865d1037e9110792a21b817179dfa88f9f9815c286
+                    - --worker-launch-time-ms=1777931697828
+                    - --node-id=0894897964921abec1b5452b9850421bfe6a85863fb5724653fbd1cf
+                    - --runtime-env-hash=-1218860227
+                cpu_count: 128
+                cpu_count_logical: 128
+                cudaVersion: "13.2"
+                disk:
+                    /:
+                        total: "951006986240"
+                        used: "14105579520"
+                email: pl03818948@gmail.com
+                executable: /home/atuin/v100dd/v100dd18/miniconda3/envs/opd/bin/python3.12
+                git:
+                    commit: 3a8db70663c753131f5096480515e4922041940b
+                    remote: https://github.com/thunlp/OPD.git
+                gpu: NVIDIA A40
+                gpu_count: 4
+                gpu_nvidia:
+                    - architecture: Ampere
+                      cudaCores: 10752
+                      memoryTotal: "51527024640"
+                      name: NVIDIA A40
+                      uuid: GPU-fcbee7cb-b398-cb65-c1e6-c7423645a0bc
+                    - architecture: Ampere
+                      cudaCores: 10752
+                      memoryTotal: "51527024640"
+                      name: NVIDIA A40
+                      uuid: GPU-1387cc54-ffea-e64e-fe2d-f6b3093073ec
+                    - architecture: Ampere
+                      cudaCores: 10752
+                      memoryTotal: "51527024640"
+                      name: NVIDIA A40
+                      uuid: GPU-284449d0-a42d-c4d4-53fb-d2490a75b776
+                    - architecture: Ampere
+                      cudaCores: 10752
+                      memoryTotal: "51527024640"
+                      name: NVIDIA A40
+                      uuid: GPU-da79d9aa-e97f-15ff-cefa-eee054b3fbd7
+                host: a0522.nhr.fau.de
+                memory:
+                    total: "540861190144"
+                os: Linux-4.18.0-553.120.2.el8.x86_64-x86_64-with-glibc2.28
+                program: /home/atuin/v100dd/v100dd18/miniconda3/envs/opd/lib/python3.12/site-packages/ray/_private/workers/default_worker.py
+                python: CPython 3.12.0
+                root: /home/atuin/v100dd/v100dd18/opd/OPD
+                slurm:
+                    cluster_name: alex
+                    conf: /var/tmp/slurmd_spool/conf-cache/slurm.conf
+                    cpu_bind: quiet,mask_cpu:0x0000000000000000FFFFFFFFFFFFFFFF
+                    cpu_bind_list: "0x0000000000000000FFFFFFFFFFFFFFFF"
+                    cpu_bind_type: 'mask_cpu:'
+                    cpu_bind_verbose: quiet
+                    cpus_on_node: "64"
+                    distribution: cyclic
+                    gpus_on_node: "4"
+                    gtids: "0"
+                    job_account: v100dd
+                    job_cpus_per_node: "64"
+                    job_end_time: "1777933461"
+                    job_gid: "80164"
+                    job_group: v100dd
+                    job_id: "3582789"
+                    job_name: bash
+                    job_nodelist: a0522
+                    job_partition: a40
+                    job_start_time: "1777926261"
+                    job_uid: "211372"
+                    job_user: v100dd18
+                    jobid: "3582789"
+                    launch_node_ipaddr: 10.28.52.21
+                    localid: "0"
+                    mpi_type: pmi2
+                    nnodes: "1"
+                    nodeid: "0"
+                    nodelist: a0522
+                    nprocs: "1"
+                    ntasks: "1"
+                    oom_kill_step: "0"
+                    prio_process: "0"
+                    procid: "0"
+                    pty_port: "44367"
+                    pty_win_col: "170"
+                    pty_win_row: "24"
+                    script_context: prolog_task
+                    srun_comm_host: 10.28.52.21
+                    srun_comm_port: "42547"
+                    step_gpus: 0,1,2,3
+                    step_id: "2"
+                    step_launcher_port: "42547"
+                    step_nodelist: a0522
+                    step_num_nodes: "1"
+                    step_num_tasks: "1"
+                    step_tasks_per_node: "1"
+                    stepid: "2"
+                    task_pid: "205454"
+                    tasks_per_node: "1"
+                    topology_addr: a0522
+                    topology_addr_pattern: node
+                    umask: "0022"
+                startedAt: "2026-05-04T21:57:41.760419Z"
+                writerId: lnlo7gqa9urkp0vrs8wvg94yztyvv43d
+        m: []
+        python_version: 3.12.0
+        t:
+            "1":
+                - 1
+                - 11
+                - 30
+                - 41
+                - 49
+                - 50
+                - 51
+                - 71
+                - 98
+            "2":
+                - 1
+                - 11
+                - 30
+                - 41
+                - 49
+                - 50
+                - 51
+                - 71
+                - 98
+            "3":
+                - 2
+                - 13
+                - 16
+            "4": 3.12.0
+            "5": 0.26.1
+            "6": 4.51.3
+            "12": 0.26.1
+            "13": linux-x86_64
+actor_rollout_ref:
+    value:
+        actor:
+            _target_: verl.workers.config.FSDPActorConfig
+            checkpoint:
+                _target_: verl.trainer.config.CheckpointConfig
+                async_save: false
+                load_contents:
+                    - model
+                    - optimizer
+                    - extra
+                save_contents:
+                    - model
+                    - optimizer
+                    - extra
+            clip_ratio: 0.2
+            clip_ratio_c: 3
+            clip_ratio_high: 0.2
+            clip_ratio_low: 0.2
+            entropy_checkpointing: false
+            entropy_coeff: 0
+            entropy_from_logits_with_chunking: false
+            freeze_vision_tower: false
+            fsdp_config:
+                _target_: verl.workers.config.FSDPEngineConfig
+                entropy_checkpointing: false
+                entropy_from_logits_with_chunking: false
+                forward_only: false
+                forward_prefetch: true
+                fsdp_size: -1
+                model_dtype: fp32
+                offload_policy: false
+                optimizer_offload: false
+                param_offload: false
+                reshard_after_forward: true
+                strategy: fsdp
+                ulysses_sequence_parallel_size: 1
+                use_orig_params: false
+                use_torch_compile: true
+                wrap_policy:
+                    min_num_params: 0
+            grad_clip: 1
+            kl_loss_coef: 0.001
+            kl_loss_type: low_var_kl
+            loss_agg_mode: token-mean
+            optim:
+                _target_: verl.workers.config.FSDPOptimizerConfig
+                betas:
+                    - 0.9
+                    - 0.999
+                clip_grad: 1
+                lr: 1e-06
+                lr_scheduler_type: constant
+                lr_warmup_steps: -1
+                lr_warmup_steps_ratio: 0
+                min_lr_ratio: 0
+                num_cycles: 0.5
+                optimizer: AdamW
+                optimizer_impl: torch.optim
+                override_optimizer_config: null
+                total_training_steps: 279
+                warmup_style: null
+                weight_decay: 0.01
+            policy_loss:
+                _target_: verl.workers.config.PolicyLossConfig
+                clip_cov_lb: 1
+                clip_cov_ratio: 0.0002
+                clip_cov_ub: 5
+                kl_cov_ratio: 0.0002
+                loss_mode: vanilla
+                ppo_kl_coef: 0.1
+            ppo_epochs: 1
+            ppo_max_token_len_per_gpu: 32768
+            ppo_micro_batch_size: null
+            ppo_micro_batch_size_per_gpu: 1
+            ppo_mini_batch_size: 64
+            profiler:
+                _target_: verl.utils.profiler.ProfilerConfig
+                all_ranks: false
+                enable: false
+                ranks: []
+                save_path: outputs/profile
+                tool: null
+                tool_config:
+                    npu:
+                        _target_: verl.utils.profiler.config.NPUToolConfig
+                        analysis: true
+                        contents: []
+                        discrete: false
+                        level: level1
+                    nsys:
+                        _target_: verl.utils.profiler.config.NsightToolConfig
+                        discrete: false
+                    torch:
+                        _target_: verl.utils.profiler.config.TorchProfilerToolConfig
+                        step_end: null
+                        step_start: 0
+                    torch_memory:
+                        _target_: verl.utils.profiler.config.TorchMemoryToolConfig
+                        stack_depth: 32
+                        trace_alloc_max_entries: 100000
+            shuffle: false
+            strategy: fsdp
+            ulysses_sequence_parallel_size: 1
+            use_dynamic_bsz: true
+            use_fused_kernels: false
+            use_kl_loss: false
+            use_remove_padding: true
+            use_torch_compile: true
+        hybrid_engine: true
+        model:
+            _target_: verl.workers.config.HFModelConfig
+            custom_chat_template: null
+            enable_activation_offload: true
+            enable_gradient_checkpointing: true
+            exclude_modules: null
+            external_lib: null
+            fused_kernel_options:
+                impl_backend: torch
+            hf_config_path: null
+            lora_adapter_path: null
+            lora_alpha: 16
+            lora_rank: 0
+            path: Qwen/Qwen3-1.7B
+            target_modules: all-linear
+            tokenizer_path: null
+            trust_remote_code: false
+            use_fused_kernels: false
+            use_liger: false
+            use_remove_padding: true
+            use_shm: false
+        nccl_timeout: 600
+        ref:
+            entropy_checkpointing: false
+            entropy_from_logits_with_chunking: false
+            fsdp_config:
+                _target_: verl.workers.config.FSDPEngineConfig
+                entropy_checkpointing: false
+                entropy_from_logits_with_chunking: false
+                forward_only: false
+                forward_prefetch: false
+                fsdp_size: -1
+                model_dtype: fp32
+                offload_policy: false
+                optimizer_offload: false
+                param_offload: true
+                reshard_after_forward: true
+                strategy: fsdp
+                ulysses_sequence_parallel_size: 1
+                use_orig_params: false
+                use_torch_compile: true
+                wrap_policy:
+                    min_num_params: 0
+            log_prob_max_token_len_per_gpu: 32768
+            log_prob_micro_batch_size: null
+            log_prob_micro_batch_size_per_gpu: 1
+            log_prob_use_dynamic_bsz: true
+            model: null
+            profiler:
+                _target_: verl.utils.profiler.ProfilerConfig
+                all_ranks: false
+                enable: false
+                ranks: []
+                save_path: outputs/profile
+                tool: null
+                tool_config:
+                    npu:
+                        _target_: verl.utils.profiler.config.NPUToolConfig
+                        analysis: true
+                        contents: []
+                        discrete: false
+                        level: level1
+                    nsys:
+                        _target_: verl.utils.profiler.config.NsightToolConfig
+                        discrete: false
+                    torch:
+                        _target_: verl.utils.profiler.config.TorchProfilerToolConfig
+                        step_end: null
+                        step_start: 0
+                    torch_memory:
+                        _target_: verl.utils.profiler.config.TorchMemoryToolConfig
+                        stack_depth: 32
+                        trace_alloc_max_entries: 100000
+            strategy: fsdp
+            ulysses_sequence_parallel_size: 1
+            use_torch_compile: true
+        rollout:
+            _target_: verl.workers.config.RolloutConfig
+            agent:
+                _target_: verl.workers.config.AgentLoopConfig
+                agent_loop_config_path: null
+                custom_async_server:
+                    _target_: verl.workers.config.CustomAsyncServerConfig
+                    name: null
+                    path: null
+                default_agent_loop: single_turn_agent
+                num_workers: 8
+            calculate_log_probs: true
+            cudagraph_capture_sizes: null
+            data_parallel_size: 1
+            disable_log_stats: true
+            do_sample: true
+            dtype: bfloat16
+            enable_chunked_prefill: true
+            enable_prefix_caching: true
+            enforce_eager: false
+            expert_parallel_size: 1
+            free_cache_engine: true
+            gpu_memory_utilization: 0.8
+            ignore_eos: false
+            layered_summon: false
+            load_format: dummy
+            log_prob_max_token_len_per_gpu: 32768
+            log_prob_micro_batch_size: null
+            log_prob_micro_batch_size_per_gpu: null
+            log_prob_top_k: 16
+            log_prob_use_dynamic_bsz: true
+            max_model_len: 32768
+            max_num_batched_tokens: 32768
+            max_num_seqs: 1024
+            mode: sync
+            multi_stage_wake_up: false
+            multi_turn:
+                _target_: verl.workers.config.MultiTurnConfig
+                enable: false
+                format: hermes
+                interaction_config_path: null
+                max_assistant_turns: null
+                max_parallel_calls: 1
+                max_tool_response_length: 256
+                max_user_turns: null
+                num_repeat_rollouts: null
+                tokenization_sanity_check_mode: strict
+                tool_config_path: null
+                tool_response_truncate_side: middle
+                use_inference_chat_template: false
+            "n": 4
+            name: vllm
+            over_sample_rate: 0
+            pipeline_model_parallel_size: 1
+            profiler:
+                _target_: verl.utils.profiler.ProfilerConfig
+                all_ranks: false
+                enable: false
+                ranks: []
+                save_path: outputs/profile
+                tool: null
+                tool_config:
+                    npu:
+                        _target_: verl.utils.profiler.config.NPUToolConfig
+                        analysis: true
+                        contents: []
+                        discrete: false
+                        level: level1
+                    nsys:
+                        _target_: verl.utils.profiler.config.NsightToolConfig
+                        discrete: false
+                    torch:
+                        _target_: verl.utils.profiler.config.TorchProfilerToolConfig
+                        step_end: null
+                        step_start: 0
+                    torch_memory:
+                        _target_: verl.utils.profiler.config.TorchMemoryToolConfig
+                        stack_depth: 32
+                        trace_alloc_max_entries: 100000
+            prompt_length: 1024
+            repetition_penalty: 1
+            response_length: 7168
+            reward_weight_mode: student_p
+            skip_dump_dir: /tmp/rollout_dump
+            skip_rollout: false
+            skip_tokenizer_init: true
+            teacher_temperature: 1
+            temperature: 1
+            tensor_model_parallel_size: 1
+            top_k: -1
+            top_k_strategy: only_stu
+            top_p: 1
+            trace:
+                _target_: verl.workers.config.TraceConfig
+                backend: null
+                token2text: false
+            update_weights_bucket_megabytes: 512
+            val_kwargs:
+                _target_: verl.workers.config.SamplingConfig
+                do_sample: true
+                max_tokens: 31744
+                "n": 16
+                temperature: 0.7
+                top_k: -1
+                top_p: 0.95
+algorithm:
+    value:
+        _target_: verl.trainer.config.AlgoConfig
+        adv_estimator: token_reward_direct
+        gamma: 1
+        grpo_outcome_weight: 1
+        kl_ctrl:
+            _target_: verl.trainer.config.KLControlConfig
+            horizon: 10000
+            kl_coef: 0.001
+            target_kl: 0.1
+            type: fixed
+        kl_penalty: kl
+        lam: 1
+        norm_adv_by_std_in_grpo: true
+        pf_ppo:
+            reweight_method: pow
+            weight_pow: 2
+        use_kl_in_reward: false
+        use_pf_ppo: false
+critic:
+    value:
+        _target_: verl.workers.config.FSDPCriticConfig
+        checkpoint:
+            _target_: verl.trainer.config.CheckpointConfig
+            async_save: false
+            load_contents:
+                - model
+                - optimizer
+                - extra
+            save_contents:
+                - model
+                - optimizer
+                - extra
+        cliprange_value: 0.5
+        enable: null
+        forward_max_token_len_per_gpu: 32768
+        forward_micro_batch_size: null
+        forward_micro_batch_size_per_gpu: null
+        grad_clip: 1
+        loss_agg_mode: token-mean
+        model:
+            _target_: verl.workers.config.FSDPCriticModelCfg
+            enable_activation_offload: false
+            enable_gradient_checkpointing: true
+            external_lib: null
+            fsdp_config:
+                _target_: verl.workers.config.FSDPEngineConfig
+                entropy_checkpointing: false
+                entropy_from_logits_with_chunking: false
+                forward_only: false
+                forward_prefetch: false
+                fsdp_size: -1
+                model_dtype: fp32
+                offload_policy: false
+                optimizer_offload: false
+                param_offload: false
+                reshard_after_forward: true
+                strategy: fsdp
+                ulysses_sequence_parallel_size: 1
+                use_orig_params: false
+                use_torch_compile: true
+                wrap_policy:
+                    min_num_params: 0
+            lora_alpha: 16
+            lora_rank: 0
+            path: ~/models/deepseek-llm-7b-chat
+            target_modules: all-linear
+            tokenizer_path: Qwen/Qwen3-1.7B
+            trust_remote_code: false
+            use_remove_padding: false
+            use_shm: false
+        optim:
+            _target_: verl.workers.config.FSDPOptimizerConfig
+            betas:
+                - 0.9
+                - 0.999
+            clip_grad: 1
+            lr: 1e-05
+            lr_scheduler_type: constant
+            lr_warmup_steps: -1
+            lr_warmup_steps_ratio: 0
+            min_lr_ratio: 0
+            num_cycles: 0.5
+            optimizer: AdamW
+            optimizer_impl: torch.optim
+            override_optimizer_config: null
+            total_training_steps: 279
+            warmup_style: null
+            weight_decay: 0.01
+        ppo_epochs: 1
+        ppo_max_token_len_per_gpu: 32768
+        ppo_micro_batch_size: null
+        ppo_micro_batch_size_per_gpu: null
+        ppo_mini_batch_size: 64
+        profiler:
+            _target_: verl.utils.profiler.ProfilerConfig
+            all_ranks: false
+            enable: false
+            ranks: []
+            save_path: outputs/profile
+            tool: null
+            tool_config:
+                npu:
+                    _target_: verl.utils.profiler.config.NPUToolConfig
+                    analysis: true
+                    contents: []
+                    discrete: false
+                    level: level1
+                nsys:
+                    _target_: verl.utils.profiler.config.NsightToolConfig
+                    discrete: false
+                torch:
+                    _target_: verl.utils.profiler.config.TorchProfilerToolConfig
+                    step_end: null
+                    step_start: 0
+                torch_memory:
+                    _target_: verl.utils.profiler.config.TorchMemoryToolConfig
+                    stack_depth: 32
+                    trace_alloc_max_entries: 100000
+        rollout_n: 4
+        shuffle: false
+        strategy: fsdp
+        ulysses_sequence_parallel_size: 1
+        use_dynamic_bsz: true
+custom_reward_function:
+    value:
+        name: reward_func
+        path: verl/verl/utils/reward_score/ttrl_math/__init__.py
+data:
+    value:
+        custom_cls:
+            name: null
+            path: null
+        datagen:
+            name: null
+            path: null
+        dataloader_num_workers: 8
+        filter_overlong_prompts: true
+        filter_overlong_prompts_workers: 1
+        image_key: images
+        image_patch_size: 14
+        max_prompt_length: 1024
+        max_response_length: 7168
+        prompt_key: prompt
+        return_full_prompt: false
+        return_multi_modal_inputs: true
+        return_raw_chat: true
+        return_raw_input_ids: false
+        reward_fn_key: data_source
+        sampler:
+            class_name: null
+            class_path: null
+        seed: null
+        shuffle: false
+        tokenizer: null
+        tool_config_path: null
+        train_batch_size: 64
+        train_files: /home/atuin/v100dd/v100dd18/opd/OPD/datasets/DAPO-MATH-17k.parquet
+        train_max_samples: -1
+        truncation: error
+        trust_remote_code: false
+        use_shm: false
+        val_batch_size: null
+        val_files:
+            - datasets/test_data/AIME25/test.parquet
+            - datasets/test_data/AMC23/test.parquet
+            - datasets/test_data/AIME24/test.parquet
+        val_max_samples: -1
+        validation_shuffle: false
+        video_key: videos
+global_profiler:
+    value:
+        _target_: verl.utils.profiler.ProfilerConfig
+        global_tool_config:
+            nsys:
+                _target_: verl.utils.profiler.config.NsightToolConfig
+                controller_nsight_options:
+                    cuda-graph-trace: graph
+                    cuda-memory-usage: "true"
+                    trace: cuda,nvtx,cublas,ucx
+                discrete: false
+                worker_nsight_options:
+                    capture-range: cudaProfilerApi
+                    capture-range-end: null
+                    cuda-graph-trace: graph
+                    cuda-memory-usage: "true"
+                    kill: none
+                    trace: cuda,nvtx,cublas,ucx
+            torch_memory:
+                context: all
+                stack_depth: 32
+                stacks: all
+                trace_alloc_max_entries: 100000
+        profile_continuous_steps: false
+        save_path: outputs/profile
+        steps: null
+        tool: null
+ray_kwargs:
+    value:
+        ray_init:
+            num_cpus: null
+        timeline_json_file: null
+reward_model:
+    value:
+        enable: true
+        enable_resource_pool: false
+        forward_max_token_len_per_gpu: 32768
+        launch_reward_fn_async: false
+        max_length: null
+        micro_batch_size: null
+        micro_batch_size_per_gpu: 24
+        model:
+            dtype: fp32
+            external_lib: null
+            fsdp_config:
+                _target_: verl.workers.config.FSDPEngineConfig
+                forward_prefetch: false
+                fsdp_size: -1
+                param_offload: false
+                reshard_after_forward: true
+                wrap_policy:
+                    min_num_params: 0
+            input_tokenizer: null
+            path: Qwen/Qwen3-4B
+            trust_remote_code: false
+            use_fused_kernels: false
+            use_remove_padding: true
+            use_shm: false
+        n_gpus_per_node: 0
+        nnodes: 0
+        profiler:
+            _target_: verl.utils.profiler.ProfilerConfig
+            all_ranks: false
+            enable: false
+            ranks: []
+            save_path: outputs/profile
+            tool: null
+            tool_config:
+                npu:
+                    _target_: verl.utils.profiler.config.NPUToolConfig
+                    analysis: true
+                    contents: []
+                    discrete: false
+                    level: level1
+                nsys:
+                    _target_: verl.utils.profiler.config.NsightToolConfig
+                    discrete: false
+                torch:
+                    _target_: verl.utils.profiler.config.TorchProfilerToolConfig
+                    step_end: null
+                    step_start: 0
+                torch_memory:
+                    _target_: verl.utils.profiler.config.TorchMemoryToolConfig
+                    stack_depth: 32
+                    trace_alloc_max_entries: 100000
+        reward_kwargs:
+            enable_format_reward: false
+        reward_manager: naive
+        sandbox_fusion:
+            max_concurrent: 64
+            memory_limit_mb: 1024
+            url: null
+        strategy: fsdp
+        ulysses_sequence_parallel_size: 1
+        use_dynamic_bsz: true
+trainer:
+    value:
+        balance_batch: true
+        critic_warmup: 0
+        default_hdfs_dir: null
+        default_local_dir: checkpoint/token_reward_direct_DAPO-Math-17k_Qwen3-1.7B_Qwen3-4B_7168-T_1.0-Tch_1.0-n_4-mbs_64-topk_16-topk_strategy_only_stu-rw_student_p-2026-05-04_23-54-32
+        del_local_ckpt_after_load: false
+        device: cuda
+        esi_redundant_time: 0
+        experiment_name: token_reward_direct_DAPO-Math-17k_Qwen3-1.7B_Qwen3-4B_7168-T_1.0-Tch_1.0-n_4-mbs_64-topk_16-topk_strategy_only_stu-rw_student_p-2026-05-04_23-54-32
+        is_plot: true
+        log_val_generations: 2
+        logger:
+            - console
+            - wandb
+        max_actor_ckpt_to_keep: null
+        max_critic_ckpt_to_keep: null
+        n_gpus_per_node: 4
+        nnodes: 1
+        project_name: OnPolicyDistillation
+        ray_wait_register_center_timeout: 300
+        resume_from_path: null
+        resume_mode: auto
+        rollout_data_dir: null
+        save_freq: 20
+        test_freq: 20
+        total_epochs: 1
+        total_training_steps: null
+        use_legacy_worker_impl: auto
+        val_before_train: false
+        val_only: false
+        validation_data_dir: validation_log/token_reward_direct_DAPO-Math-17k_Qwen3-1.7B_Qwen3-4B_7168-T_1.0-Tch_1.0-n_4-mbs_64-topk_16-topk_strategy_only_stu-rw_student_p-2026-05-04_23-54-32
+transfer_queue:
+    value:
+        enable: false

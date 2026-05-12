@@ -1,0 +1,34 @@
+Checkpoint tracker file does not exist: /home/atuin/v100dd/v100dd18/opd/OPD/checkpoint/token_reward_direct_DAPO-Math-17k_Qwen3-1.7B_Qwen3-4B_7168-T_1.0-Tch_1.0-n_4-mbs_64-topk_16-topk_strategy_only_stu-rw_student_p-2026-05-04_23-54-32/latest_checkpointed_iteration.txt
+Training from scratch
+Training Progress:   0%|          | 0/279 [00:00<?, ?it/s]Unhandled error (suppress with 'RAY_IGNORE_UNHANDLED_ERRORS=1'): [36mray::WorkerDict.actor_rollout_compute_log_prob()[39m (pid=223095, ip=10.28.53.138, actor_id=8263dbe7bad4592eb1a7537a01000000, repr=<verl.single_controller.ray.base.WorkerDict object at 0x7f1040627c20>)
+First forward, get student top k ids and log probs
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/atuin/v100dd/v100dd18/opd/OPD/verl/verl/single_controller/ray/base.py", line 700, in func
+    return getattr(self.worker_dict[key], name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/atuin/v100dd/v100dd18/opd/OPD/verl/verl/single_controller/base/decorator.py", line 442, in inner
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/atuin/v100dd/v100dd18/opd/OPD/verl/verl/utils/transferqueue_utils.py", line 199, in dummy_inner
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/atuin/v100dd/v100dd18/opd/OPD/verl/verl/utils/profiler/profile.py", line 256, in wrapper
+    return func(self_instance, *args, **kwargs_inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/atuin/v100dd/v100dd18/opd/OPD/verl/verl/workers/fsdp_workers.py", line 985, in compute_log_prob
+    output, entropys, topk_ids, topk_log_probs = self.actor.compute_log_prob(data=data, calculate_entropy=True)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/atuin/v100dd/v100dd18/opd/OPD/verl/verl/utils/profiler/performance.py", line 105, in f
+    return self.log(decorated_function, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/atuin/v100dd/v100dd18/opd/OPD/verl/verl/utils/profiler/performance.py", line 118, in log
+    output = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/atuin/v100dd/v100dd18/opd/OPD/verl/verl/workers/actor/dp_actor.py", line 695, in compute_log_prob
+    entropy, log_probs, topk_ids, topk_log_probs = self._forward_micro_batch(
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/atuin/v100dd/v100dd18/opd/OPD/verl/verl/workers/actor/dp_actor.py", line 207, in _forward_micro_batch
+    log_probs_all = torch.log_softmax(logits_rmpad, dim=-1)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 18.70 GiB. GPU 0 has a total capacity of 47.41 GiB of which 14.07 GiB is free. Including non-PyTorch memory, this process has 33.32 GiB memory in use. Of the allocated memory 66.28 GiB is allocated by PyTorch, with 123.53 MiB allocated in private pools (e.g., CUDA Graphs), and 2.10 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)

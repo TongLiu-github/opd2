@@ -1,0 +1,4 @@
+Checkpoint tracker file does not exist: /home/atuin/v100dd/v100dd18/opd/OPD/checkpoint/token_reward_direct_DAPO-Math-17k_Qwen3-1.7B_Qwen3-4B_7168-T_1.0-Tch_1.0-n_4-mbs_64-topk_16-topk_strategy_only_stu-rw_student_p-2026-05-04_23-21-34/latest_checkpointed_iteration.txt
+Training from scratch
+Training Progress:   0%|          | 0/279 [00:00<?, ?it/s]
+First forward, get student top k ids and log probs
